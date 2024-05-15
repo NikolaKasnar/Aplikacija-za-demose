@@ -11,15 +11,7 @@
 <body>
     <div class="navbar">
         <div class="dropdown">
-            <button class="dropbtn">Upute
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="index.php?rt=upute/aktuarski">Aktuarska</a>
-                <a href="index.php?rt=upute/doktorski">Doktorski</a>
-                <a href="index.php?rt=upute/praktikumi">Praktikumi dežurstva</a>
-                <a href="index.php?rt=upute/printanje">Printanje</a>
-            </div>
+            <a href="index.php?rt=upute/aktuarski">Upute</a>
         </div>
         <div class="dropdown">
             <button class="dropbtn">Rezervacije
