@@ -1,3 +1,5 @@
+<?php require_once __DIR__ . '/../navigation-bars/navigation-bar-login.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,15 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="/view/login/login_html.css" />
 </head>
 
 <body>
-    <?php include 'navigation-bar-login.php' ?>
-
     <form action="action_page.php" method="post">
         <div class="imgcontainer">
-            <img src="img_avatar2.png" alt="Avatar" class="avatar">
+            <img src="/view/images/img_avatar2.png" alt="Avatar" class="avatar">
         </div>
 
         <div class="container">
