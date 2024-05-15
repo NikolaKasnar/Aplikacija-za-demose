@@ -15,7 +15,7 @@
         <li><a href="index.php?rt=upute/praktikumi">Praktikumi dežurstva</a></li>
         <li><a href="index.php?rt=upute/printanje">Printanje</a></li>
         <li><a href="index.php?rt=upute/snimanje">Snimanje</a></li>
-        <li><a href="index.php?rt=upute/snimanjedemosi">Snimanje demosi</a></li>
+        <li><a href="index.php?rt=upute/opisposla">Opis posla</a></li>
     </ul>
 
 </body>

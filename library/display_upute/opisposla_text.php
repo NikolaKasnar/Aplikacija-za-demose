@@ -1,0 +1,1 @@
+Bok, ovo je opis posla

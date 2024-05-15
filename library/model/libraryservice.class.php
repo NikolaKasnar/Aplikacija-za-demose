@@ -17,5 +17,17 @@ class LibraryService
     {
         return file_put_contents($file_path, $content);
     }
+    /*
+    public function displayText($file_path)
+    {
+        $php_content = $this->getFileContent($file_path);
+        return $php_content !== false ? $php_content : false;
+    }
+
+    public function saveText($file_path, $content)
+    {
+        return $this->saveFileContent($file_path, $content);
+    }
+    */
 }
 ?>

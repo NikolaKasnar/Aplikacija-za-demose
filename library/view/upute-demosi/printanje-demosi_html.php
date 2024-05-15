@@ -1,5 +1,5 @@
-<?php require_once __DIR__ . '/../navigation-bars/navigation-bar.php'; ?>
-<?php require_once __DIR__ . '/../navigation-bars/navigation-bar-upute.php'; ?>
+<?php require_once __DIR__ . '/../navigation-bars/navigation-bar-demosi.php'; ?>
+<?php require_once __DIR__ . '/../navigation-bars/navigation-bar-upute-demosi.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
 
 <body>
     <div style="margin-left:25%;padding:1px 16px;height:1000px;">
-        <?php require_once __DIR__ . '/../../display_upute/snimanje_text.php' ?>
+        <?php require_once __DIR__ . '/../../display_upute/printanje_text.php' ?>
     </div>
 </body>
 

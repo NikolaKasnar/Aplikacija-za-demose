@@ -12,7 +12,15 @@
 
 <body>
     <div style="margin-left:25%;padding:1px 16px;height:1000px;">
-        Aktuarki studij
+        <h2>Aktuarski studij</h2>
+        <?php if (!empty($error_message)) : ?>
+            <p style="color: red;"><?php echo $error_message; ?></p>
+        <?php endif; ?>
+        <form method="post" action="index.php?rt=upute/aktuarski">
+            <label for="edited_content">Upute:</label><br>
+            <textarea id="edited_content" name="edited_content" rows="10" cols="50"><?php echo htmlspecialchars($php_content); ?></textarea><br>
+            <input type="submit" value="Save">
+        </form>
     </div>
 </body>
 
