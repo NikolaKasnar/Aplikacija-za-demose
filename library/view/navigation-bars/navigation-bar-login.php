@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplikacija za demose</title>
-    <link rel="stylesheet" href="/library/css/navigation-bar-login.css" />
+    <link rel="stylesheet" href="/css/navigation-bar-login.css" />
 </head>
 
 <body>
