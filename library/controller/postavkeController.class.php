@@ -23,4 +23,9 @@ class PostavkeController
     {
         require_once __DIR__ . '/../view/postavke/dark-light_html.php';
     }
+
+    public function registracija()
+    {
+        require_once __DIR__ . '/../view/postavke/registracija_html.php';
+    }
 };
