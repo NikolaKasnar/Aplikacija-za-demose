@@ -25,7 +25,7 @@
             </div>
         </div>
         <a href="#galerija">Galerija</a>
-        <a href="#opci-podaci">Opći podaci</a>
+        <a href="index.php?rt=users/index">Demosi</a>
         <a href="#izvjestaji">Izvještaji</a>
         <a href="index.php?rt=postavke/index">Postavke</a>
         <div class="right-tab">

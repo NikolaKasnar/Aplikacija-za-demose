@@ -6,7 +6,7 @@ class UsersController
 {
     public function index()
     {
-        require_once __DIR__ . '/../view/users_index.php';
+        require_once __DIR__ . '/../view/demosi/opci-podaci_html.php';
     }
 
 };
