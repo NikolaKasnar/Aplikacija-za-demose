@@ -29,7 +29,8 @@
         <a href="#izvjestaji">Izvještaji</a>
         <a href="index.php?rt=postavke/index">Postavke</a>
         <div class="right-tab">
-            <a href="#log-out">Log out</a>
+            <a class="username">username</a>
+            <a class="logout" href="index.php?rt=login/logout">Log out</a>
         </div>
     </div>
 </body>

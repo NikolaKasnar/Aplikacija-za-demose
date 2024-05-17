@@ -83,6 +83,10 @@
 }
 
 /* Add a red background color to the right tab on hover */
-.right-tab:hover {
+.right-tab .logout:hover {
     background-color: red;
+}
+
+.right-tab .username:hover {
+    background-color: inherit;
 }
