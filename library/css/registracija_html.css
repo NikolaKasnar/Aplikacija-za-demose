@@ -1,8 +1,9 @@
 body {
     height: 1000px;
+    color: #333;
 }
 
-.main {
+#main {
     font-family: Arial, sans-serif;
     background-color: #f3f3f3;
     align-items: center;
@@ -12,22 +13,22 @@ body {
     margin-left: 25%;
 }
 
-.main h2 {
+#main h2 {
     color: #4caf50;
     margin-bottom: 20px;
 }
 
-label {
+
+#main label {
     display: block;
     margin-bottom: 5px;
-    color: #555;
     font-weight: bold;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-select {
+#main input[type="text"],
+#main input[type="email"],
+#main input[type="password"],
+#main select {
     width: 100%;
     margin-bottom: 15px;
     padding: 10px;
@@ -36,7 +37,7 @@ select {
     border-radius: 5px;
 }
 
-button[type="submit"] {
+#main button[type="submit"] {
     padding: 15px;
     border-radius: 10px;
     border: none;

@@ -1,18 +1,9 @@
 <?php require_once __DIR__ . '/../navigation-bars/navigation-bar.php'; ?>
 <?php require_once __DIR__ . '/../navigation-bars/navigation-bar-postavke.php'; ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once __DIR__ . '/../_header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registracija</title>
-    <link rel="stylesheet" href="/css/registracija_html.css" />
-</head>
-
-<body>
-    <div class="main">
+    <div id="main">
         <h2>Registration Form</h2>
         <form action="">
             <label for="first">First Name:</label>
@@ -25,8 +16,8 @@
             <input type="email" id="email" name="email" required />
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" title="Password must contain at least one number, 
-                           one alphabet, one symbol, and be at 
+            <input type="password" id="password" name="password" pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" title="Password must contain at least one number,
+                           one alphabet, one symbol, and be at
                            least 8 characters long" required />
 
             <label for="repassword">Re-type Password:</label>

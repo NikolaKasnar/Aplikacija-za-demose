@@ -21,6 +21,20 @@ class PostavkeController
 
     public function darklight()
     {
+        $darkmode=0;
+        if(isset($_COOKIE['mode'])){
+          if($_COOKIE['mode']==='0') {
+            setcookie('mode',1,time()+(10*365*24*60*60));
+          }
+          else {
+            setcookie('mode',0,time()+(10*365*24*60*60));
+            $darkmode=1;
+          }
+        }
+        else {
+          setcookie('mode',0,time()+(10*365*24*60*60));
+          $darkmode=1;
+        }
         require_once __DIR__ . '/../view/postavke/dark-light_html.php';
     }
 
