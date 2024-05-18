@@ -14,8 +14,7 @@
     <link rel="stylesheet" href="./css/navigation-bar-postavke.css" />
     <?php
       if($darkmode===0) ;
-      else if(isset($_COOKIE['mode'])){
-        if($_COOKIE['mode']==='0' || $darkmode===1)
+      else if((isset($_COOKIE['mode']) && $_COOKIE['mode']==='0') || $darkmode===1){
           echo '<link rel="stylesheet" href="./css/darkmode.css" />';}
     ?>
   </head>

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/userModel.php';
+require_once __DIR__ . '/user.class.php';
 
 class LibraryService
 {

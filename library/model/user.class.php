@@ -1,17 +1,18 @@
 <?php
 class User
 {
-    /*
-    protected $id, $username, $password_hash, $total_paid, $total_debt, $email;
+    protected $id, $username, $ime, $prezime, $email, $godina, $smjer, $ovlasti;
 
-    function __construct($id, $username, $password_hash, $total_paid, $total_debt, $email)
+    function __construct($id, $username, $ime, $prezime, $email, $godina, $smjer, $ovlasti)
     {
         $this->id = $id;
         $this->username = $username;
-        $this->password_hash = $password_hash;
-        $this->total_paid = $total_paid;
-        $this->total_debt = $total_debt;
+        $this->ime = $ime;
+        $this->prezime = $prezime;
+        $this->godina = $godina;
         $this->email = $email;
+        $this->smjer = $smjer;
+        $this->ovlasti = $ovlasti;
     }
 
     function __get($property)
@@ -25,5 +26,4 @@ class User
         if (property_exists($this, $property))
             return $this->$property = $value;
     }
-    */
 }

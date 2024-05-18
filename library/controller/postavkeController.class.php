@@ -1,16 +1,22 @@
 <?php
 
 require_once __DIR__ . '/../model/libraryservice.class.php';
+require_once __DIR__ . '/../model/userservice.class.php';
 
 class PostavkeController
 {
     public function index()
     {
+        $st=new UserService();
+
+        $user=$st->getuser();
         require_once __DIR__ . '/../view/postavke/account_html.php';
     }
 
-    public function account()
+    public function updateaccount()
     {
+        $st=new UserService();
+
         require_once __DIR__ . '/../view/postavke/account_html.php';
     }
 
@@ -21,10 +27,10 @@ class PostavkeController
 
     public function darklight()
     {
-        $darkmode=0;
         if(isset($_COOKIE['mode'])){
           if($_COOKIE['mode']==='0') {
             setcookie('mode',1,time()+(10*365*24*60*60));
+            $darkmode=0;
           }
           else {
             setcookie('mode',0,time()+(10*365*24*60*60));
@@ -35,7 +41,10 @@ class PostavkeController
           setcookie('mode',0,time()+(10*365*24*60*60));
           $darkmode=1;
         }
-        require_once __DIR__ . '/../view/postavke/dark-light_html.php';
+
+        $st=new UserService();
+        $user=$st->getuser();
+        require_once __DIR__ . '/../view/postavke/account_html.php';
     }
 
     public function registracija()
