@@ -23,7 +23,7 @@
 
         <div class="container">
             <!--<button type="button" class="cancelbtn">Odustani</button>-->
-            <span class="psw">Zaboravili ste <a href="#">lozinku?</a></span>
+            <span class="psw">Zaboravili ste <a href="index.php?rt=login/zaborav">lozinku?</a></span>
         </div>
     </form>
 

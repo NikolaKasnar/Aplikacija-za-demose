@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../model/libraryservice.class.php';
 require_once __DIR__ . '/../model/loginservice.class.php';
+require_once __DIR__ . '/../model/zaboravlozinkeservice.class.php';
 
 class LoginController
 {
@@ -23,6 +24,11 @@ class LoginController
     public function rezervacije()
     {
         require_once __DIR__ . '/../view/login/rezervacije_html.php';
+    }
+
+    public function zaborav()
+    {
+        require_once __DIR__ . '/../view/login/zaborav-lozinke_html.php';
     }
 
     public function provjera()
