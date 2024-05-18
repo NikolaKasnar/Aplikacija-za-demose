@@ -16,7 +16,6 @@ if($controllerName==='loginController' && $action==='index' && isset($_COOKIE['u
 
 if(!isset($_COOKIE['username']) && !isset($_POST['uname'])){
   $controllerName = 'loginController';
-  $action = 'index';
 }
 
 require_once __DIR__ . '/controller/' . $controllerName . '.class.php';
