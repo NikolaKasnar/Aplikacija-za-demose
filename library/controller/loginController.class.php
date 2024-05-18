@@ -26,9 +26,19 @@ class LoginController
         require_once __DIR__ . '/../view/login/rezervacije_html.php';
     }
 
+    // Funkcije za promjenu zaboravljene lozinke
     public function zaborav()
     {
         require_once __DIR__ . '/../view/login/zaborav-lozinke_html.php';
+    }
+
+    public function slanjemaila()
+    {
+        $email = $_POST['email'];
+
+        $zs = new zaboravlozinkeService;
+
+        $zs->provjeraValjanosti($email);
     }
 
     public function provjera()
