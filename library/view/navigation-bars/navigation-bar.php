@@ -20,7 +20,10 @@
         <a href="#izvjestaji">Izvještaji</a>
         <a href="index.php?rt=postavke/index">Postavke</a>
         <div class="right-tab">
-            <a class="username">username</a>
+            <a class="username"><?php
+            if(isset($_POST['uname'])) echo $_POST['uname'];
+            else echo $_COOKIE['username'];?>
+            </a>
             <a class="logout" href="index.php?rt=login/logout">Log out</a>
         </div>
     </div>

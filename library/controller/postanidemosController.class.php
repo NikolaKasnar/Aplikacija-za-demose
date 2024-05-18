@@ -13,7 +13,7 @@ class PostaniDemosController
     //za unos u samu bazu podataka kako bi admin imao uvid
     public function obradi()
     {
-        $poruka='automobil';
+        $poruka='';
         $ps = new PostaniService;
         //PLAN: provjera polja za termine - treba minimalno 6, provjera reg. izraza za ime,prezime,broj mobitela,...
         
@@ -29,36 +29,23 @@ class PostaniDemosController
         //iduca provjera je imamo li minimalno oznaceno 6 termina, trebamo brojac
         $brojac_termina = 0;
 
+        $selectedPon = [];
+        $selectedUto = [];
+        $selectedSri = [];
+        $selectedCet = [];
+        $selectedPet = [];
+
         //spremimo dobiveno u polja
-        if (isset($_POST['ponedjeljak'])) {
+        if (isset($_POST['ponedjeljak'])) 
             $selectedPon = $_POST['ponedjeljak'];
-        } else {
-            $selectedPet = [];
-        }
-        
-        if (isset($_POST['utorak'])) {
+        if (isset($_POST['utorak'])) 
             $selectedUto = $_POST['utorak'];
-        } else {
-            $selectedPet = [];
-        }
-
-        if (isset($_POST['srijeda'])) {
+        if (isset($_POST['srijeda'])) 
             $selectedSri = $_POST['srijeda'];
-        } else {
-            $selectedPet = [];
-        }
-
-        if (isset($_POST['cetvrtak'])) {
+        if (isset($_POST['cetvrtak'])) 
             $selectedCet = $_POST['cetvrtak'];
-        } else {
-            $selectedPet = [];
-        }
-
-        if (isset($_POST['petak'])) {
+        if (isset($_POST['petak'])) 
             $selectedPet = $_POST['petak'];
-        } else {
-            $selectedPet = [];
-        }
 
         //provjeravamo imamo li minimalno 6 termina
         foreach($selectedPon as $pon)
@@ -147,19 +134,19 @@ class PostaniDemosController
         
         $ponedjeljak='ponedjeljak'; $utorak='utorak'; $srijeda='srijeda'; $cetvrtak='četvrtak'; $petak='petak';
         
-        //$ps->ubaciPostaniTermin($ime,$prezime,$...,$...);
+        //$ps->ubaciPostaniTermin($ime,$prezime,$mailfaksa,$...,$...);
         foreach($selectedPon as $pon)
-            $ps->ubaciPostaniTermin($ime,$prezime,$ponedjeljak,$pon);
+            $ps->ubaciPostaniTermin($ime,$prezime,$mailfaksa,$ponedjeljak,$pon);
         foreach($selectedUto as $uto)
-            $ps->ubaciPostaniTermin($ime,$prezime,$utorak,$uto);
+            $ps->ubaciPostaniTermin($ime,$prezime,$mailfaksa,$utorak,$uto);
         foreach($selectedSri as $sri)
-            $ps->ubaciPostaniTermin($ime,$prezime,$srijeda,$sri);
+            $ps->ubaciPostaniTermin($ime,$prezime,$mailfaksa,$srijeda,$sri);
         foreach($selectedCet as $cet)
-            $ps->ubaciPostaniTermin($ime,$prezime,$cetvrtak,$cet);
+            $ps->ubaciPostaniTermin($ime,$prezime,$mailfaksa,$cetvrtak,$cet);
         foreach($selectedPet as $pet)
-            $ps->ubaciPostaniTermin($ime,$prezime,$petak,$pet);
+            $ps->ubaciPostaniTermin($ime,$prezime,$mailfaksa,$petak,$pet);
         
-        $poruka = 'Uspješno ste ispunili formu!';
+        $poruka = 'Uspješno ste ispunili formular!';
         require_once __DIR__ . '/../view/login/postanidemos_html.php';
         }
 };
