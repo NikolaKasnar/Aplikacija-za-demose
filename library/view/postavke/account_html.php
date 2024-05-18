@@ -1,22 +1,41 @@
 <?php require_once __DIR__ . '/../navigation-bars/navigation-bar.php'; ?>
 <?php require_once __DIR__ . '/../navigation-bars/navigation-bar-postavke.php'; ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once __DIR__ . '/../_header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Postavke</title>
-    <link rel="stylesheet" href="/view/postavke/postavke_html.css" />
-</head>
 
-<body>
 
-    <div style="margin-left:25%;padding:1px 16px;height:1000px;">
-        <h2>Fixed Full-height Side Nav</h2>
-        <h3>Try to scroll this area, and see how the sidenav sticks to the page</h3>
-        <p>Account settings</p>
+    <div  style="margin-left:25%;padding:1px 16px;height:1000px;">
+        <h2>Postavke računa</h2>
+        <form action="index.php?rt=postavke/updateaccount" method="post">
+            Username:<br>
+            <input type="text" placeholder="<?php echo $user->__get('username'); ?>"/>
+            <br>
+            Ime:<br>
+            <input type="text" placeholder="<?php echo $user->__get('ime'); ?>"/>
+            <br>
+            Prezime:<br>
+            <input type="text" placeholder="<?php echo $user->__get('prezime'); ?>"/>
+            <br>
+            Email:<br>
+            <input type="email" placeholder="<?php echo $user->__get('email'); ?>"/>
+            <br>
+            Godina:<br>
+            <select name="godina" required>
+                <option value="1"> 1 </option>
+                <option value="2"> 2 </option>
+                <option value="3"> 3 </option>
+                <option value="4"> 4 </option>
+                <option value="5"> 5 </option>
+            </select>
+            <br>
+            Smjer:<br>
+            <input type="text" placeholder="<?php echo $user->__get('smjer'); ?>"/>
+            <br>
+            <button type="submit">
+                Spremi promjene
+            </button>
+        </form>
     </div>
 </body>
 
