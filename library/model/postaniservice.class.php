@@ -22,15 +22,15 @@ class PostaniService
 
 
     //funckija za insert u bazu postani_termini
-    public function ubaciPostaniTermin($ime, $prezime, $dan, $termin)
+    public function ubaciPostaniTermin($ime, $prezime, $mail_faks,$dan, $termin)
     {
         //spajamo se na bazu
         try
         {
             $db=DB::getConnection();
-            $st=$db->prepare('INSERT INTO postani_termini (ime,prezime,dan,termin) 
-                            VALUES (:ime, :prezime, :dan, :termin)');
-            $st->execute(array('ime'=>$ime,'prezime'=>$prezime,'dan'=>$dan, 'termin'=>$termin));
+            $st=$db->prepare('INSERT INTO postani_termini (ime,prezime,mail_faks,dan,termin) 
+                            VALUES (:ime, :prezime,:mail_faks, :dan, :termin)');
+            $st->execute(array('ime'=>$ime,'prezime'=>$prezime, 'mail_faks'=> $mail_faks,'dan'=>$dan, 'termin'=>$termin));
         }
         catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
         return;
