@@ -9,7 +9,7 @@ class PostavkeController
     {
         $st=new UserService();
 
-        $user=$st->getuser();
+        $user=$st->getuser($_COOKIE['username']);
         require_once __DIR__ . '/../view/postavke/account_html.php';
     }
 
@@ -43,7 +43,7 @@ class PostavkeController
         }
 
         $st=new UserService();
-        $user=$st->getuser();
+        $user=$st->getuser($_COOKIE['username']);
         require_once __DIR__ . '/../view/postavke/account_html.php';
     }
 

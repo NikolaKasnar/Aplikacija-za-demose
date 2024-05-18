@@ -28,6 +28,14 @@ class LoginController
     public function provjera()
     {
 
+    if(isset($_COOKIE['username'])){
+      $username = $_COOKIE['username'];
+      $ls = new LoginService;
+
+      $ls->userprovjera($username);
+      return;
+    }
+
         // Provjeri sastoji li se ime samo od slova; ako ne, crtaj login formu.
 		if( !isset( $_POST["uname"] ) || preg_match( '/[a-zA-Z]{1, 20}/', $_POST["uname"] ) ){
 			require_once __DIR__ . '/../view/login/login_html.php';
@@ -51,6 +59,7 @@ class LoginController
 
     public function logout()
     {
+        setcookie('username','',time()-50);
         require_once __DIR__ . '/../view/login/login_html.php';
     }
 };
