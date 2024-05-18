@@ -164,8 +164,15 @@
 
             <input type="submit" value="Submit">
         </form>
+        <?php
+        if (!isset($poruka)) {
+            $poruka = '';
+        }
+        if ($poruka !== '') {
+            echo '<p>' . $poruka . '</p>';
+        }
+        ?>
     </div>
-    <?php echo $poruka; ?>
 </body>
 
 </html>
