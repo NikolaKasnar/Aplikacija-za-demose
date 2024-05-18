@@ -147,12 +147,12 @@
             <input type="radio" name="poziv" id="" value="Preko profesora/asistenata" /> Preko profesora/asistenata <br>
             <input type="radio" name="poziv" id="" value="Preko oglasa" /> Preko oglasa <br>
             <input type="radio" name="poziv" id="" value="Ostalo" /> Ostalo:
-            <input type="text" name="poziv-ostalo"> <br> 
+            <input type="text" name="poziv-ostalo"> <br>
 
             <label for="">Napomene</label> <br>
             <input type="text" name="napomene" id="" /> <br>
 
-            <input type="submit" value="Submit">
+            <button type="submit" value="Submit">Submit</button>
         </form>
         <?php
         if (!isset($poruka)) {

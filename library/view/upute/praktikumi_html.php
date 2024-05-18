@@ -12,7 +12,7 @@
         <form method="post" action="index.php?rt=upute/praktikumi">
             <label for="edited_content">Opis posla:</label><br>
             <textarea id="edited_content" name="edited_content" rows="10" cols="50"><?php echo htmlspecialchars($php_content); ?></textarea><br>
-            <input type="submit" value="Save">
+            <button type="submit" value="Save">Save</button>
         </form>
     </div>
 </body>
