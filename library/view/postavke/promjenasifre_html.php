@@ -12,10 +12,12 @@
           <input type="password" name="oldpass" />
           <br>
           Nova šifra:<br>
-          <input type="password" name="newpass" />
+          <input type="password" name="newpass" pattern="^\S*(?=\S{8,})\S*$"
+          title="Šifra mora biti bar 8 znakova duga!"/>
           <br>
           Ponovno unesite novu šifru:<br>
-          <input type="password" name="newpass2" />
+          <input type="password" name="newpass2" pattern="^\S*(?=\S{8,})\S*$"
+          title="Šifra mora biti bar 8 znakova duga!"/>
           <br>
           <button type="submit">
               Spremi promjene

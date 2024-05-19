@@ -15,7 +15,7 @@
                 <a href="#">Snimanja</a>
             </div>
         </div>
-        <a href="#galerija">Galerija</a>
+        <a href="index.php?rt=galerija/index">Galerija</a>
         <a href="index.php?rt=users/index">Demosi</a>
         <a href="#izvjestaji">Izvještaji</a>
         <a href="index.php?rt=postavke/index">Postavke</a>
