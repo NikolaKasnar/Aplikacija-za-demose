@@ -90,7 +90,34 @@ class zaboravlozinkeService
         }
     }
 
-    public function napraviPromjenuLozinke($password_hash){
+    public function napraviPromjenuLozinke($password_hash, $registracijski_kod){
+
+        // Mijenjamo lozinku tamo gdje se nalazi trazeni registracijski_kod
+        $db = DB::getConnection();
+
+        try
+        {
+            $st = $db->prepare('UPDATE demosi SET password_hash = :password_hash WHERE registracijski_kod = :registracijski_kod');
+            $st->execute([
+                'password_hash' => $password_hash,
+                'registracijski_kod' => $registracijski_kod
+            ]);
+
+            // Provejrimo jel se ikoji red promijenio
+            if ($st->rowCount() > 0) {
+                return 1;
+            } else {
+                require_once __DIR__ . '/../view/login/zaborav-lozinke_html.php';
+                echo 'Nema korisnika s tim registracijskim kodom.';
+                return 0;
+            }
+        }
+        catch( PDOException $e ) 
+        { 
+            require_once __DIR__ . '/../view/login/zaborav-lozinke_html.php'; 
+            echo 'Greska u bazi.';
+            return 0; 
+        }
 
     }
 

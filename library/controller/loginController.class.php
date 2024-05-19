@@ -57,15 +57,23 @@ class LoginController
     public function promijenilozinku() {
         if($_POST['psw1'] === $_POST['psw2']){
 
+            $registrationSequence = $_GET['sequence'];
+
             $password_hash = password_hash($_POST['psw1'], PASSWORD_DEFAULT);
 
             $zs = new zaboravlozinkeService;
 
-            $zs->napraviPromjenuLozinke($password_hash);
+            $result = $zs->napraviPromjenuLozinke($password_hash, $registrationSequence);
+
+            if($result == 1){
+                
+            } else {
+
+            }
         }
         else{
             require_once __DIR__ . '/../view/promjena-lozinke_html.php';
-            echo "Ove dvijue lozinke nisu iste!";
+            echo "Ove dvije lozinke nisu iste!";
         }
     }
 

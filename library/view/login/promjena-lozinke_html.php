@@ -1,6 +1,6 @@
 <?php require_once __DIR__ . '/../_header.php'; ?>
 
-    <form action="index.php?rt=login/slanjemaila" method="post">
+    <form action="<?php echo 'index.php?rt=login/promijenilozinku&sequence=' . $registrationSequence; ?>" method="post">
 
         <div class="container">
             <label for="psw1"><b>Lozinka</b></label><br>
