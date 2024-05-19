@@ -29,7 +29,7 @@ body {
 #main input[type="email"],
 #main input[type="password"],
 #main select {
-    width: 100%;
+    width: 50%;
     margin-bottom: 15px;
     padding: 10px;
     box-sizing: border-box;

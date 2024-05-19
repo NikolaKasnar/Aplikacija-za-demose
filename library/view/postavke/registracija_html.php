@@ -4,43 +4,49 @@
 <?php require_once __DIR__ . '/../_header.php'; ?>
 
     <div id="main">
-        <h2>Registration Form</h2>
-        <form action="">
-            <label for="first">First Name:</label>
-            <input type="text" id="first" name="first" required />
-
-            <label for="last">Last Name:</label>
-            <input type="text" id="last" name="last" required />
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" title="Password must contain at least one number,
-                           one alphabet, one symbol, and be at
-                           least 8 characters long" required />
-
-            <label for="repassword">Re-type Password:</label>
-            <input type="password" id="repassword" name="repassword" required />
-
-            <label for="mobile">Contact:</label>
-            <input type="text" id="mobile" name="mobile" maxlength="10" required />
-
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender" required>
-                <option value="male">
-                    Male
-                </option>
-                <option value="female">
-                    Female
-                </option>
-                <option value="other">
-                    Other
-                </option>
+        <h2>Registracija novog demosa</h2>
+        <?php if(isset($poruka)) echo $poruka . '<br>' . '<br>';?>
+        <form action="index.php?rt=postavke/updatereg" method="post">
+            Username:<br>
+            <input type="text" name="username" required />
+            <br>
+            Ime:<br>
+            <input type="text" name="ime" required />
+            <br>
+            Prezime:<br>
+            <input type="text" name="prezime" required />
+            <br>
+            Šifra:<br>
+            <input type="password" name="password" pattern="^\S*(?=\S{8,})\S*$"
+            title="Šifra mora biti bar 8 znakova duga!" required/>
+            <br>
+            Ponovno unesite šifru:<br>
+            <input type="password" name="password2" pattern="^\S*(?=\S{8,})\S*$"
+            title="Šifra mora biti bar 8 znakova duga!" required/>
+            <br>
+            Email:<br>
+            <input type="email" name="email" required/>
+            <br>
+            Godina studija:<br>
+            <select name="godina" required>
+                <option value="1"> 1 </option>
+                <option value="2"> 2 </option>
+                <option value="3"> 3 </option>
+                <option value="4"> 4 </option>
+                <option value="5"> 5 </option>
             </select>
-
+            <br>
+            Smjer:<br>
+            <input type="text" name="smjer" required/>
+            <br>
+            Ovlasti:<br>
+            <select name="ovlasti">
+                <option value="0"> 0 </option>
+                <option value="1"> 1 </option>
+            </select>
+            <br>
             <button type="submit">
-                Submit
+                Spremi promjene
             </button>
         </form>
     </div>
