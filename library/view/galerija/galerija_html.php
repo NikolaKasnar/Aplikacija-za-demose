@@ -25,16 +25,13 @@
 
 <!-- slijedi kod za prikaz uploadanih slika -->
 <?php
-$files = glob("view/galerija/*.{jpg,jpeg,png}", GLOB_BRACE);
+$files = glob("view/images/slike_galerija/*.{jpg,jpeg,png}", GLOB_BRACE);
 foreach ($files as $image) {
     //prikaz imena slike
     //echo basename($image) . "<br />";
     echo '<img src="' . $image . '" alt="Random image" />' . "<br /><br />";
 }
 ?>
-
-
-
 
 </body>
 </html>

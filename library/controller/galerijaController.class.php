@@ -29,10 +29,10 @@ class GalerijaController
                     $imageName = uniqid() . '.' . $imageFileType; 
                     
                     //spremamo sliku o odgovarajući direktorij (u ovom slučaju tamo view)
-                    move_uploaded_file($image['tmp_name'],dirname(__FILE__) . '/../view/galerija/' . $imageName);
+                    move_uploaded_file($image['tmp_name'],dirname(__FILE__) . '/../view/images/slike_galerija/' . $imageName);
                     $upload = 'Uspješno ste prenjeli sliku!';
-                    require_once 'view/galerija/galerija_html.php';
-                    return;
+                    header('Location: index.php?rt=galerija/uspjesanPrijenos'); //ovo ce usmjeriti na posebno kreiranu funkciju uspjesanPrijenos->detaljno ispod
+                    exit;
                 }
                 else
                 {
@@ -45,6 +45,15 @@ class GalerijaController
             require_once 'view/galerija/galerija_html.php';
             return;
         }
+    }
+
+    //ova funkcija je kreirana tako da ako korisnik refresha stranicu i dalje ce mu pisati odgovarajuca poruka,
+    //ali se slika nece ponovno prenijeti na stanicu sto bi uzrokovalo duplanje,...
+    public function uspjesanPrijenos()
+    {
+        $upload = 'Uspješno ste prenijeli sliku!';
+        require_once 'view/galerija/galerija_html.php';
+        return;
     }
 
 };
