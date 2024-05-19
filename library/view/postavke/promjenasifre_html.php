@@ -5,9 +5,21 @@
 
 
     <div style="margin-left:25%;padding:1px 16px;height:1000px;">
-        <h2>Fixed Full-height Side Nav</h2>
-        <h3>Try to scroll this area, and see how the sidenav sticks to the page</h3>
-        <p>Promjena sifre</p>
+      <h2>Promjena šifre</h2>
+      <?php if(isset($poruka)) echo $poruka . '<br><br>';?>
+      <form action="index.php?rt=postavke/updatesifra" method="post">
+          Stara šifra:<br>
+          <input type="password" name="oldpass" />
+          <br>
+          Nova šifra:<br>
+          <input type="password" name="newpass" />
+          <br>
+          Ponovno unesite novu šifru:<br>
+          <input type="password" name="newpass2" />
+          <br>
+          <button type="submit">
+              Spremi promjene
+          </button>
     </div>
 </body>
 

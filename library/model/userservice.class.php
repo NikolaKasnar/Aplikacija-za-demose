@@ -46,4 +46,21 @@ class UserService
 
       return $noviuser->__get('username');
     }
+
+    public function setpassword($username,$password)
+    {
+        $db = DB::getConnection();
+
+        try
+		{
+      $st = $db->prepare( 'UPDATE demosi set password_hash=:password where username=:username' );
+			$st->execute( array('password' => $password, 'username' => $username));
+    }
+		catch( PDOException $e ) {
+      echo 'Greska u bazi.';
+      require_once __DIR__ . '/../view/postavke/promjenasifre_html.php'; return;
+    }
+
+    return 1;
+    }
 }
