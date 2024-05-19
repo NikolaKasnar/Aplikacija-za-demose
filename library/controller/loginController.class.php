@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../model/libraryservice.class.php';
 require_once __DIR__ . '/../model/loginservice.class.php';
+require_once __DIR__ . '/../model/zaboravlozinkeservice.class.php';
 
 class LoginController
 {
@@ -23,6 +24,49 @@ class LoginController
     public function rezervacije()
     {
         require_once __DIR__ . '/../view/login/rezervacije_html.php';
+    }
+
+    // Funkcije za promjenu zaboravljene lozinke
+    public function zaborav()
+    {
+        require_once __DIR__ . '/../view/login/zaborav-lozinke_html.php';
+    }
+
+    public function slanjemaila()
+    {
+        $email = $_POST['email'];
+
+        $zs = new zaboravlozinkeService;
+
+        $zs->provjeraValjanosti($email);
+    }
+
+    public function potvrdikod() {
+        $registrationSequence = $_GET['sequence'];
+
+        $zs = new zaboravlozinkeService;
+        $result = $zs->potvrdiPromjenu($registrationSequence);
+
+        if ($result) {
+            require_once __DIR__ . '/../view/promjena-lozinke_html.php';
+        } else {
+            echo "Ovaj kod nije točan.";
+        }
+    }
+
+    public function promijenilozinku() {
+        if($_POST['psw1'] === $_POST['psw2']){
+
+            $password_hash = password_hash($_POST['psw1'], PASSWORD_DEFAULT);
+
+            $zs = new zaboravlozinkeService;
+
+            $zs->napraviPromjenuLozinke($password_hash);
+        }
+        else{
+            require_once __DIR__ . '/../view/promjena-lozinke_html.php';
+            echo "Ove dvijue lozinke nisu iste!";
+        }
     }
 
     public function provjera()
