@@ -38,7 +38,14 @@ class LoginController
 
         $zs = new zaboravlozinkeService;
 
-        $zs->provjeraValjanosti($email);
+        $result = $zs->provjeraValjanosti($email);
+
+        if($result == 1){
+            echo "Mail je uspješno poslan na traženu adresu";
+        }
+        else {
+            echo "Dogodila se greška, mail nije poslan.";
+        }
     }
 
     public function potvrdikod() {
@@ -48,7 +55,7 @@ class LoginController
         $result = $zs->potvrdiPromjenu($registrationSequence);
 
         if ($result) {
-            require_once __DIR__ . '/../view/promjena-lozinke_html.php';
+            require_once __DIR__ . '/../view/login/promjena-lozinke_html.php';
         } else {
             echo "Ovaj kod nije točan.";
         }
@@ -66,13 +73,13 @@ class LoginController
             $result = $zs->napraviPromjenuLozinke($password_hash, $registrationSequence);
 
             if($result == 1){
-                
+                require_once __DIR__ . '/../view/login/promjena-lozinke-uspjeh_html.php';
             } else {
-
+                require_once __DIR__ . '/../view/login/promjena-lozinke-fail_html.php';
             }
         }
         else{
-            require_once __DIR__ . '/../view/promjena-lozinke_html.php';
+            require_once __DIR__ . '/../view/login/promjena-lozinke_html.php';
             echo "Ove dvije lozinke nisu iste!";
         }
     }

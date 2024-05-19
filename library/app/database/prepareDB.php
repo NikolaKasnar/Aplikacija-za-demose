@@ -60,6 +60,7 @@ try
     $st->execute( array( 'username' => 'ana', 'password' => password_hash( 'aninasifra', PASSWORD_DEFAULT ), 'ime' => 'Ana', 'prezime' => 'Anić', 'email' => 'anaanic.math@pmf.hr', 'godina' => 2, 'smjer' => 'Matematička statistika', 'ovlasti' => 1, 'registracijski_kod' => 'asjkdhiasd' ) );
     $st->execute( array( 'username' => 'mirko', 'password' => password_hash( 'mirkovasifra', PASSWORD_DEFAULT ), 'ime' => 'Mirko', 'prezime' => 'Mirkić', 'email' => 'mirkmirk.math@pmf.hr', 'godina' => 1, 'smjer' => 'Financijska matematika', 'ovlasti' => 1, 'registracijski_kod' => 'hasdgjkasd' ) );
     $st->execute( array( 'username' => 'pero', 'password' => password_hash( 'perinasifra', PASSWORD_DEFAULT ), 'ime' => 'Pero', 'prezime' => 'Perić', 'email' => 'peroperi.math@pmf.hr', 'godina' => 2, 'smjer' => 'Teorijska matematika', 'ovlasti' => 1, 'registracijski_kod' => 'sda6sda78s' ) );
+    $st->execute( array( 'username' => 'nikola', 'password' => password_hash( '12345', PASSWORD_DEFAULT ), 'ime' => 'Nikola', 'prezime' => 'Kašnar', 'email' => 'nikokasn.math@pmf.hr', 'godina' => 1, 'smjer' => 'Računarstvo i matematika', 'ovlasti' => 0, 'registracijski_kod' => 'sdgfsfsdff' ) );
 }
 catch( PDOException $e ) { exit( "PDO error [insert dz2_users]: " . $e->getMessage() ); }
 
