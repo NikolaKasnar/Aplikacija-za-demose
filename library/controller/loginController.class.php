@@ -28,6 +28,7 @@ class LoginController
     public function provjera()
     {
 
+    //ako je korisnik vec zapamcen od prije
     if(isset($_COOKIE['username'])){
       $username = $_COOKIE['username'];
       $ls = new LoginService;

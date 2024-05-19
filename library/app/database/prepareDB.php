@@ -9,7 +9,7 @@ $has_tables = false;
 
 try
 {
-    $st = $db->prepare( 
+    $st = $db->prepare(
         'SHOW TABLES LIKE :tblname'
     );
 
@@ -29,7 +29,7 @@ if( $has_tables )
 
 try
 {
-    $st = $db->prepare( 
+    $st = $db->prepare(
         'CREATE TABLE IF NOT EXISTS demosi (' .
         'id int NOT NULL PRIMARY KEY AUTO_INCREMENT,' .
         'username varchar(50) NOT NULL,' .
@@ -65,4 +65,4 @@ catch( PDOException $e ) { exit( "PDO error [insert dz2_users]: " . $e->getMessa
 echo "Ubacio u tablicu demosi.<br />";
 
 
-?> 
+?>

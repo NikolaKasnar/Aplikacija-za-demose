@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/../model/loginservice.class.php';
 require_once __DIR__ . '/../model/libraryservice.class.php';
 require_once __DIR__ . '/../model/userservice.class.php';
 require_once __DIR__ . '/../model/user.class.php';
@@ -20,6 +21,9 @@ class PostavkeController
         $user=$st->getuser($_COOKIE['username']);
 
         $noviuser=clone $user;
+
+        //ako nije nista upisano u neko polje, nece se mijenjati
+        //ako je upisano, provjeravamo da li je ispravno za to polje
 
         if(isset($_POST["username"]) && $_POST["username"]!==""){
           if(preg_match('/^[a-zA-Z]{1,20}$/', $_POST["username"])){
@@ -76,7 +80,9 @@ class PostavkeController
 
 
         $uname=$st->setuser($noviuser);
+        //ponovno postavljamo cookie za novi username
         setcookie('username',$uname,time()+(10*365*24*60*60));
+
         $user=$st->getuser($uname);
         $poruka="Promjene uspješno spremljene.";
         require_once __DIR__ . '/../view/postavke/account_html.php';
@@ -84,6 +90,35 @@ class PostavkeController
 
     public function promjenasifre()
     {
+        require_once __DIR__ . '/../view/postavke/promjenasifre_html.php';
+    }
+
+    public function updatesifra()
+    {
+        $username=$_COOKIE['username'];
+        $oldpass=$_POST['oldpass'];
+        $st=new LoginService();
+
+        //je li stara šifra dobra
+        $prov=$st->provjeraUBazi($username,$oldpass);
+        if($prov===0){
+          $poruka="Krivi unos stare šifre, pokušajte ponovno.";
+          require_once __DIR__ . '/../view/postavke/promjenasifre_html.php';
+          return;
+        }
+
+        $newpass=$_POST['newpass'];
+        //je li nova šifra isto unesena oba puta
+        if($_POST['newpass2']!==$newpass){
+          $poruka="Unesite istu novu šifru oba puta!";
+          require_once __DIR__ . '/../view/postavke/promjenasifre_html.php';
+          return;
+        }
+
+        $us=new UserService();
+        $newpass=password_hash( $newpass, PASSWORD_DEFAULT );
+        $us->setpassword($username,$newpass);
+        $poruka="Šifra uspješno promjenjena!";
         require_once __DIR__ . '/../view/postavke/promjenasifre_html.php';
     }
 
