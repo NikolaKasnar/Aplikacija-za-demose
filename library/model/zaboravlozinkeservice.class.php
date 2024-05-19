@@ -60,7 +60,7 @@ class zaboravlozinkeService
     private function posaljiMailZaReset($email, $username, $registrationSequence) {
         $subject = "Zaboravljena lozinka";
         $message = 'Poštovanje !' . "\n" . "\n" . 'Vaš username za stranicu demosa je " ' . $username . '". Ako želite promijeniti vašu lozinku, molim vas da stisnete na sljedeći link:';
-        $message .= 'http://' . $_SERVER['SERVER_NAME'] . htmlentities( dirname( $_SERVER['PHP_SELF'] ) ) . '/index.php?rt=register/confirm&sequence=' . $registrationSequence . "\n";
+        $message .= 'http://' . $_SERVER['SERVER_NAME'] . htmlentities( dirname( $_SERVER['PHP_SELF'] ) ) . '/index.php?rt=login/potvrdiKod&sequence=' . $registrationSequence . "\n";
         $message .= "\n" . "\n" . 'U slučaju da ne želite, ignorirajte ovaj mail.';
 		$headers  = 'From: rp2@studenti.math.hr' . "\r\n" .
 		            'Reply-To: rp2@studenti.math.hr' . "\r\n" .
@@ -71,7 +71,7 @@ class zaboravlozinkeService
 			exit( 'Greška: ne mogu poslati mail. (Pokrenite na rp2 serveru.)' );
     }
 
-    public function potvrdipromjenu($registrationSequence) {
+    public function potvrdiPromjenu($registrationSequence) {
 
         $db = DB::getConnection();
 
@@ -90,7 +90,9 @@ class zaboravlozinkeService
         }
     }
 
+    public function napraviPromjenuLozinke($password_hash){
 
+    }
 
 }
 ?>
