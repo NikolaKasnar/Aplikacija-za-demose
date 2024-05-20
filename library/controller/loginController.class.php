@@ -21,9 +21,9 @@ class LoginController
         require_once __DIR__ . '/../view/login/opisposla_html.php';
     }
 
-    public function rezervacije()
+    public function rezervacijeProf()
     {
-        require_once __DIR__ . '/../view/login/rezervacije_html.php';
+        require_once __DIR__ . '/../view/login/rezervacije-prof_html.php';
     }
 
     // Funkcije za promjenu zaboravljene lozinke
