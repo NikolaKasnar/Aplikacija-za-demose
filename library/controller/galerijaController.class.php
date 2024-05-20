@@ -34,7 +34,7 @@ class GalerijaController
                     $files = glob("view/images/slike_galerija/*.{jpg,jpeg,png}", GLOB_BRACE);
                     foreach ($files as $file) {
                         if( $imageName === basename($file)){ 
-                            $upload = 'Slika s tim nazivom već postoji, molimo Vas odaberite neki drugi!';
+                            $upload = 'Slika s tim nazivom već postoji, molimo Vas odaberite neki drugi naziv!';
                             require_once 'view/galerija/galerija_html.php';
                             return;
                         }
