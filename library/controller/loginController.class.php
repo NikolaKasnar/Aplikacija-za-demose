@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../model/libraryservice.class.php';
 require_once __DIR__ . '/../model/loginservice.class.php';
 require_once __DIR__ . '/../model/zaboravlozinkeservice.class.php';
+require_once __DIR__ . '/../model/rezervacijeprofservice.class.php';
 
 class LoginController
 {
@@ -81,6 +82,38 @@ class LoginController
         else{
             require_once __DIR__ . '/../view/login/promjena-lozinke_html.php';
             echo "Ove dvije lozinke nisu iste!";
+        }
+    }
+
+    // Funkcije za rezervaciju termina od strane profesora
+    // Samo posaljem mail svim demosima adminima
+    public function rezervacijaTermina()
+    {
+        $ime = $_POST['ime'];
+        $prezime = $_POST['prezime'];
+        $email1 = $_POST['email1'];
+        $email2 = $_POST['email2'];
+        $datum = $_POST['datum'];
+        $vrijeme = $_POST['vrijeme'];
+        $prostorija = $_POST['prostorija'];
+        $ljudi1 = $_POST['ljudi1'];
+        $ljudi2 = $_POST['ljudi2'];
+
+        $rs = new RezervacijeprofService;
+
+        // Dohvatimo sve mailove admina iz baze te im posaljemo mail
+        $admini = array();
+        $admini = $rs->dohvatiAdmine();
+
+        $result = $rs->posaljiMailZaRezervaciju($ime, $prezime, $email1, $email2, $datum, $vrijeme, $prostorija, $ljudi1, $ljudi2, $admini);
+        
+        if($result){
+            $poruka = 'Vaš zahtjev je poslan. Admin demos će vam se uskoro javiti.';
+            require_once __DIR__ . '/../view/login/rezervacije-prof_html.php';
+        }
+        else{
+            $poruka = 'Greška, vaš zahtjev nije poslan';
+            require_once __DIR__ . '/../view/login/rezervacije-prof_html.php';
         }
     }
 
