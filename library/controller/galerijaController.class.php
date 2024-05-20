@@ -18,6 +18,7 @@ class GalerijaController
             if($_FILES['image']['error'] === 0)
             {
                 $image = $_FILES['image'];
+                $nazivSlike = $_POST['nazivslike'];
 
                 $imageFileType=strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
                 //navodimo koji su tipovi dozvoljeni
@@ -26,7 +27,7 @@ class GalerijaController
                 if(in_array($imageFileType, $allowedTypes))
                 {   
                     //generiramo ime za sliku
-                    $imageName = uniqid() . '.' . $imageFileType; 
+                    $imageName = $nazivSlike . '.' . $imageFileType; 
                     
                     //spremamo sliku o odgovarajući direktorij (u ovom slučaju tamo view)
                     move_uploaded_file($image['tmp_name'],dirname(__FILE__) . '/../view/images/slike_galerija/' . $imageName);

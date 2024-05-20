@@ -8,6 +8,8 @@
 
 <form action="index.php?rt=galerija/obradi" method="post" enctype="multipart/form-data">
     <input type="file" name="image" accept="image/*">
+    <?php echo '<br>' . 'Unesite naslov slike:'; ?>
+    <input type="text" name="nazivslike" required> 
     <button type="submit" name="submit">Prenesi</button>
 
 <!-- ovo je zbog toga da ne dobimo warning kako poruka nije definirana -->
@@ -30,6 +32,7 @@ echo '<div class="gallery-container">';
 foreach ($files as $image) {
     echo '<div class="gallery">';
     echo '<img src="' . $image . '" alt="Random image" />';
+    echo '<div class="capiton">' . basename($image) . '</div>';
     echo '</div>';
 }
 echo '</div>';
