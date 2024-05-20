@@ -30,7 +30,7 @@ class RezervacijeprofService
         if(isset($prostorija)){
             $message .= ' Snimanje je poželjno imati u prostoriji ' . $prostorija . '. ';
         }
-        $message .= "\n" . 'Za više detalja, možete im se javiti na maim:' . "\n";
+        $message .= "\n" . 'Za više detalja, možete im se javiti na mail:' . "\n";
         $message .= 'email(službeni): ' . $email1 . "\n";
         if(isset($prostorija)){
             $message .= 'email(neslužbeni): ' . $email1 . "\n";
