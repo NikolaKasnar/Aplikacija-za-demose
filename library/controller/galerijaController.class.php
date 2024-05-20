@@ -29,8 +29,17 @@ class GalerijaController
                 {   
                     //generiramo ime za sliku
                     $imageName = $nazivSlike . '.' . $imageFileType; 
-                    
-                    //spremamo sliku o odgovarajući direktorij (u ovom slučaju tamo view)
+
+                    //moramo provjeriti naziv slike
+                    $files = glob("view/images/slike_galerija/*.{jpg,jpeg,png}", GLOB_BRACE);
+                    foreach ($files as $file) {
+                        if( $imageName === basename($file)){ 
+                            $upload = 'Slika s tim nazivom već postoji, molimo Vas odaberite neki drugi!';
+                            require_once 'view/galerija/galerija_html.php';
+                            return;
+                        }
+                    }
+                    //spremamo sliku o odgovarajući direktorij (u ovom slučaju view/images/slike_galerija)
                     move_uploaded_file($image['tmp_name'],dirname(__FILE__) . '/../view/images/slike_galerija/' . $imageName);
                     $upload = 'Uspješno ste prenjeli sliku!';
                     header('Location: index.php?rt=galerija/uspjesanPrijenos'); //ovo ce usmjeriti na posebno kreiranu funkciju uspjesanPrijenos->detaljno ispod
@@ -65,11 +74,12 @@ class GalerijaController
         if(isset($_POST['submit']))
         {
             $nazivSlike = $_POST['naziv_slike'];
+            //putanja do slike
             $imagePath = dirname(__FILE__) . '/../view/images/slike_galerija/' . $nazivSlike;
         
             if(file_exists($imagePath))
             {
-                if(unlink($imagePath))
+                if(unlink($imagePath)) //ovo omogucava brisanje unlink()
                 {
                     $brisanje = 'Slika je uspješno uklonjena!';
                     require_once 'view/galerija/galerija_html.php';
@@ -84,7 +94,7 @@ class GalerijaController
             }
             else
             {
-                $brisanje = 'Slika tog naslova ne postoji, probajte ponovno';
+                $brisanje = 'Slika tog naslova ne postoji, probajte ponovno (u naslov mora biti uključeno sve)';
                 require_once 'view/galerija/galerija_html.php';
                 return;
             }
