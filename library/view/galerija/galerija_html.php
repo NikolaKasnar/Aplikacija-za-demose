@@ -38,5 +38,21 @@ foreach ($files as $image) {
 echo '</div>';
 ?>
 
+<form action="index.php?rt=galerija/obrisi" method="post">
+    <?php echo '<br>' . 'Unesite naslov slike koju želite ukloniti sa stranice: '; ?>
+    <input type="text" name="naziv_slike" required> 
+    <button type="submit" name="submit">Obriši</button>
+
+    <?php
+        if (!isset($brisanje)) {
+            $brisanje = '';
+        }
+        if ($brisanje !== '') {
+            echo '<p>' . $brisanje . '</p>';
+        }
+    ?>
+
+</form>
+
 </body>
 </html>
