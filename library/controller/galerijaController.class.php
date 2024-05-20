@@ -7,6 +7,7 @@ class GalerijaController
     public function index()
     {
         $upload = '';
+        $brisanje = '';
         require_once 'view/galerija/galerija_html.php';
     }
 
@@ -56,5 +57,41 @@ class GalerijaController
         require_once 'view/galerija/galerija_html.php';
         return;
     }
+
+    //funkcija koja će provjeriti ima li slika unesenog naziva iz forme u galerija_html.php
+    //ako da, uklonit ce je, ako ne ispisat ce odgovarajucu poruku
+    public function obrisi()
+    {
+        if(isset($_POST['submit']))
+        {
+            $nazivSlike = $_POST['naziv_slike'];
+            $imagePath = dirname(__FILE__) . '/../view/images/slike_galerija/' . $nazivSlike;
+        
+            if(file_exists($imagePath))
+            {
+                if(unlink($imagePath))
+                {
+                    $brisanje = 'Slika je uspješno uklonjena!';
+                    require_once 'view/galerija/galerija_html.php';
+                    return;
+                }
+                else
+                {
+                    $brisanje = 'Došlo je do greške prilikom brisanja slike!';
+                    require_once 'view/galerija/galerija_html.php';
+                    return;
+                }
+            }
+            else
+            {
+                $brisanje = 'Slika tog naslova ne postoji, probajte ponovno';
+                require_once 'view/galerija/galerija_html.php';
+                return;
+            }
+        }
+        require_once 'view/galerija/galerija_html.php';
+        return;
+    }
+    
 
 };
