@@ -25,8 +25,6 @@
 
 <?php
     $brojac = 0;
-    $pocetni_sat = 8;
-    $zavrsni_sat = 9;
     //prvo cemo ispisati za novoprijavljenog demosa sve podatke iz tablice postani_info,
     // a zatim kreirati tablicu gdje ce za istog demosa biti termini kada moze biti na "poslu"
     // to radimo tako da cemo za odg. demosa dohvatiti sve termine pomocu njegovog mail_faks
