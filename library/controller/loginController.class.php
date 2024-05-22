@@ -153,6 +153,7 @@ class LoginController
     public function logout()
     {
         setcookie('username','',time()-50);
+        setcookie('ovlasti','',time()-50);
         require_once __DIR__ . '/../view/login/login_html.php';
     }
 };

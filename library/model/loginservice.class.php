@@ -43,7 +43,7 @@ class loginService
 
         try
 		{
-			$st = $db->prepare( 'SELECT password_hash FROM demosi WHERE username=:username' );
+			$st = $db->prepare( 'SELECT password_hash, ovlasti FROM demosi WHERE username=:username' );
 			$st->execute( array( 'username' => $username ) );
 		}
 		catch( PDOException $e ) { require_once __DIR__ . '/../view/login/login_html.php'; echo 'Greska u bazi.';return; }
@@ -75,7 +75,12 @@ class loginService
         }
 
 				// Dobar password. Ulogiraj ga i posalji na pocetni ekran.
+        // Moramo dohvatiti i njegove ovlasti
         setcookie('username',$username,time()+(10*365*24*60*60));
+
+        $ovlasti = $row['ovlasti'];
+        setcookie('ovlasti',$ovlasti,time()+(10*365*24*60*60));
+
 				require_once __DIR__ . '../../controller/usersController.class.php';
 				$od=new UsersController();
 	        	$od->index();
