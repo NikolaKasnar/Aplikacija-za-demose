@@ -81,6 +81,9 @@ class loginService
         $ovlasti = $row['ovlasti'];
         setcookie('ovlasti',$ovlasti,time()+(10*365*24*60*60));
 
+        // Ova linija je potrebna da se cookie zapamti pri prvom ulasku na stranicu
+        header("Location: index.php");
+
 				require_once __DIR__ . '../../controller/usersController.class.php';
 				$od=new UsersController();
 	        	$od->index();
