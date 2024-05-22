@@ -19,3 +19,46 @@
     background-color: black; 
     margin: 20px 0; 
 }
+
+/* da ne stvaram puno CSS-a ovdje će se nalaziti
+    i za micanjedemosa_html.php CSS :) */
+
+.micdemosa {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 3px solid rgb(0, 118, 34);
+    margin: 15px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+.table-style-two {
+    border-collapse: separate;
+    border-spacing: 10px;
+    font-size: 20px;
+}
+
+.table-style-two th, .table-style-two td {
+    border-collapse: collapse;
+    padding: 7px;
+}
+
+/*ZA GUMB*/
+.crven_gumb:link, .crven_gumb:visited {
+    background-color: #f44336;
+    color: white;
+    font-weight: 100;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+.crven_gumb:hover, .crven_gumb:active {
+    background-color: red;
+  }
+
+.crven_gumb {
+    float: right; 
+}

@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../app/database/db.class.php';
+require_once __DIR__ . '/info.class.php';
 
 class AdminPostavkeService
 {
@@ -34,13 +35,45 @@ class AdminPostavkeService
         catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
         
         $arroftermin = array();
-		while( $row = $st->fetch(PDO::FETCH_ASSOC) )
+		while( $row = $st->fetch(PDO::FETCH_ASSOC))
 		{
 			$arroftermin[] = array('ime' => $row['ime'], 'prezime' => $row['prezime'], 'mail_faks' => $row['mail_faks'], 
                             'dan' => $row['dan'], 'termin' => $row['termin']);
 		}
 		return $arroftermin;
 	}
+
+    public function dohvatiDemonstratore()
+    {
+        try
+        {
+            $db=DB::getConnection();
+            $st = $db->prepare('SELECT ime, prezime, email, godina, smjer FROM demosi WHERE ovlasti = :ovlasti');
+            $ovlasti_value = 1; 
+            $st->execute([':ovlasti' => $ovlasti_value]);
+        }
+        catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
+        
+        $arrofdemosi = array();
+		while( $row = $st->fetch(PDO::FETCH_ASSOC))
+		{
+			$arrofdemosi[] = array('ime' => $row['ime'], 'prezime' => $row['prezime'], 'email' => $row['email'], 
+                            'godina' => $row['godina'], 'smjer' => $row['smjer']);
+		}
+		return $arrofdemosi;
+    }
+
+    public function obrisiDemonstratora($email)
+    {
+        try
+        {
+            $db = DB::getConnection();
+            $st = $db->prepare('DELETE FROM demosi WHERE email = :email');
+            $st->execute([':email' => $email]);
+        }
+        catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
+        return;
+    }
 
 };
 
