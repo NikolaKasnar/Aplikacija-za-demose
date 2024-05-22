@@ -52,9 +52,30 @@ class GalerijaController
                     return;
                 }
             }
-            $upload = 'Došlo je do greške prilikom uploada slike.';
+            else
+            {
+                 // Ispis grešaka koje se mogu dogoditi!
+            switch ($_FILES['image']['error']) {
+                case UPLOAD_ERR_INI_SIZE:
+                case UPLOAD_ERR_FORM_SIZE:
+                    $upload = 'Veličina slike premašuje dozvoljenu veličinu.';
+                    break;
+                case UPLOAD_ERR_PARTIAL:
+                    $upload = 'Slika je djelomično prenesena.';
+                    break;
+                case UPLOAD_ERR_NO_FILE:
+                    $upload = 'Nijedna slika nije prenesena.';
+                    break;
+                case UPLOAD_ERR_EXTENSION:
+                    $upload = 'Prijenos slike zaustavljen zbog ekstenzije.';
+                    break;
+                default:
+                    $upload = 'Došlo je do greške prilikom uploada slike.';
+                    break;
+            }
             require_once 'view/galerija/galerija_html.php';
             return;
+            }
         }
     }
 

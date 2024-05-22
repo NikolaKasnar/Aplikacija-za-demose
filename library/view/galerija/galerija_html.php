@@ -8,7 +8,7 @@
 
 <form action="index.php?rt=galerija/obradi" method="post" enctype="multipart/form-data">
     <input type="file" name="image" accept="image/*">
-    <?php echo '<br>' . 'Unesite naslov slike:'; ?>
+    <?php echo '<br>' . 'Unesite naziv slike (bez ekstenzije):'; ?>
     <input type="text" name="nazivslike" required> 
     <button type="submit" name="submit">Prenesi</button>
 
@@ -39,7 +39,7 @@ echo '</div>';
 ?>
 
 <form action="index.php?rt=galerija/obrisi" method="post">
-    <?php echo '<br>' . 'Unesite naslov slike koju želite ukloniti sa stranice: '; ?>
+    <?php echo '<br>' . 'Unesite naslov slike (s ekstenzijom) koju želite ukloniti sa stranice: '; ?>
     <input type="text" name="naziv_slike" required> 
     <button type="submit" name="submit">Obriši</button>
 
