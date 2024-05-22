@@ -1,0 +1,21 @@
+.table-style-one {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-style-one th, .table-style-one td {
+    border: 1px solid black;
+    padding: 7px;
+    text-align: left;
+}
+
+.table-style-one th {
+    background-color: #24c7009f;
+}
+
+.linijaa{
+    border: none;
+    height: 2px; 
+    background-color: black; 
+    margin: 20px 0; 
+}
