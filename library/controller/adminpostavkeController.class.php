@@ -14,6 +14,7 @@ class AdminpostavkeController
         $st=new UserService();
 
         $user=$st->getuser($_COOKIE['username']);
+
         require_once __DIR__ . '/../view/admin-postavke/registracija_html.php';
     }
     
