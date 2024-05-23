@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="./css/navigation-bar.css" />
     <link rel="stylesheet" href="./css/navigation-bar-login.css" />
     <link rel="stylesheet" href="./css/navigation-bar-postavke.css" />
+    <link rel="stylesheet" href="./css/galerija_html.css" />
+    <link rel="stylesheet" href="./css/rezervacije-prof_html.css" />
+    <link rel="stylesheet" href="./css/novidemos_html.css" />
     <?php
       if(isset($darkmode) && $darkmode===0) ;
       else if((isset($_COOKIE['mode']) && $_COOKIE['mode']==='0') || 

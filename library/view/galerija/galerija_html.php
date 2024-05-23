@@ -1,4 +1,11 @@
-<?php require_once __DIR__ . '/../navigation-bars/navigation-bar.php'; ?>
+<?php 
+    if(isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0'){
+        require_once __DIR__ . '/../navigation-bars/navigation-bar-admin.php';
+    }
+    else{
+        require_once __DIR__ . '/../navigation-bars/navigation-bar.php';
+    }
+?>
 <?php require_once __DIR__ . '/../_header.php'; ?>
 
 
@@ -8,6 +15,8 @@
 
 <form action="index.php?rt=galerija/obradi" method="post" enctype="multipart/form-data">
     <input type="file" name="image" accept="image/*">
+    <?php echo '<br>' . 'Unesite naziv slike (bez ekstenzije):'; ?>
+    <input type="text" name="nazivslike" required> 
     <button type="submit" name="submit">Prenesi</button>
 
 <!-- ovo je zbog toga da ne dobimo warning kako poruka nije definirana -->
@@ -25,16 +34,32 @@
 
 <!-- slijedi kod za prikaz uploadanih slika -->
 <?php
-$files = glob("view/galerija/*.{jpg,jpeg,png}", GLOB_BRACE);
+$files = glob("view/images/slike_galerija/*.{jpg,jpeg,png}", GLOB_BRACE);
+echo '<div class="gallery-container">';
 foreach ($files as $image) {
-    //prikaz imena slike
-    //echo basename($image) . "<br />";
-    echo '<img src="' . $image . '" alt="Random image" />' . "<br /><br />";
+    echo '<div class="gallery">';
+    echo '<img src="' . $image . '" alt="Random image" />';
+    echo '<div class="capiton">' . basename($image) . '</div>';
+    echo '</div>';
 }
+echo '</div>';
 ?>
 
+<form action="index.php?rt=galerija/obrisi" method="post">
+    <?php echo '<br>' . 'Unesite naslov slike (s ekstenzijom) koju želite ukloniti sa stranice: '; ?>
+    <input type="text" name="naziv_slike" required> 
+    <button type="submit" name="submit">Obriši</button>
 
+    <?php
+        if (!isset($brisanje)) {
+            $brisanje = '';
+        }
+        if ($brisanje !== '') {
+            echo '<p>' . $brisanje . '</p>';
+        }
+    ?>
 
+</form>
 
 </body>
 </html>

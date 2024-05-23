@@ -3,7 +3,7 @@
 <?php require_once __DIR__ . '/../_header.php'; ?>
 
     <div class="forma">
-        <form action="index.php?rt=Postanidemos/obradi" method="post">
+        <form action="index.php?rt=postanidemos/obradi" method="post">
             <label for="fname">Ime</label><br>
             <input type="text" id="fname" name="firstname" placeholder="Goran..." required> <br>
 
@@ -163,6 +163,5 @@
         }
         ?>
     </div>
-</body>
 
-</html>
+<?php require_once __DIR__ . '/../_footer.php'; ?>

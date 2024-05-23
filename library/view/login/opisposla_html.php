@@ -3,6 +3,5 @@
 <?php require_once __DIR__ . '/../_header.php'; ?>
 
     <?php require_once __DIR__ . '/../../display_upute/opisposla_text.php' ?>
-</body>
 
-</html>
+<?php require_once __DIR__ . '/../_footer.php'; ?>
