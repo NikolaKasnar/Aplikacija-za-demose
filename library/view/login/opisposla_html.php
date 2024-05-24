@@ -2,6 +2,13 @@
 
 <?php require_once __DIR__ . '/../_header.php'; ?>
 
-    <?php require_once __DIR__ . '/../../display_upute/opisposla_text.php' ?>
+    <div id="main-opis-posla">
+
+        <h1>Zanima te posao demos? Ovdje možeš proćitati čime se bavimo! :)</h1>
+
+        
+    
+    </div>
+
 
 <?php require_once __DIR__ . '/../_footer.php'; ?>
