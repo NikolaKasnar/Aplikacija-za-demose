@@ -68,8 +68,20 @@
             <br>
             U protivnom Vas sigutno nećemo primiti.
             <br>
-
-            
+            <br>
+            Ako ste zainteresirani za posao molim vas da ispunite sljedeću anketu:
+            <br>
+            <br>
+            <a href="index.php?rt=login/postanidemos">Postani demos</a>
+            <br>
+            <br>
+            Time će vaš zahtjev biti stavljen na listu čekanja te ćemo vam se javiti kada se oslobodi mjesto. Pri zapošljavanju prioritet dajemo onima koji imaju više vremena za odrađivanje demonstratorskih dužnosti, a ne nužno onima koji se prvi prijave za posao.
+            <br>
+            <br>
+            Ukoliko imate dodatnih pitanja možete nas kontaktirati putem email-a na <a href="#">demosi@math.hr</a>
+            <br>
+            <br>
+            Veselimo se vašoj prijavi! :)
         </p>
     
     
