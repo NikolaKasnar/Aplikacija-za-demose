@@ -26,3 +26,17 @@
 img.pr {
     width: 70%;
 }
+
+img.snimanja {
+    width: 49%;
+}
+
+#main-opis-posla h3 {
+    color: #04AA6D;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.bitno {
+    text-align: center;
+}

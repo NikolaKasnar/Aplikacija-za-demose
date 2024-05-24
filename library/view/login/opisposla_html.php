@@ -33,6 +33,44 @@
         <div class="imgcontainer-opis-posla">
             <img src="./view/images/praktikum4.jpeg" alt="pr4" class="pr">
         </div>
+
+        <h2>Snimanja</h2>
+
+        <ol class="opis-posla">
+            <li>
+                Demonstrator je dužan prenositi predavanja online preko već za to odlučenih platformi YouTube, Zoom i Teams
+            </li>
+            <br>
+            <li>
+                Zadužen je za interakciju između predavača i publike što uključuje pisanje poruka u chat, prenošenje pitanja od strane studenata predavaču te odgovaranje istih  
+            </li>
+            <br>
+            <li>
+                Dužan je snimati predavanja, spremiti snimke na za to određeno mjesto te po potrebi postavljati ih na razne platforme 
+            </li>
+            <br>
+            <li>
+                Snimaju se predavanja na doktorskom studiju i studiju aktuarske matematike te će se ponekad od demonstratora tražiti da snima i nestandardna “predavanja” (npr. seminare, obrane diplomskih i sl.)
+            </li>
+        </ol>
+
+        <p>Primjer opreme sa kakvom ćete raditi:</p>
+
+        <div class="imgcontainer-opis-posla">
+            <img src="./view/images/teams.jpeg" alt="obs" class="snimanja">
+            <img src="./view/images/201-snimanje.jpeg" alt="201" class="snimanja">
+        </div>
+
+        <h3>BITNO</h3>
+
+        <p class="bitno">
+            Molimo da se prijavite samo ukoliko imate položene sve kolegije sa prve godine preddiplomskog studija! 
+            <br>
+            U protivnom Vas sigutno nećemo primiti.
+            <br>
+
+            
+        </p>
     
     
     </div>
