@@ -13,3 +13,16 @@
     color: #04AA6D;
     margin-bottom: 20px;
 }
+
+.opis-posla {
+    list-style-type: circle;
+}
+
+.imgcontainer-opis-posla {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.pr {
+    width: 70%;
+}
