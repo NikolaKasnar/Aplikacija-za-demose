@@ -4,7 +4,7 @@
 
     <div id="main-opis-posla">
 
-        <h1>Zanima te posao demos? Ovdje možeš proćitati čime se bavimo! :)</h1>
+        <h1>Zanima te posao demonstratora? Ovdje možeš pročitati čime se bavimo! :)</h1>
 
         <p>Posao se sastoji od dvije dužnosti: dežuranja praktikuma i snimanja predavanja. Ukratko slijedi opis obje dužnosti.</p>
 
@@ -81,7 +81,7 @@
             Ukoliko imate dodatnih pitanja možete nas kontaktirati putem email-a na <a href="#">demosi@math.hr</a>
             <br>
             <br>
-            Veselimo se vašoj prijavi! :)
+            Veselimo se Vašoj prijavi! :)
         </p>
     
     
