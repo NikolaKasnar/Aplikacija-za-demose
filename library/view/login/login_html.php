@@ -26,5 +26,6 @@
             <span class="psw">Zaboravili ste <a href="index.php?rt=login/zaborav">username ili lozinku?</a></span>
         </div>
     </form>
+    </body>
 
 <?php require_once __DIR__ . '/../_footer.php'; ?>

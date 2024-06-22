@@ -27,6 +27,6 @@
         <a class="logout" href="index.php?rt=login/logout">Log out</a>
     </div>
 </div>
-</body>
+<body>
 
 </html>

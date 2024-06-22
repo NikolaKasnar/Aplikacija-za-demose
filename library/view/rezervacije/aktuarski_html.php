@@ -92,6 +92,10 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
                 var value = $(this).text().trim();
                 saveTableData(row, day, value);
             });
+
+            setInterval(function() {
+                loadTable();
+            }, 3000); 
         });
     </script>
 </head>

@@ -1,25 +1,33 @@
 <?php
 
-if (isset($_POST['row']) && isset($_POST['day']) && isset($_POST['value'])) {
-    $row = $_POST['row'];
-    $day = $_POST['day'];
-    $value = $_POST['value'];
+// Check if all required POST parameters are set
+if (isset($_POST['row'], $_POST['day'], $_POST['value'])) {
+    // Sanitize input
+    $row = intval($_POST['row']); // Ensure $row is an integer
+    $day = intval($_POST['day']); // Ensure $day is an integer
+    $value = htmlspecialchars($_POST['value']); // Sanitize $value for safe storage
 
+    // Load existing table data from JSON file
     $tableData = [];
+    $jsonFile = 'table_data.json';
 
-    // Čitanje iz table data
-    if (file_exists('table_data.json')) {
-        $tableData = json_decode(file_get_contents('table_data.json'), true);
+    if (file_exists($jsonFile)) {
+        $tableData = json_decode(file_get_contents($jsonFile), true);
     }
 
-    // Ažuriranje podataka
+    // Update the specific cell value
     if (isset($tableData[$row])) {
-        $tableData[$row][$day + 1] = $value; // +1 za preskakanje prvog stupca (zapis vremena)
+        $tableData[$row][$day + 1] = $value; // +1 for skipping the first column (time record)
     }
 
-    // Spremanje podataka 
-    file_put_contents('table_data.json', json_encode($tableData));
-
+    // Save updated table data back to JSON file
+    if (file_put_contents($jsonFile, json_encode($tableData, JSON_PRETTY_PRINT))) {
+        echo "Data saved successfully."; // Response message for successful save
+    } else {
+        http_response_code(500); // Internal Server Error response code
+        echo "Failed to save data."; // Response message for save failure
+    }
+} else {
+    http_response_code(400); // Bad Request response code
+    echo "Missing POST parameters."; // Response message for missing parameters
 }
-
-?>

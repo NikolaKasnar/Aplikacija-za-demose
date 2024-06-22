@@ -6,6 +6,5 @@
         <a href="index.php?rt=login/opisposla">Opis posla</a>
         <a href="index.php?rt=login/rezervacijeProf">Rezervacije</a>
     </div>
-</body>
 
 </html>
