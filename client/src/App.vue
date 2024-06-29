@@ -2,7 +2,7 @@
 <template>
   <div id="app">
     <header>
-      <h1>LiveDoc</h1>
+      <h1>Aktuarska</h1>
     </header>
     <main>
       <LiveEditor />

@@ -93,9 +93,12 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
                 saveTableData(row, day, value);
             });
 
+            // Refresh tablice svake 3 sek
+            /*
             setInterval(function() {
                 loadTable();
             }, 3000); 
+            */
         });
     </script>
 </head>
