@@ -2,7 +2,6 @@
 <template>
   <div id="app">
     <header>
-      <h1>Aktuarska</h1>
     </header>
     <main>
       <LiveEditor />
@@ -24,16 +23,12 @@ export default {
 <style>
 #app {
   font-family: Arial, Helvetica, sans-serif;
-  margin: 20px;
 }
 
 header {
-  text-align: center;
-  margin-bottom: 20px;
 }
 
 main {
-  max-width: 600px;
   margin: 0 auto;
 }
 </style>

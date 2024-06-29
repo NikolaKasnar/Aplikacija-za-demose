@@ -64,16 +64,18 @@ export default {
 
 <style scoped>
 table {
-  width: 100%;
+  width: 60%;
   border-collapse: collapse;
+  background-color: #f2f2f2;
 }
 
 th, td {
+  width: 16%;
   padding: 8px;
-  text-align: left;
+  text-align: center;
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: #04AA6D;
 }
 </style>

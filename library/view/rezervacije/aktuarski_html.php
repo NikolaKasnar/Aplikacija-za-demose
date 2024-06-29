@@ -13,12 +13,12 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raspored za aktuarski studij</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <style>
         table {
             width: 100%;
             border-collapse: collapse;
+            color: inherit;
         }
 
         th,
@@ -33,8 +33,8 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
         }
     </style>
     <script>
-        $(document).ready(function() {
-            var baseUrl = "<?php echo dirname($_SERVER['SCRIPT_NAME']); ?>";
+      /*  $(document).ready(function() {
+            var baseUrl = "<?php //echo dirname($_SERVER['SCRIPT_NAME']); ?>";
 
             function loadTable() {
                 $.ajax({
@@ -97,15 +97,16 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
             /*
             setInterval(function() {
                 loadTable();
-            }, 3000); 
+            }, 3000);
             */
-        });
+        });*/
     </script>
 </head>
 
 <body>
     <h1>Raspored za aktuarski studij</h1>
     <div id="liveTable"></div>
+    <embed src="http://localhost:8081/" style="width:100%; height: 100%;">
 </body>
 
 </html>

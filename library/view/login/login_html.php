@@ -1,6 +1,6 @@
 <?php require_once __DIR__ . '/../navigation-bars/navigation-bar-login.php'; ?>
 
-<?php require_once __DIR__ . '/../_header.php'; ?>
+<?php require_once __DIR__ . '/../_header.php';?>
 
     <form action="index.php?rt=login/provjera" method="post">
         <div class="imgcontainer">
@@ -19,6 +19,7 @@
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Zapamti me
             </label>
+            <?php if (isset($poruka)) echo "<br>$poruka"; ?>
         </div>
 
         <div class="container">
