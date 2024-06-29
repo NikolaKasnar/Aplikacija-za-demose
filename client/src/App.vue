@@ -1,26 +1,39 @@
+<!-- client/src/App.vue -->
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <header>
+      <h1>LiveDoc</h1>
+    </header>
+    <main>
+      <LiveEditor />
+    </main>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import LiveEditor from './components/LiveEditor.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    LiveEditor,
+  },
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+}
+
+header {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+main {
+  max-width: 600px;
+  margin: 0 auto;
 }
 </style>
