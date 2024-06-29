@@ -2,7 +2,8 @@
 
     <div class="navbar">
         <div class="dropdown">
-            <a href="index.php?rt=upute/aktuarski">Upute</a>
+            <!-- Moramo ga poslat na upute za demose -->
+            <a href="index.php?rt=upute/aktuarskidemosi">Upute</a>
         </div>
         <div class="dropdown">
             <button class="dropbtn">Rezervacije
