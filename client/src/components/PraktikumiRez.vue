@@ -1,5 +1,5 @@
 <template>
-  <div id="aktuarski">
+  <div id="praktikumi">
     <table border="1">
       <thead>
         <tr>
@@ -38,7 +38,7 @@ export default {
     this.tableData = Array.from({ length: 8 }, () => Array(6).fill(''));
 
     // WebSocket povezivanje
-    this.ws = new WebSocket('ws://localhost:8080');
+    this.ws = new WebSocket('ws://localhost:50100');
 
     this.ws.onmessage = event => {
       const updatedTableData = JSON.parse(event.data);

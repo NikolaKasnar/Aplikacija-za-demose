@@ -5,17 +5,29 @@
     </header>
     <main>
       <LiveEditor />
+      <br>
+      <DoktorskiStudij />
+      <br>
+      <PraktikumiRez />
+      <br>
+      <SnimanjaRez />
     </main>
   </div>
 </template>
 
 <script>
 import LiveEditor from './components/LiveEditor.vue';
+import DoktorskiStudij from './components/DoktorskiStudij.vue';
+import PraktikumiRez from './components/PraktikumiRez.vue';
+import SnimanjaRez from './components/SnimanjaRez.vue';
 
 export default {
   name: 'App',
   components: {
     LiveEditor,
+    DoktorskiStudij,
+    PraktikumiRez,
+    SnimanjaRez,
   },
 };
 </script>
