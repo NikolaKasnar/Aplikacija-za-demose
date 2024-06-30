@@ -11,6 +11,8 @@
 <?php require_once __DIR__ . '/../_header.php'; ?>
 
     <div style="margin-left:25%;padding:1px 16px;height:1000px;">
+        <h2>Snimanja</h2>
+        <p>Općenite upute o snimanju:</p>
         <?php require_once __DIR__ . '/../../display_upute/snimanje_text.php' ?>
     </div>
 </body>

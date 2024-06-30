@@ -10,6 +10,8 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
 <?php require_once __DIR__ . '/../_header.php'; ?>
 
 <div style="margin-left:25%;padding:1px 16px;height:1000px;">
+    <h2>Doktorski studij</h2>
+    <p>Upute za snimanja na doktorskom studiju:</p>
     <?php 
         $file_path = __DIR__ . '/../../display_upute/doktorski_text.php';
         //$php_content = file_get_contents($file_path);

@@ -10,13 +10,13 @@ else{
 <?php require_once __DIR__ . '/../_header.php'; ?>
 
 <div style="margin-left:25%;padding:1px 16px;height:1000px;">
-    <h2>Doktorski</h2>
+    <h2>Doktorski studij</h2>
     <p>Molim vas koristite prelazak u novi red radi ljepšeg ispisa.</p>
     <?php if (!empty($error_message)) : ?>
         <p style="color: red;"><?php echo $error_message; ?></p>
     <?php endif; ?>
     <form method="post" action="index.php?rt=upute/doktorski" enctype="multipart/form-data">
-        <label for="edited_content">Upute za doktorski:</label><br>
+        <label for="edited_content">Upute za snimanja na doktorskom studiju:</label><br>
         <textarea id="edited_content" name="edited_content" rows="10" cols="50"><?php echo htmlspecialchars($php_content); ?></textarea><br>
         <!--
 
