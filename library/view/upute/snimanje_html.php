@@ -22,6 +22,59 @@
             <textarea id="edited_content" name="edited_content" rows="10" cols="50"><?php echo htmlspecialchars($php_content); ?></textarea><br>
             <button type="submit" value="Save">Save</button>
         </form>
+
+        <h3>Slike</h3>
+
+        <?php
+            $files = glob("view/images/snimanje_upute/*.{jpg,jpeg,png}", GLOB_BRACE);
+            echo '<div class="gallery-container">';
+            foreach ($files as $image) {
+                echo '<div class="gallery">';
+                echo '<img src="' . $image . '" alt="Random image" />';
+                echo '<div class="capiton">' . basename($image) . '</div>';
+                echo '</div>';
+            }
+            echo '</div>';
+        ?>
+
+        <br>
+
+        <h4>Ovdje možete upravljati gornjim slikama:</h4>
+        <form action="index.php?rt=upute/snimanjeSlikeUplaod" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*">
+            <?php echo '<br>' . 'Unesite naziv slike (bez ekstenzije):'; ?>
+            <input type="text" name="nazivslike" required> 
+            <button type="submit" name="submit">Prenesi</button>
+
+        <!-- ovo je zbog toga da ne dobimo warning kako poruka nije definirana -->
+            <?php
+                if (!isset($upload)) {
+                    $upload = '';
+                }
+                if ($upload !== '') {
+                    echo '<p>' . $upload . '</p>';
+                }
+            ?>
+        </form>
+
+        <br><br>
+
+        <form action="index.php?rt=upute/snimanjeSlikeDelete" method="post">
+            <?php echo '<br>' . 'Unesite naslov slike (s ekstenzijom) koju želite ukloniti sa stranice: '; ?>
+            <input type="text" name="naziv_slike" required> 
+            <button type="submit" name="submit">Obriši</button>
+            <br>
+
+            <?php
+                if (!isset($brisanje)) {
+                    $brisanje = '';
+                }
+                if ($brisanje !== '') {
+                    echo '<p>' . $brisanje . '</p>';
+                }
+            ?>
+
+        </form>
     </div>
 
     <script>

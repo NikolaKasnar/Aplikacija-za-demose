@@ -14,6 +14,19 @@
         <h2>Snimanja</h2>
         <p>Općenite upute o snimanju:</p>
         <?php require_once __DIR__ . '/../../display_upute/snimanje_text.php' ?>
+
+        <h3>Slike</h3>
+        <?php
+            $files = glob("view/images/snimanje_upute/*.{jpg,jpeg,png}", GLOB_BRACE);
+            echo '<div class="gallery-container">';
+            foreach ($files as $image) {
+                echo '<div class="gallery">';
+                echo '<img src="' . $image . '" alt="Random image" />';
+                echo '<div class="capiton">' . basename($image) . '</div>';
+                echo '</div>';
+            }
+            echo '</div>';
+        ?>
     </div>
 </body>
 

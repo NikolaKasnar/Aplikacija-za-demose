@@ -27,6 +27,19 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
         }
         */
     ?>
+
+    <h3>Slike</h3>
+    <?php
+        $files = glob("view/images/doktorski_upute/*.{jpg,jpeg,png}", GLOB_BRACE);
+        echo '<div class="gallery-container">';
+        foreach ($files as $image) {
+            echo '<div class="gallery">';
+            echo '<img src="' . $image . '" alt="Random image" />';
+            echo '<div class="capiton">' . basename($image) . '</div>';
+            echo '</div>';
+        }
+        echo '</div>';
+    ?>
 </div>
 </body>
 

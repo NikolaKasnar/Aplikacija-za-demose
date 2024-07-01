@@ -58,7 +58,7 @@
 
         <br><br>
 
-        <form action="index.php?rt=upute/doktorskiSlikeDelete" method="post">
+        <form action="index.php?rt=upute/aktuarskiSlikeDelete" method="post">
             <?php echo '<br>' . 'Unesite naslov slike (s ekstenzijom) koju želite ukloniti sa stranice: '; ?>
             <input type="text" name="naziv_slike" required> 
             <button type="submit" name="submit">Obriši</button>
