@@ -19,6 +19,7 @@
     <a href="index.php?rt=users/index">Demosi</a>
     <a href="#izvjestaji">Izvještaji</a>
     <a href="index.php?rt=postavke/index">Postavke</a>
+    <a href="index.php?rt=obavijesti/index">Obavijesti</a> 
     <div class="right-tab">
         <a class="username"><?php
                             if (isset($_POST['uname'])) echo $_POST['uname'];
