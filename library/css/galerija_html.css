@@ -14,3 +14,85 @@ div.gallery img {
     height: auto;
 }
 
+
+/*CSS za obavijesti zbog toga da se na napravi još jedan dodatan CSS i tako prenatrpa!*/
+
+#obavijesti-h2{
+    margin-top: -20px;
+    font-family: 'Lucida Console';
+}
+
+#prethodne-h2{
+    font-family: 'Lucida Console';
+    text-align: center;
+}
+
+.obavijesti-container {
+    border: 1px solid #ccc; 
+    padding: 15px;
+    margin: 20px;
+    border-radius: 5px; 
+    font-family: Arial, sans-serif;
+}
+.obavijesti-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.obavijesti-content {
+    margin-top: 10px;
+}
+
+.obavijesti-date_time {
+    color: #555; 
+    font-size: 0.9em;
+}
+
+/* za pisanje obavijesti */
+.obavijest-form .form-group {
+    margin-bottom: 15px;
+}
+
+.obavijest-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.obavijest-form input[type="text"],
+.obavijest-form textarea {
+    width: calc(100% - 30px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.obavijest-form textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+.obavijest-form button[type="submit"] {
+    background-color: #04AA6D;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.obavijest-form button[type="reset"] {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.obavijest-form button[type="submit"]:hover,
+.obavijest-form button[type="reset"]:hover {
+    opacity: 0.9;
+}
