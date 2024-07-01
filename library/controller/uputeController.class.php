@@ -35,6 +35,121 @@ class UputeController
         }
     }
 
+    public function aktuarskiSlikeUplaod()
+    {
+        //provjera postoji li nešto u submit
+        if(isset($_POST['submit']))
+        {
+            $file_path = __DIR__ . '/../display_upute/aktuarski_text.php';
+            $php_content = $this->libraryService->getFileContent($file_path);
+            if($_FILES['image']['error'] === 0)
+            {
+                $image = $_FILES['image'];
+                $nazivSlike = $_POST['nazivslike'];
+
+                $imageFileType=strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
+                //navodimo koji su tipovi dozvoljeni
+                $allowedTypes = array('jpg', 'jpeg', 'png');
+
+                if(in_array($imageFileType, $allowedTypes))
+                {   
+                    //generiramo ime za sliku
+                    $imageName = $nazivSlike . '.' . $imageFileType; 
+
+                    //moramo provjeriti naziv slike
+                    $files = glob("view/images/aktuarski_upute/*.{jpg,jpeg,png}", GLOB_BRACE);
+                    foreach ($files as $file) {
+                        if( $imageName === basename($file)){ 
+                            $upload = 'Slika s tim nazivom već postoji, molimo Vas odaberite neki drugi naziv!';
+                            require_once 'view/upute/aktuarski_html.php';
+                            return;
+                        }
+                    }
+                    //spremamo sliku o odgovarajući direktorij (u ovom slučaju view/images/slike_galerija)
+                    move_uploaded_file($image['tmp_name'],dirname(__FILE__) . '/../view/images/aktuarski_upute/' . $imageName);
+                    $upload = 'Uspješno ste prenjeli sliku!';
+                    header('Location: index.php?rt=upute/uspjesanPrijenos'); //ovo ce usmjeriti na posebno kreiranu funkciju uspjesanPrijenos->detaljno ispod
+                    exit;
+                }
+                else
+                {
+                    $upload = 'Dozovljeni su formati .jpg, .jpeg i .png, provjerite Vaš format slike.';
+                    require_once 'view/upute/aktuarski_html.php';
+                    return;
+                }
+            }
+            else
+            {
+                 // Ispis grešaka koje se mogu dogoditi!
+            switch ($_FILES['image']['error']) {
+                case UPLOAD_ERR_INI_SIZE:
+                case UPLOAD_ERR_FORM_SIZE:
+                    $upload = 'Veličina slike premašuje dozvoljenu veličinu.';
+                    break;
+                case UPLOAD_ERR_PARTIAL:
+                    $upload = 'Slika je djelomično prenesena.';
+                    break;
+                case UPLOAD_ERR_NO_FILE:
+                    $upload = 'Nijedna slika nije prenesena.';
+                    break;
+                case UPLOAD_ERR_EXTENSION:
+                    $upload = 'Prijenos slike zaustavljen zbog ekstenzije.';
+                    break;
+                default:
+                    $upload = 'Došlo je do greške prilikom uploada slike.';
+                    break;
+            }
+            require_once 'view/upute/aktuarski_html.php';
+            return;
+            }
+        }
+    }
+
+    public function uspjesanPrijenos()
+    {
+        $file_path = __DIR__ . '/../display_upute/aktuarski_text.php';
+        $php_content = $this->libraryService->getFileContent($file_path);
+        $upload = 'Uspješno ste prenijeli sliku!';
+        require_once 'view/upute/aktuarski_html.php';
+        return;
+    }
+
+    public function doktorskiSlikeDelete()
+    {
+        $file_path = __DIR__ . '/../display_upute/aktuarski_text.php';
+        $php_content = $this->libraryService->getFileContent($file_path);
+        if(isset($_POST['submit']))
+        {
+            $nazivSlike = $_POST['naziv_slike'];
+            //putanja do slike
+            $imagePath = dirname(__FILE__) . '/../view/images/aktuarski_upute/' . $nazivSlike;
+        
+            if(file_exists($imagePath))
+            {
+                if(unlink($imagePath)) //ovo omogucava brisanje unlink()
+                {
+                    $brisanje = 'Slika je uspješno uklonjena!';
+                    require_once 'view/upute/aktuarski_html.php';
+                    return;
+                }
+                else
+                {
+                    $brisanje = 'Došlo je do greške prilikom brisanja slike!';
+                    require_once 'view/upute/aktuarski_html.php';
+                    return;
+                }
+            }
+            else
+            {
+                $brisanje = 'Slika tog naslova ne postoji, probajte ponovno (u naslov mora biti uključeno sve)';
+                require_once 'view/upute/aktuarski_html.php';
+                return;
+            }
+        }
+        require_once 'view/upute/aktuarski_html.php';
+        return;
+    }
+
     public function aktuarskidemosi()
     {
         require_once __DIR__ . '/../view/upute-demosi/aktuarski-demosi_html.php';

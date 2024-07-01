@@ -36,11 +36,10 @@
             echo '</div>';
         ?>
 
-        <h4>Ovdje možete upravljati gornjim slikama</h4>
-
         <br>
 
-        <form action="index.php?rt=adminPostavke/obradiUpload" method="post" enctype="multipart/form-data">
+        <h4>Ovdje možete upravljati gornjim slikama:</h4>
+        <form action="index.php?rt=upute/aktuarskiSlikeUplaod" method="post" enctype="multipart/form-data">
             <input type="file" name="image" accept="image/*">
             <?php echo '<br>' . 'Unesite naziv slike (bez ekstenzije):'; ?>
             <input type="text" name="nazivslike" required> 
@@ -59,7 +58,7 @@
 
         <br><br>
 
-        <form action="index.php?rt=adminpostavke/obradiDelete" method="post">
+        <form action="index.php?rt=upute/doktorskiSlikeDelete" method="post">
             <?php echo '<br>' . 'Unesite naslov slike (s ekstenzijom) koju želite ukloniti sa stranice: '; ?>
             <input type="text" name="naziv_slike" required> 
             <button type="submit" name="submit">Obriši</button>
