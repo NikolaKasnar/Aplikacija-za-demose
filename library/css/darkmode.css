@@ -34,3 +34,8 @@ form{
 #main-prof h2 {
     color: #04AA6D;
 }
+
+table {
+  background-color: #aaa;
+  color: #000;
+}

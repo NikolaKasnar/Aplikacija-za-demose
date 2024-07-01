@@ -108,7 +108,7 @@ class LoginController
         $admini = $rs->dohvatiAdmine();
 
         $result = $rs->posaljiMailZaRezervaciju($ime, $prezime, $email1, $email2, $datum, $vrijeme, $prostorija, $ljudi1, $ljudi2, $admini);
-        
+
         if($result){
             $poruka = 'Vaš zahtjev je poslan. Admin demos će vam se uskoro javiti.';
             require_once __DIR__ . '/../view/login/rezervacije-prof_html.php';
@@ -127,7 +127,7 @@ class LoginController
       $username = $_COOKIE['username'];
       $ls = new LoginService;
 
-      $ls->userprovjera($username);
+      $poruka=$ls->userprovjera($username);
       return;
     }
 
@@ -148,7 +148,7 @@ class LoginController
 
         $ls = new LoginService;
 
-        $ls->provjeraUBazi($username, $password);
+        $poruka=$ls->provjeraUBazi($username, $password);
 
     }
 
@@ -165,7 +165,7 @@ class LoginController
         $poruka='';
         $ps = new PostaniService();
         //PLAN: provjera polja za termine - treba minimalno 6, provjera reg. izraza za ime,prezime,broj mobitela,...
-        
+
         if((!isset($_POST['ponedjeljak']) && empty($_POST['ponedjeljak'])) && (!isset($_POST['utorak']) && empty($_POST['utorak']))
         && (!isset($_POST['srijeda']) && empty($_POST['srijeda'])) && (!isset($_POST['cetvrtak']) && empty($_POST['cetvrtak']))
         && (!isset($_POST['petak']) && empty($_POST['petak']))){
@@ -185,15 +185,15 @@ class LoginController
         $selectedPet = [];
 
         //spremimo dobiveno u polja
-        if (isset($_POST['ponedjeljak'])) 
+        if (isset($_POST['ponedjeljak']))
             $selectedPon = $_POST['ponedjeljak'];
-        if (isset($_POST['utorak'])) 
+        if (isset($_POST['utorak']))
             $selectedUto = $_POST['utorak'];
-        if (isset($_POST['srijeda'])) 
+        if (isset($_POST['srijeda']))
             $selectedSri = $_POST['srijeda'];
-        if (isset($_POST['cetvrtak'])) 
+        if (isset($_POST['cetvrtak']))
             $selectedCet = $_POST['cetvrtak'];
-        if (isset($_POST['petak'])) 
+        if (isset($_POST['petak']))
             $selectedPet = $_POST['petak'];
 
         //provjeravamo imamo li minimalno 6 termina
@@ -221,13 +221,13 @@ class LoginController
             $poruka='Za unos imena koristite slova i eventualno "-" !';
             require_once __DIR__ . '/../view/login/postanidemos_html.php';
             return;
-        } 
+        }
 
         if(empty($_POST['lastname'])|| !preg_match('/^[a-zA-ZčćšđžČĆŠĐŽ-]{2,20}$/',$_POST['lastname'])){
             $poruka='Za unos prezimena koristite slova i evenutalno "-" !';
             require_once __DIR__ . '/../view/login/postanidemos_html.php';
             return;
-        } 
+        }
 
         if(empty($_POST['brojmobitela'])|| !preg_match('/^\d{3} \d{4} \d{3}$/',$_POST['brojmobitela'])){
             $poruka='Unesite broj mobitela u prikazanoj (odgovarajućem) obliku npr. 097 1237 813.';
@@ -281,12 +281,12 @@ class LoginController
         }
         else
             $napomene=$_POST['napomene'];
-    
+
         //ako je kod došao do ovog dijela sve je OK, mozemo ubaciti u bazu :)
         $ps->ubaciPostaniInfo($ime,$prezime,$brojmobitela,$mailfaksa,$mailosobni,$nepolozeno,$godina,$smjer,$poziv,$napomene);
-        
+
         $ponedjeljak='ponedjeljak'; $utorak='utorak'; $srijeda='srijeda'; $cetvrtak='četvrtak'; $petak='petak';
-        
+
         //$ps->ubaciPostaniTermin($ime,$prezime,$mailfaksa,$...,$...);
         foreach($selectedPon as $pon)
             $ps->ubaciPostaniTermin($ime,$prezime,$mailfaksa,$ponedjeljak,$pon);
@@ -298,7 +298,7 @@ class LoginController
             $ps->ubaciPostaniTermin($ime,$prezime,$mailfaksa,$cetvrtak,$cet);
         foreach($selectedPet as $pet)
             $ps->ubaciPostaniTermin($ime,$prezime,$mailfaksa,$petak,$pet);
-        
+
         $poruka = 'Uspješno ste ispunili formular!';
         require_once __DIR__ . '/../view/login/postanidemos_html.php';
     }
