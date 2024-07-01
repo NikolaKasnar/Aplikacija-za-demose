@@ -75,6 +75,7 @@ wss2.on('connection', ws => {
   });
 });
 
+
 //ako nemamo vec nesto spremljeno, content je prazan
 //ako imamo, cita iz json file-a
 let documentContent3 = '';
@@ -83,6 +84,7 @@ fs.stat("praktikumi.json", (err, stat) => {
     documentContent3 = fs.readFileSync('praktikumi.json', 'utf8');
   }
 });
+
 
 wss3.on('connection', ws => {
   // Pošalji trenutni dokument klijentu koji se tek povezao
@@ -99,6 +101,7 @@ wss3.on('connection', ws => {
         console.error(err);
       }
     });
+
 
     // Broadcast promjene svim povezanim klijentima
     wss3.clients.forEach(client => {
@@ -118,6 +121,7 @@ fs.stat("snimanja.json", (err, stat) => {
   }
 });
 
+
 wss4.on('connection', ws => {
   // Pošalji trenutni dokument klijentu koji se tek povezao
   ws.send(documentContent4);
@@ -133,6 +137,7 @@ wss4.on('connection', ws => {
         console.error(err);
       }
     });
+
 
     // Broadcast promjene svim povezanim klijentima
     wss4.clients.forEach(client => {
