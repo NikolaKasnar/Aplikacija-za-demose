@@ -23,8 +23,8 @@ class loginService
   {
     // Taj user ne postoji, upit u bazu nije vratio ništa.
     require_once __DIR__ . '/../view/login/login_html.php';
-    echo 'Ne postoji korisnik s tim imenom.';
-    return;
+    $poruka= 'Ne postoji korisnik s tim imenom.';
+    return $poruka;
   }
       else
   {
@@ -46,16 +46,16 @@ class loginService
 			$st = $db->prepare( 'SELECT password_hash, ovlasti FROM demosi WHERE username=:username' );
 			$st->execute( array( 'username' => $username ) );
 		}
-		catch( PDOException $e ) { require_once __DIR__ . '/../view/login/login_html.php'; echo 'Greska u bazi.';return; }
+		catch( PDOException $e ) { $poruka= 'Greska u bazi.'; require_once __DIR__ . '/../view/login/login_html.php'; return; }
 
         $row = $st->fetch();
 
         if( $row === false )
 		{
 			// Taj user ne postoji, upit u bazu nije vratio ništa.
+
+			$poruka= 'Ne postoji korisnik s tim imenom.';
 			require_once __DIR__ . '/../view/login/login_html.php';
-			echo 'Ne postoji korisnik s tim imenom.';
-			return 0;
 		}
         else
 		{
@@ -94,14 +94,12 @@ class loginService
         //ako je korisnik ulogiran od prije
         //znaci da je ovo provjera pri mijenjanju sifre
         if(isset($_COOKIE['username'])){
-          echo "blergh";
           return 0;
         }
 
 				// Nije dobar password. Crtaj opet login formu s pripadnom porukom.
+				$poruka= 'Postoji user, ali password nije dobar.';
 				require_once __DIR__ . '/../view/login/login_html.php';
-				echo 'Postoji user, ali password nije dobar.';
-				return 0;
 			}
 		}
 
