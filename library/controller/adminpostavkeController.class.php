@@ -23,11 +23,20 @@ class AdminpostavkeController
       $noviuser=new User(0,0,0,0,0,0,0,0);
 
       if(isset($_POST["username"])){
-        if(preg_match('/^[a-zA-Z]{1,20}$/', $_POST["username"])){
-          $noviuser->__set('username',$_POST["username"]);
-        }
-        else{
-          $poruka="Username se smije sastojati samo od slova!";
+        $us = new UserService();
+        $username = $_POST["username"];
+        if($us -> getuser($username) === 0){
+          if(preg_match('/^[a-zA-Z]{1,20}$/', $_POST["username"])){
+            $noviuser->__set('username',$_POST["username"]);
+          }
+          else{
+            $poruka="Username se smije sastojati samo od slova!";
+            require_once __DIR__ . '/../view/admin-postavke/registracija_html.php';
+            return;
+          }
+        } 
+        else {
+          $poruka="Vec postoji korisnim sa takvim korisnickim usernameom!";
           require_once __DIR__ . '/../view/admin-postavke/registracija_html.php';
           return;
         }
@@ -81,6 +90,10 @@ class AdminpostavkeController
       if(isset($_POST["smjer"]))
         $noviuser->__set('smjer',$_POST["smjer"]);
       else $noviuser->__set('smjer',"");
+
+      if(isset($_POST["ovlasti"])){
+        $noviuser->__set('ovlasti',$_POST["ovlasti"]);
+      }
 
       $kod=bin2hex(random_bytes(10));
 

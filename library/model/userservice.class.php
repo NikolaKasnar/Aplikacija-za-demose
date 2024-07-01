@@ -19,6 +19,10 @@ class UserService
 
       $row = $st->fetch();
 
+      if ($row === false) {
+        return 0; // Vraca nula ako nije pronaden ni jedan user sa tim imenom
+      }
+
         $new = new User($row['id'],$row['username'],$row['ime'],
                 $row['prezime'],$row['email'],$row['godina'],
                 $row['smjer'],$row['ovlasti']);
