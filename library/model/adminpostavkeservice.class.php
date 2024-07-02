@@ -14,7 +14,7 @@ class AdminPostavkeService
             $st->execute();
         }
         catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
-        
+
         $arrofinfo = array();
 		while( $row = $st->fetch() )
 		{
@@ -23,6 +23,47 @@ class AdminPostavkeService
 		}
 		return $arrofinfo;
 	}
+
+  //mjesecni sati rada iz tablice demos
+  public function getsati($username)
+  {
+      try
+      {
+          $db=DB::getConnection();
+          $st=$db->prepare('SELECT mjesecni_sati FROM demosi WHERE username=:username');
+          $st->execute(array('username'=>$username));
+      }
+      catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
+
+      $row = $st->fetch();
+      return $row;
+}
+
+public function pribrojisate($username,$sat)
+{
+    try
+    {
+        $db=DB::getConnection();
+        $st=$db->prepare('UPDATE demosi SET mjesecni_sati=mjesecni_sati+:sat WHERE username=:username');
+        $st->execute(array('username'=>$username, 'sat'=>$sat));
+    }
+    catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
+
+    return;
+}
+
+public function resetsate()
+{
+    try
+    {
+        $db=DB::getConnection();
+        $st=$db->prepare('UPDATE demosi SET mjesecni_sati=0');
+        $st->execute();
+    }
+    catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
+
+    return;
+}
 
     public function dohvatiTermin($mail_faks)
     {
@@ -33,11 +74,11 @@ class AdminPostavkeService
             $st->execute([':mail_faks' => $mail_faks]);
         }
         catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
-        
+
         $arroftermin = array();
 		while( $row = $st->fetch(PDO::FETCH_ASSOC))
 		{
-			$arroftermin[] = array('ime' => $row['ime'], 'prezime' => $row['prezime'], 'mail_faks' => $row['mail_faks'], 
+			$arroftermin[] = array('ime' => $row['ime'], 'prezime' => $row['prezime'], 'mail_faks' => $row['mail_faks'],
                             'dan' => $row['dan'], 'termin' => $row['termin']);
 		}
 		return $arroftermin;
@@ -49,15 +90,15 @@ class AdminPostavkeService
         {
             $db=DB::getConnection();
             $st = $db->prepare('SELECT ime, prezime, email, godina, smjer FROM demosi WHERE ovlasti = :ovlasti');
-            $ovlasti_value = 1; 
+            $ovlasti_value = 1;
             $st->execute([':ovlasti' => $ovlasti_value]);
         }
         catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
-        
+
         $arrofdemosi = array();
 		while( $row = $st->fetch(PDO::FETCH_ASSOC))
 		{
-			$arrofdemosi[] = array('ime' => $row['ime'], 'prezime' => $row['prezime'], 'email' => $row['email'], 
+			$arrofdemosi[] = array('ime' => $row['ime'], 'prezime' => $row['prezime'], 'email' => $row['email'],
                             'godina' => $row['godina'], 'smjer' => $row['smjer']);
 		}
 		return $arrofdemosi;

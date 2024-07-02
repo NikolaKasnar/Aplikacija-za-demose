@@ -10,14 +10,14 @@
 }
 
 .table-style-one th {
-    background-color: #24c7009f;
+    background-color: #04AA6D;
 }
 
 .linijaa{
     border: none;
-    height: 2px; 
-    background-color: black; 
-    margin: 20px 0; 
+    height: 2px;
+    background-color: black;
+    margin: 20px 0;
 }
 
 /* da ne stvaram puno CSS-a ovdje će se nalaziti
@@ -26,7 +26,7 @@
 .micdemosa {
     background-color: #ffffff;
     color: rgb(0, 0, 0);
-    border: 3px solid rgb(0, 118, 34);
+    border: 3px solid #04AA6D;
     margin: 15px;
     padding: 20px;
     border-radius: 10px;
@@ -54,11 +54,36 @@
     text-decoration: none;
     display: inline-block;
   }
-  
+
 .crven_gumb:hover, .crven_gumb:active {
     background-color: red;
   }
 
 .crven_gumb {
-    float: right; 
+    float: right;
+}
+
+#popissati
+{
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: #f2f2f2;
+  float: left;
+}
+
+#popissati th,
+#popissati td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+#popissati th {
+  background-color: #04AA6D;
+}
+
+#satiforma{
+  margin-left: 10px;
+  padding-left: 10px;
+  border: none;
 }

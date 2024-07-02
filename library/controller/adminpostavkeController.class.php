@@ -17,7 +17,128 @@ class AdminpostavkeController
 
         require_once __DIR__ . '/../view/admin-postavke/registracija_html.php';
     }
-    
+
+    public function popissati(){
+        $st=new UserService();
+        $users=$st->getusers();
+        $tjedni=array();
+
+        $as=new AdminPostavkeService();
+
+        $mjes=array();
+        foreach($users as $us){
+          $username=$us->__get('username');
+          $mjes[]=$as->getsati($username);
+        }
+
+        $var=array();
+        $dir=__DIR__ . '/../../server/aktuarski.json';
+        if (file_exists($dir)) {
+            $var=file_get_contents($dir);
+            $var=json_decode($var);
+        }
+
+        foreach($var as $tab){
+          foreach($tab as $str){
+            if($str!=""){
+              if(isset($tjedni[$str])){
+                $tjedni[$str]++;
+              }
+              else{
+                $tjedni[$str]=1;
+              }
+            }
+          }
+        }
+
+        require_once __DIR__ . '/../view/admin-postavke/popissati.php';
+    }
+
+    public function pribrojisate(){
+      $as=new AdminPostavkeService();
+      $st=new UserService();
+      $users=$st->getusers();
+      $tjedni=array();
+      $var=array();
+
+      $dir=__DIR__ . '/../../server/aktuarski.json';
+      if (file_exists($dir)) {
+          $var=file_get_contents($dir);
+          $var=json_decode($var);
+      }
+
+      foreach($var as $tab){
+        foreach($tab as $str){
+          if($str!=""){
+            if(isset($tjedni[$str])){
+              $tjedni[$str]++;
+            }
+            else{
+              $tjedni[$str]=1;
+            }
+          }
+        }
+      }
+
+      $mjes=array();
+      foreach($users as $us){
+        $username=$us->__get('username');
+        $mjes[]=$as->getsati($username);
+      }
+
+      //zbrajamo tjedne sate u mjesečne za svakog usera
+      foreach($tjedni as $key=>$val){
+        $as->pribrojisate($key,$val);
+      }
+
+      $mjes=array();
+      foreach($users as $us){
+        $username=$us->__get('username');
+        $mjes[]=$as->getsati($username);
+      }
+
+      $poruka="Sati uspješno pribrojeni!<br>";
+      require_once __DIR__ . '/../view/admin-postavke/popissati.php';
+    }
+
+    public function resetsate(){
+      $as=new AdminPostavkeService();
+      $st=new UserService();
+      $users=$st->getusers();
+      $tjedni=array();
+
+      $var=array();
+      $dir=__DIR__ . '/../../server/aktuarski.json';
+      if (file_exists($dir)) {
+          $var=file_get_contents($dir);
+          $var=json_decode($var);
+      }
+
+      foreach($var as $tab){
+        foreach($tab as $str){
+          if($str!=""){
+            if(isset($tjedni[$str])){
+              $tjedni[$str]++;
+            }
+            else{
+              $tjedni[$str]=1;
+            }
+          }
+        }
+      }
+
+      $as->resetsate();
+
+      $mjes=array();
+      foreach($users as $us){
+        $username=$us->__get('username');
+        $mjes[]=$as->getsati($username);
+      }
+      
+      $poruka="Sati uspješno resetirani!<br>";
+      require_once __DIR__ . '/../view/admin-postavke/popissati.php';
+    }
+
     public function updatereg()
     {
       $noviuser=new User(0,0,0,0,0,0,0,0);
@@ -35,6 +156,7 @@ class AdminpostavkeController
             return;
           }
         } 
+        
         else {
           $poruka="Vec postoji korisnim sa takvim korisnickim usernameom!";
           require_once __DIR__ . '/../view/admin-postavke/registracija_html.php';
@@ -160,7 +282,7 @@ class AdminpostavkeController
         require_once __DIR__ . '/../view/admin-postavke/upravljanjegalerijom_html.php';
     }
 
-    
+
     public function obradiUpload()
     {
         //provjera postoji li nešto u submit
@@ -176,14 +298,14 @@ class AdminpostavkeController
                 $allowedTypes = array('jpg', 'jpeg', 'png');
 
                 if(in_array($imageFileType, $allowedTypes))
-                {   
+                {
                     //generiramo ime za sliku
-                    $imageName = $nazivSlike . '.' . $imageFileType; 
+                    $imageName = $nazivSlike . '.' . $imageFileType;
 
                     //moramo provjeriti naziv slike
                     $files = glob("view/images/slike_galerija/*.{jpg,jpeg,png}", GLOB_BRACE);
                     foreach ($files as $file) {
-                        if( $imageName === basename($file)){ 
+                        if( $imageName === basename($file)){
                             $upload = 'Slika s tim nazivom već postoji, molimo Vas odaberite neki drugi naziv!';
                             require_once 'view/admin-postavke/upravljanjegalerijom_html.php';
                             return;
@@ -247,7 +369,7 @@ class AdminpostavkeController
             $nazivSlike = $_POST['naziv_slike'];
             //putanja do slike
             $imagePath = dirname(__FILE__) . '/../view/images/slike_galerija/' . $nazivSlike;
-        
+
             if(file_exists($imagePath))
             {
                 if(unlink($imagePath)) //ovo omogucava brisanje unlink()
