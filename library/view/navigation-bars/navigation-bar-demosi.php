@@ -20,6 +20,7 @@
         <a href="#opci-podaci">Opći podaci</a>
         <a href="#izvjestaji">Izvještaji</a>
         <a href="index.php?rt=postavke/index">Postavke</a>
+        <a href="index.php?rt=obavijesti/index">Obavijesti</a> 
         <div class="right-tab">
             <a href="#log-out">Log out</a>
         </div>
