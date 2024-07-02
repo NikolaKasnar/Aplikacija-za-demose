@@ -11,7 +11,7 @@
 
 <h1>Obavijesti</h1>
 
-<h2 id="prethodne-h2">Ovdje možete vidjeti sve prethodne obavijesti:</h2>
+<h2 id="prethodne-h2">Popis aktualnih obavijesti</h2>
 
 <?php
 foreach($notifications as $notification){
@@ -26,3 +26,10 @@ foreach($notifications as $notification){
     echo '</div>';
 }
 ?>
+
+<!-- za prikaz svih obavijesti -->
+    <div class="obavijesti-sve-container">
+        <form class="sve-obavijesti-form" method="post" action="index.php?rt=obavijesti/sveObavijesti">
+            <button type="submit">Prikaži sve</button>
+        </form>
+    </div>

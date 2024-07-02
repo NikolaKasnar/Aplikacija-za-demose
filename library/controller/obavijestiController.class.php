@@ -92,6 +92,12 @@ class ObavijestiController
         }
     }
 
+    public function sveObavijesti(){
+        $st=new ObavijestiService();
+        $allNotifications=$st->dohvatiSveObavijesti();
+        require_once __DIR__ . '/../view/obavijesti/sveobavijesti_html.php';
+    }
+
 };
 
 ?>

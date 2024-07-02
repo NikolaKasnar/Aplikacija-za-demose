@@ -5,23 +5,33 @@ require_once __DIR__ .'/../app/database/db.class.php';
 
 class ObavijestiService
 {
-
+    //Funkcija koja dohvaca samo 5 obavijesti od novijih prema starijima (DESC)!, funkcija koja dohvaca sve obavijesti...
+    //... implementirana je kasnije!
     public function dohvatiObavijesti()
     {
+        //spajamo se na bazu i izvršavamo odgovarajući upit
         try
         {
             $db = DB::getConnection();
-            $st = $db->prepare('SELECT naslov, tijelo, datum_objave FROM obavijesti');
+            //dohvati 5 najnovijih obavijesti
+            $st = $db->prepare('SELECT naslov, tijelo, datum_objave FROM obavijesti ORDER BY datum_objave DESC LIMIT 5');
             $st->execute();
         }
-        catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
+        catch(PDOException $e)
+        {
+            exit('PDO error ' . $e->getMessage());
+        }
 
         $arrofobavijesti = array();
-		while( $row = $st->fetch(PDO::FETCH_ASSOC))
-		{
-			$arrofobavijesti[] = array('naslov' => $row['naslov'], 'tijelo' => $row['tijelo'], 'datum_objave' => $row['datum_objave']);
-		}
-		return $arrofobavijesti;
+        while($row = $st->fetch(PDO::FETCH_ASSOC))
+        {
+            $arrofobavijesti[] = array(
+                'naslov' => $row['naslov'],
+                'tijelo' => $row['tijelo'],
+                'datum_objave' => $row['datum_objave']
+            );
+        }
+        return $arrofobavijesti;
     }
 
     public function pohraniObavijest($naslov, $tijelo){
@@ -105,6 +115,32 @@ class ObavijestiService
         if( !$isOK )
 			exit( 'Greška: ne mogu poslati mail. (Pokrenite na rp2 serveru.)' );
         return 1;
+    }
+
+    //funkcija koja dohvaca sve obavijesti izvrsava se pritiskom odgovarajuceg gumba u php formi, pozove se u obavijestiController.class.php 
+    public function dohvatiSveObavijesti(){
+        //spajamo se na bazu i izvršavamo odgovarajući upit
+        try
+        {
+            $db = DB::getConnection();
+            $st = $db->prepare('SELECT naslov, tijelo, datum_objave FROM obavijesti ORDER BY datum_objave DESC');
+            $st->execute();
+        }
+        catch(PDOException $e)
+        {
+            exit('PDO error ' . $e->getMessage());
+        }
+
+        $allnotif = array();
+        while($row = $st->fetch(PDO::FETCH_ASSOC))
+        {
+            $allnotif[] = array(
+                'naslov' => $row['naslov'],
+                'tijelo' => $row['tijelo'],
+                'datum_objave' => $row['datum_objave']
+            );
+        }
+        return $allnotif;
     }
 
 };

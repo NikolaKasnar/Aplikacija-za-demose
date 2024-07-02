@@ -96,3 +96,35 @@ div.gallery img {
 .obavijest-form button[type="reset"]:hover {
     opacity: 0.9;
 }
+
+/*za sve obavijesti gumb*/
+.obavijesti-sve-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 20px;
+    margin-top: -10px;
+}
+
+.sve-obavijesti-form button {
+    padding: 10px 20px;
+    border: none;
+    outline-color: none;
+    border-radius: 5px;
+    background-color: #04AA6D; 
+    color: white;
+    cursor: pointer;
+}
+
+.sve-obavijesti-form button:hover {
+    background-color: #0ac581; 
+}
+
+
+.obavijesti-sve-container2 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 20px;
+    margin-top: -60px;
+}

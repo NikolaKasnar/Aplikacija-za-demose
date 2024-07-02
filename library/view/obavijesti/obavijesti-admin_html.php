@@ -19,11 +19,11 @@
         <h2 id="obavijesti-h2">Dodaj novu obavijest</h2>
         <form class="obavijest-form" method="post" action="index.php?rt=obavijesti/obradiObavijest">
             <div class="obavijest-group">
-                <label for="naslov_poruke">Naslov</label>
+                <b>Naslov</b>
                 <input type="text" id="title" name="naslov_poruke" required>
             </div>
             <div class="obavijest-group">
-                <label for="tijelo_poruke">Poruka</label>
+                <b>Poruka</b>
                 <textarea id="message" name="tijelo_poruke" required></textarea>
             </div>
             <div class="obavijest-group">
@@ -51,3 +51,10 @@ foreach($notifications as $notification){
     echo '</div>';
 }
 ?>
+
+    <!-- za prikaz svih obavijesti -->
+    <div class="obavijesti-sve-container">
+        <form class="sve-obavijesti-form" method="post" action="index.php?rt=obavijesti/sveObavijesti">
+            <button type="submit">Prikaži sve</button>
+        </form>
+    </div>
