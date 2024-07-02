@@ -2,7 +2,8 @@
 
     <ul>
         <li><a href="index.php?rt=adminpostavke/index">Registracija korisnika</a></li>
-        <li><a href="index.php?rt=adminpostavke/micanjeDemosa">Popis demosa(micanje demosa)</a></li>
+        <li><a href="index.php?rt=adminpostavke/popissati">Popis demosa s odrađenim satima</a></li>
+        <li><a href="index.php?rt=adminpostavke/micanjeDemosa">Micanje demosa</a></li>
         <li><a href="index.php?rt=adminpostavke/noviDemos">Novi demosi</a></li>
         <li><a href="index.php?rt=adminpostavke/uploadSlika">Upload slika</a></li>
     </ul>

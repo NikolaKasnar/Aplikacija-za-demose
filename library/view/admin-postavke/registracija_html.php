@@ -44,7 +44,18 @@
             </select>
             <br>
             Smjer:<br>
-            <input type="text" name="smjer" required/>
+            <select name="smjer">
+                <option value="Prediplomski injženjerski"> Preddiplomski injženjerski </option>
+                <option value="Prediplomski nastavnički"> Preddiplomski nastavnički </option>
+                <option value="Računarstvo i matematika"> Računarstvo i matematika </option>
+                <option value="Teorijska matematika"> Teorijska matematika </option>
+                <option value="Primijenjena matematika"> Primijenjena matematika </option>
+                <option value="Financijska i poslovna matematika"> Financijska i poslovna matematika </option>
+                <option value="Matematička statistika"> Matematička statistika </option>
+                <option value="Diplomski nastavnički"> Diplomski nastavnički </option>
+                <option value="Diplomski nastavnički matematika i informatika"> Diplomski nastavnički matematika i informatika </option>
+                <option value="Biomedmath"> Biomedmath </option>
+            </select>
             <br>
             Ovlasti:<br>
             <select name="ovlasti">

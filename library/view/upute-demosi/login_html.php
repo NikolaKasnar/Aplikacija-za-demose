@@ -16,9 +16,11 @@
             <br>
             <button class="submitbtn" type="submit">Login</button>
             <br>
+            <!-- Ne treba nam gumb za zapamti me kad se ionako pamti u cookiu
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Zapamti me
             </label>
+            -->
         </div>
 
         <div class="container">
