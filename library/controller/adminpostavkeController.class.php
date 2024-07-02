@@ -155,7 +155,8 @@ class AdminpostavkeController
             require_once __DIR__ . '/../view/admin-postavke/registracija_html.php';
             return;
           }
-        }
+        } 
+        
         else {
           $poruka="Vec postoji korisnim sa takvim korisnickim usernameom!";
           require_once __DIR__ . '/../view/admin-postavke/registracija_html.php';
