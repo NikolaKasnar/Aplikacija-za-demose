@@ -300,6 +300,18 @@ class LoginController
             $ps->ubaciPostaniTermin($ime,$prezime,$mailfaksa,$petak,$pet);
 
         $poruka = 'Uspješno ste ispunili formular!';
-        require_once __DIR__ . '/../view/login/postanidemos_html.php';
+        header('Location: index.php?rt=adminpostavke/uspjesnoIspunjenaForma'); //ovo ce usmjeriti na posebno kreiranu funkciju uspjesanPrijenos->detaljno ispod
+        exit;
     }
+
+    //ova funkcija je kreirana tako da ako korisnik refresha stranicu i dalje ce mu pisati odgovarajuca poruka,
+    //ali se forma nece ponovno prenijeti na bazu sto bi uzrokovalo duplanje,...
+    public function uspjesnoIspunjenaForma()
+    {
+        $poruka = 'Uspješno ste ispunili formular!';
+        require_once __DIR__ . '/../view/login/postanidemos_html.php';
+        return;
+    }
+
+
 };

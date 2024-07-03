@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import h from './../../../server/snimanja.json?raw';
+import h from './../../../server/snimanja_iduci.json?raw';
 export default {
   data() {
     return {
@@ -38,11 +38,11 @@ export default {
     // Inicijalizacija tablice sa 6 stupaca i 9 redova
     //this.tableData = Array.from({ length: 8 }, () => Array(6).fill(''));
 
-    // WebSocket povezivanje
-    this.ws = new WebSocket('ws://localhost:50200');
-
     //Inicijalizacija tablice iz json file-a
     this.tableData = h;
+
+    // WebSocket povezivanje
+    this.ws = new WebSocket('ws://localhost:50600');
 
     this.ws.onmessage = event => {
       const updatedTableData = JSON.parse(event.data);

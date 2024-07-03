@@ -4,30 +4,47 @@
     <header>
     </header>
     <main>
-      <LiveEditor />
-      <br>
-      <DoktorskiStudij />
-      <br>
+      <p>Ovaj tjedan:</p>
+      <AktuarskiRez />
+      <p>Idući tjedan:</p>
+      <AktuarskiIduci />
+      <p>Ovaj tjedan:</p>
+      <DoktorskiRez />
+      <p>Idući tjedan:</p>
+      <DoktorskiIduci />
+      <p>Ovaj tjedan:</p>
       <PraktikumiRez />
-      <br>
+      <p>Idući tjedan:</p>
+      <PraktikumiIduci />
+      <p>Ovaj tjedan:</p>
       <SnimanjaRez />
+      <p>Idući tjedan:</p>
+      <SnimanjaIduci />
     </main>
   </div>
 </template>
 
 <script>
-import LiveEditor from './components/LiveEditor.vue';
-import DoktorskiStudij from './components/DoktorskiStudij.vue';
+import AktuarskiRez from './components/AktuarskiRez.vue';
+import AktuarskiIduci from './components/AktuarskiIduci.vue';
+import DoktorskiRez from './components/DoktorskiRez.vue';
+import DoktorskiIduci from './components/DoktorskiIduci.vue';
 import PraktikumiRez from './components/PraktikumiRez.vue';
+import PraktikumiIduci from './components/PraktikumiIduci.vue';
 import SnimanjaRez from './components/SnimanjaRez.vue';
+import SnimanjaIduci from './components/SnimanjaIduci.vue';
 
 export default {
   name: 'App',
   components: {
-    LiveEditor,
-    DoktorskiStudij,
+    AktuarskiRez,
+    AktuarskiIduci,
+    DoktorskiRez,
+    DoktorskiIduci,
     PraktikumiRez,
+    PraktikumiIduci,
     SnimanjaRez,
+    SnimanjaIduci,
   },
 };
 </script>

@@ -24,10 +24,11 @@
 </template>
 
 <script>
+import h from './../../../server/praktikumi.json?raw';
 export default {
   data() {
     return {
-      tableData: [],
+      tableData: h,
       // Prvi stupac je vrijeme termina
       timeSlots: ['10:00-11:00', '11:00-12:00', '12:00-13:00', '13:00-14:00', '14:00-15:00', '15:00-16:00', '16:00-17:00', '17:00-18:00'],
       ws: null,
@@ -35,10 +36,13 @@ export default {
   },
   created() {
     // Inicijalizacija tablice sa 6 stupaca i 9 redova
-    this.tableData = Array.from({ length: 8 }, () => Array(6).fill(''));
+    //this.tableData = Array.from({ length: 8 }, () => Array(6).fill(''));
 
     // WebSocket povezivanje
     this.ws = new WebSocket('ws://localhost:50100');
+
+    //Inicijalizacija tablice iz json file-a
+    this.tableData = h;
 
     this.ws.onmessage = event => {
       const updatedTableData = JSON.parse(event.data);

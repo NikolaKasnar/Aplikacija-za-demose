@@ -1,5 +1,5 @@
 <template>
-  <div id="snimanja">
+  <div id="aktuarski">
     <table border="1">
       <thead>
         <tr>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import h from './../../../server/snimanja.json?raw';
+import h from './../../../server/aktuarski_iduci.json?raw';
 export default {
   data() {
     return {
@@ -35,27 +35,27 @@ export default {
     };
   },
   created() {
+    // WebSocket povezivanje
+    this.ws = new WebSocket('ws://localhost:50300');
+
     // Inicijalizacija tablice sa 6 stupaca i 9 redova
     //this.tableData = Array.from({ length: 8 }, () => Array(6).fill(''));
-
-    // WebSocket povezivanje
-    this.ws = new WebSocket('ws://localhost:50200');
 
     //Inicijalizacija tablice iz json file-a
     this.tableData = h;
 
-    this.ws.onmessage = event => {
-      const updatedTableData = JSON.parse(event.data);
-      this.tableData = updatedTableData;
-    };
+      this.ws.onmessage = event => {
+        const updatedTableData = JSON.parse(event.data);
+        this.tableData = updatedTableData;
+      };
   },
   methods: {
     updateCell(rowIndex, columnIndex, event) {
-      const newValue = event.target.textContent;
-      this.tableData[rowIndex][columnIndex] = newValue;
+        const newValue = event.target.textContent;
+        this.tableData[rowIndex][columnIndex] = newValue;
 
-      // Slanje ažurirane tablice WebSocket serveru
-      this.ws.send(JSON.stringify(this.tableData));
+        // Slanje ažurirane tablice WebSocket serveru
+        this.ws.send(JSON.stringify(this.tableData));
     },
   },
   beforeUnmount() {

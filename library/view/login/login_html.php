@@ -16,9 +16,11 @@
             <br>
             <button class="submitbtn" type="submit">Login</button>
             <br>
+            <!-- Ne treba nam ipak
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Zapamti me
             </label>
+            -->
             <?php if (isset($poruka)) echo "<br>$poruka"; ?>
         </div>
 

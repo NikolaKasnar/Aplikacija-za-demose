@@ -105,9 +105,8 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
 
 <body>
     <h1>Raspored za aktuarski studij</h1>
-    <div id="liveTable"></div>
-    <div id="aktuarski" style="position: relative; overflow: hidden; width: 1300px; height: 470px;">
-    <iframe id="iframe" src="http://localhost:8081" scrolling="no" frameborder="no" style="width: 1300px; height: 330px; display:hidden; position: absolute; "></iframe>
+    <div id="aktuarski" style="position: relative; overflow: hidden; width: 1300px; height: 750px;">
+    <iframe id="iframe" src="http://localhost:8081" scrolling="no" frameborder="no" style="top:-10px; width: 1300px; height: 740px; display:hidden; position: absolute; "></iframe>
     </div>
 </body>
 
