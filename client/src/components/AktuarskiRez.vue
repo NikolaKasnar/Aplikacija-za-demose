@@ -1,5 +1,5 @@
 <template>
-  <div id="snimanja">
+  <div id="aktuarski">
     <table border="1">
       <thead>
         <tr>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import h from './../../../server/snimanja.json?raw';
+import h from './../../../server/aktuarski.json?raw';
 export default {
   data() {
     return {
@@ -39,7 +39,7 @@ export default {
     //this.tableData = Array.from({ length: 8 }, () => Array(6).fill(''));
 
     // WebSocket povezivanje
-    this.ws = new WebSocket('ws://localhost:50200');
+    this.ws = new WebSocket('ws://localhost:8080');
 
     //Inicijalizacija tablice iz json file-a
     this.tableData = h;
