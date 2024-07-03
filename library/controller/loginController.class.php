@@ -156,6 +156,8 @@ class LoginController
     {
         setcookie('username','',time()-50);
         setcookie('ovlasti','',time()-50);
+        unset($_COOKIE['username']);
+        unset($_COOKIE['ovlasti']);
         require_once __DIR__ . '/../view/login/login_html.php';
     }
     //funkcija koja obradjuje podatke poslane putem POST-a, provjere i poziva funkcije ako je sve dobro

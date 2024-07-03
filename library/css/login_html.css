@@ -1,4 +1,6 @@
-
+body{
+  margin: 0px;
+}
 /* Bordered form */
 form {
     border: 3px solid #f1f1f1;
@@ -26,12 +28,14 @@ button:hover {
 button {
     background-color: #04AA6D;
     color: white;
-    padding: 14px 20px;
+    padding: 12px 18px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     text-align: center;
+    border-radius: 5px;
 }
+
 
 
 /* Center the avatar image inside this container */

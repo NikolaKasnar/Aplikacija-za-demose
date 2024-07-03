@@ -1,4 +1,4 @@
-<?php 
+<?php
     if(isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0'){
         require_once __DIR__ . '/../navigation-bars/navigation-bar-admin.php';
     }
@@ -10,7 +10,7 @@
 
 <!-- sav CSS za ovo je u galerija_html.css (razlog je tamo)-->
 
-<h1>Obavijesti</h1>
+<h1 style="margin-left: 10px">Obavijesti</h1>
 
 <!-- Slijedi prikaz forme u kojoj se moze unjeti nova obavijest-->
 
@@ -42,8 +42,8 @@
 foreach($notifications as $notification){
     // Stvaranje DateTime objekta
     $datetime = new DateTime($notification['datum_objave']);
-    // Formatiranje 
-    $formatted_datetime = $datetime->format('j.n.Y. H:i:s');  
+    // Formatiranje
+    $formatted_datetime = $datetime->format('j.n.Y. H:i:s');
     echo '<div class="obavijesti-container">';
     echo '<div class="obavijesti-title">'. $notification['naslov'] .'</div>';
     echo'<div class="obavijesti-date_time"> Datum i vrijeme objave - ' . $formatted_datetime . '</div>';

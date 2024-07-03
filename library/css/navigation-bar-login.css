@@ -1,7 +1,13 @@
 .topnav {
+  margin-top: 0;
   background-color: #333;
   overflow: hidden;
   width: 100%;
+}
+
+body{
+  margin-top: 0px;
+  margin-left: 0px;
 }
 
 /* Style the links inside the navigation bar */
