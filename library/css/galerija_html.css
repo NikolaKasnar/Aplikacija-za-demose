@@ -14,6 +14,110 @@ div.gallery img {
     height: auto;
 }
 
+/*Dodavanje novog CSS-a za galeriju, prethodni CSS za "gallery" ostaje u slucaju da se vec koristi :) 
+    Zato je naziv ovoga na hrvatskom -> galerija*/
+    div.galerija {
+        border: 1px solid #ccc;
+    }
+    
+    div.galerija:hover {
+        border: 1px solid #777;
+    }
+    
+    div.galerija img {
+        width: 100%;
+        height: auto;
+    }
+    
+    div.galerija-desc {
+        padding: 10px;
+        text-align: center;
+    }
+    
+    * {
+        box-sizing: border-box;
+    } /*kako bi slike bile jedna pored druge*/
+    
+    .galerija-responsive {
+        padding: 0 6px;
+        float: left;
+        width: 33.33333%;
+        /* ovo omogucuje broj slika u jednom retku 100/3 = 33.33333 -> dakle 3 slike
+        Tako da ipak bude malo povecana velicina samih slika, po zelji moze i vise ako zelimo npr. 2 -> width: 50%;
+        za manje -> width: 24.99999%;*/ 
+    }
+    
+    .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    
+    /* Obavijest za galeriju i objavljivanje slika */
+    .galerija-alert {
+        padding: 20px;
+        background-color: #0c734d;
+        color: white;
+        margin-bottom: 15px;
+        margin-left: 50px;
+        margin-right: 50px;
+        text-align: center;
+      }
+      
+      /* Iksic */
+      .galerija-closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+    
+      }
+      
+      .galerija-closebtn:hover {
+        color: black;
+      }
+    
+/* CSS za upravljanje galerijom u podstranici "Za Admina" */
+.upravljanje-form-container {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-width: 700px;
+}
+
+.upravljanje-input-file, .upravljanje-button {
+    display: block;
+    width: calc(100% - 20px);
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.upravljanje-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.upravljanje-button:hover {
+    background-color: #45a049;
+}
+
+#naslov-galerija{
+    font-family:'Brush Script MT'; 
+    margin-left: 20px; 
+    font-size: 40px; 
+    text-align: center;
+}
 
 /*CSS za obavijesti zbog toga da se na napravi još jedan dodatan CSS i tako prenatrpa!*/
 
