@@ -29,7 +29,9 @@
             echo '<div class="gallery-container">';
             foreach ($files as $image) {
                 echo '<div class="gallery">';
-                echo '<img src="' . $image . '" alt="Random image" />';
+                    echo '<a target="_blank" href="'. $image . '">';
+                        echo '<img src="' . $image . '" alt="Random image" />';
+                    echo '</a>';
                 echo '<div class="capiton">' . basename($image) . '</div>';
                 echo '</div>';
             }
