@@ -4,21 +4,13 @@
     <header>
     </header>
     <main>
-      <p>Ovaj tjedan:</p>
       <AktuarskiRez />
-      <p>Idući tjedan:</p>
       <AktuarskiIduci />
-      <p>Ovaj tjedan:</p>
       <DoktorskiRez />
-      <p>Idući tjedan:</p>
       <DoktorskiIduci />
-      <p>Ovaj tjedan:</p>
       <PraktikumiRez />
-      <p>Idući tjedan:</p>
       <PraktikumiIduci />
-      <p>Ovaj tjedan:</p>
       <SnimanjaRez />
-      <p>Idući tjedan:</p>
       <SnimanjaIduci />
     </main>
   </div>
@@ -52,6 +44,10 @@ export default {
 <style>
 #app {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+p{
+  color: #04AA6D;
 }
 
 header {

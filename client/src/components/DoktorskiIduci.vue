@@ -1,5 +1,6 @@
 <template>
   <div id="doktorski">
+    <p id="poruka4">Idući tjedan: </p>
     <table border="1">
       <thead>
         <tr>
@@ -43,6 +44,12 @@ export default {
 
     // WebSocket povezivanje
     this.ws = new WebSocket('ws://localhost:50400');
+
+    var poruka;
+    this.ws.onerror = function(){
+      poruka='Live tablica trenutno nije u funkciji! Promjene koje radite neće se zabilježiti.';
+      document.getElementById("poruka4").append(poruka);
+    };
 
     this.ws.onmessage = event => {
       const updatedTableData = JSON.parse(event.data);

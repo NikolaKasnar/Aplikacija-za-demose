@@ -14,46 +14,46 @@ div.gallery img {
     height: auto;
 }
 
-/*Dodavanje novog CSS-a za galeriju, prethodni CSS za "gallery" ostaje u slucaju da se vec koristi :) 
+/*Dodavanje novog CSS-a za galeriju, prethodni CSS za "gallery" ostaje u slucaju da se vec koristi :)
     Zato je naziv ovoga na hrvatskom -> galerija*/
     div.galerija {
         border: 1px solid #ccc;
     }
-    
+
     div.galerija:hover {
         border: 1px solid #777;
     }
-    
+
     div.galerija img {
         width: 100%;
         height: auto;
     }
-    
+
     div.galerija-desc {
         padding: 10px;
         text-align: center;
     }
-    
+
     * {
         box-sizing: border-box;
     } /*kako bi slike bile jedna pored druge*/
-    
+
     .galerija-responsive {
         padding: 0 6px;
         float: left;
         width: 33.33333%;
         /* ovo omogucuje broj slika u jednom retku 100/3 = 33.33333 -> dakle 3 slike
         Tako da ipak bude malo povecana velicina samih slika, po zelji moze i vise ako zelimo npr. 2 -> width: 50%;
-        za manje -> width: 24.99999%;*/ 
+        za manje -> width: 24.99999%;*/
     }
-    
+
     .clearfix:after {
         content: "";
         display: table;
         clear: both;
     }
-    
-    
+
+
     /* Obavijest za galeriju i objavljivanje slika */
     .galerija-alert {
         padding: 20px;
@@ -64,7 +64,7 @@ div.gallery img {
         margin-right: 50px;
         text-align: center;
       }
-      
+
       /* Iksic */
       .galerija-closebtn {
         margin-left: 15px;
@@ -74,13 +74,13 @@ div.gallery img {
         font-size: 22px;
         line-height: 20px;
         cursor: pointer;
-    
+
       }
-      
+
       .galerija-closebtn:hover {
         color: black;
       }
-    
+
 /* CSS za upravljanje galerijom u podstranici "Za Admina" */
 .upravljanje-form-container {
     margin-bottom: 20px;
@@ -113,9 +113,9 @@ div.gallery img {
 }
 
 #naslov-galerija{
-    font-family:'Brush Script MT'; 
-    margin-left: 20px; 
-    font-size: 40px; 
+    font-family:'Brush Script MT';
+    margin-left: 20px;
+    font-size: 40px;
     text-align: center;
 }
 
@@ -132,10 +132,10 @@ div.gallery img {
 }
 
 .obavijesti-container {
-    border: 1px solid #ccc; 
+    border: 1px solid #ccc;
     padding: 15px;
     margin: 20px;
-    border-radius: 5px; 
+    border-radius: 5px;
     font-family: Arial, sans-serif;
 }
 .obavijesti-title {
@@ -147,7 +147,7 @@ div.gallery img {
 }
 
 .obavijesti-date_time {
-    color: #555; 
+    color: #555;
     font-size: 0.9em;
 }
 
@@ -215,13 +215,13 @@ div.gallery img {
     border: none;
     outline-color: none;
     border-radius: 5px;
-    background-color: #04AA6D; 
+    background-color: #04AA6D;
     color: white;
     cursor: pointer;
 }
 
 .sve-obavijesti-form button:hover {
-    background-color: #0ac581; 
+    background-color: #0ac581;
 }
 
 
