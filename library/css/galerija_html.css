@@ -57,7 +57,7 @@ div.gallery img {
     /* Obavijest za galeriju i objavljivanje slika */
     .galerija-alert {
         padding: 20px;
-        background-color: #0c734d;
+        background-color: #04AA6D;
         color: white;
         margin-bottom: 15px;
         margin-left: 50px;
@@ -102,14 +102,14 @@ div.gallery img {
 }
 
 .upravljanje-button {
-    background-color: #4CAF50;
+    background-color: #04AA6D;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 .upravljanje-button:hover {
-    background-color: #45a049;
+    background-color: #0ac581;
 }
 
 #naslov-galerija{
