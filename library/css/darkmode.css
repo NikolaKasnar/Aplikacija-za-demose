@@ -39,3 +39,14 @@ table {
   background-color: #aaa;
   color: #000;
 }
+
+#main-opis-posla {
+  background-color: #1d1d1d;
+  border-color: #1d1d1d;
+}
+
+#bitno {
+  background-color: #1d1d1d;
+  border-color: #1d1d1d;
+  padding: 5px;
+}
