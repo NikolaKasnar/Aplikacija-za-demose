@@ -89,6 +89,7 @@ div.gallery img {
     border-radius: 5px;
     background-color: #f9f9f9;
     max-width: 700px;
+    color:black; /*obavezno zbog dark modea*/
 }
 
 .upravljanje-input-file, .upravljanje-button {
@@ -97,7 +98,6 @@ div.gallery img {
     margin: 10px 0;
     padding: 10px;
     font-size: 14px;
-    border: 1px solid #ccc;
     border-radius: 5px;
 }
 

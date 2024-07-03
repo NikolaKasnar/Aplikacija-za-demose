@@ -19,7 +19,7 @@
 <h3>Prijenos slike:</h3>
 <form action="index.php?rt=adminPostavke/obradiUpload" method="post" enctype="multipart/form-data" class="upravljanje-form-container">
     <input type="file" name="image" accept="image/*" class="upravljanje-input-file">
-    <br>Unesite naziv slike (bez ekstenzije):
+    <br>Unesite naziv slike (<b>bez ekstenzije</b>):
     <input type="text" name="nazivslike" required> 
     <button type="submit" name="submit" class="upravljanje-button">Prenesi</button>
 
@@ -38,11 +38,11 @@
 
 <h3>Brisanje slike:</h3>
 <form action="index.php?rt=adminpostavke/obradiDelete" method="post" class="upravljanje-form-container">
-    Unesite naslov slike <b>s ekstenzijom</b> koju želite ukloniti sa stranice:
+    Unesite naziv slike <b>s ekstenzijom</b> koju želite ukloniti sa stranice:
     <input type="text" name="naziv_slike" required> 
     <button type="submit" name="submit" class="upravljanje-button">Obriši</button>
     <br>
-    (Pogledati na podstranicu <i>Galerija</i> za naslov i ekstenziju)
+    (Pogledati na podstranicu <i>Galerija</i> za naziv i ekstenziju)
 
     <?php
         if (!isset($brisanje)) {
