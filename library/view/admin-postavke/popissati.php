@@ -13,7 +13,7 @@
 //css za ovo je u novidemos_html.css
 ?>
 
-<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+<div style="margin-left: 26%; padding: 5px;">
 
     <h2>Popis demosa sa njihovim satima rada</h2>
 
@@ -35,12 +35,28 @@
     ?>
 
     </table>
-    <h2 style="clear: both "><br>Odrađeni sati za ovaj tjedan:</h2>
+    <div style="float: left">
+    <h2>Odrađeni sati za ovaj tjedan:</h2>
     <table id="popissati">
-    <th>Username</th><th>Broj sati</th>
+    <th>Username</th><th>Aktuarski</th><th>Doktorski</th>
+    <th>Praktikumi</th><th>Snimanja</th>
     <?php
-      foreach($tjedni as $key => $b)
-        echo '<tr><td>'. $key . '</td><td> ' . $b . ' sati</td></tr>';
+      foreach($users as $b){
+        $user=$b->__get('username');
+        $br=0;
+        for($i=0;$i<4;$i++){
+          if (array_key_exists($user,$tjedni[$i])) $br=1;
+        }
+        if($br==1){
+          echo '<tr><td>'. $user . '</td>';
+          for($i=0;$i<4;$i++){
+            if (array_key_exists($b->__get('username'),$tjedni[$i]))
+              echo '<td>' . $tjedni[$i][$user] . ' sati</td>';
+            else echo "<td>0 sati</td>";
+          }
+          echo "</tr>";
+        }
+      }
      ?>
    </table>
    <div style="float: left">
@@ -56,6 +72,7 @@
        <button name="print" value="">PDF ispis mjesečnih sati</button>
      </form>
     </div>
+  </div>
 </div>
 
 </body>
