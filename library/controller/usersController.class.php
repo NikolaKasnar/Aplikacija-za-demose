@@ -20,15 +20,46 @@ class UsersController
     public function brojsati()
     {
         // Dohvaćamo broj sati za pojedinog korisnika
-        $as = new AdminPostavkeService();
-        error_log('POST data: ' . print_r($_POST, true));
-        if (isset($_POST['username'])) {
-            $username  = $_POST['username'];
+        $username  = $_POST['username'];
 
-            $row = $as->getsati($username);
-            $mjesecniSatiUsera = $row['mjesecni_sati'];
-
-            require_once __DIR__ . '/../view/demosi/broj-sati-demosa_html.php';
+        // Dohvaćanje koda za aktuarski dio tablice aktuarski.json
+        $tekuci_tjedan = array();
+        $dir = __DIR__ . '/../../server/aktuarski.json';
+        if (file_exists($dir)) {
+            $var = file_get_contents($dir);
+            $var = json_decode($var);
+            foreach ($var as $tab) {
+                foreach ($tab as $str) {
+                    if ($str != "") {
+                        if (isset($tekuci_tjedan[$str])) {
+                            $tekuci_tjedan[$str]++;
+                        } else {
+                            $tekuci_tjedan[$str] = 1;
+                        }
+                    }
+                }
+            }
         }
+
+        // Dohvaćanje koda za aktuarski dio tablice aktuarski.json
+        $iduci_tjedan = array();
+        $dir = __DIR__ . '/../../server/aktuarski_iduci.json';
+        if (file_exists($dir)) {
+            $var = file_get_contents($dir);
+            $var = json_decode($var);
+            foreach ($var as $tab) {
+                foreach ($tab as $str) {
+                    if ($str != "") {
+                        if (isset($iduci_tjedan[$str])) {
+                            $iduci_tjedan[$str]++;
+                        } else {
+                            $iduci_tjedan[$str] = 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        require_once __DIR__ . '/../view/demosi/broj-sati-demosa_html.php';
     }
 };

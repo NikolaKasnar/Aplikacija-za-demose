@@ -8,7 +8,7 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
 
 <?php require_once __DIR__ . '/../_header.php'; ?>
 
-<?php echo $username ?> - sati po mjesecima ovog mjeseca
+<?php echo $username ?> - sati tekući tjedan
 <br>
 <div id="tablice">
     <table id="mjesecnitrenutnipopissati">
@@ -17,33 +17,45 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
             <th>Doktorski</th>
             <th>Praktikumi</th>
             <th>Snimanja</th>
-            <th>Trenutni mjesec</th>
+            <th>Ukupno</th>
         </tr>
         <tr>
+            <td>
+                <?php
+                foreach ($tekuci_tjedan as $key => $b)
+                    if ($key === $username)
+                        echo $b;
+                ?>
+            </td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td> <?php echo $mjesecniSatiUsera; ?></td>
         </tr>
     </table>
 
     <br>
-
+    <?php echo $username ?> - sati idući tjedan
     <table id="mjesecniprošlipopissati">
         <tr>
             <th>Aktuarska</th>
             <th>Doktorski</th>
             <th>Praktikumi</th>
             <th>Snimanja</th>
-            <th>Prošli mjesec</th>
+            <th>Ukupno</th>
         </tr>
         <tr>
+            <td>
+                <?php
+                foreach ($iduci_tjedan as $key => $b)
+                    if ($key === $username)
+                        echo $b;
+                ?>
+            </td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td> <?php echo $mjesecniSatiUsera; ?></td>
         </tr>
     </table>
 </div>

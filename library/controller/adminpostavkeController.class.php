@@ -6,7 +6,7 @@ require_once __DIR__ . '/../model/userservice.class.php';
 require_once __DIR__ . '/../model/user.class.php';
 require_once __DIR__ . '/../model/adminpostavkeservice.class.php';
 require_once __DIR__ . '/../model/info.class.php';
-
+  
 class AdminpostavkeController
 {
     public function index()
