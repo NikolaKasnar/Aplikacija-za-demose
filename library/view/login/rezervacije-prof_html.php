@@ -4,7 +4,8 @@
 
     <div id="main-prof">
         <h2>Rezervacija termina za snimanje</h2>
-        <p>Ako ste profesor i želite rezervirati demosa za snimanje, molim vas da ispunite ovu anketu.</p>
+        Ako ste profesor i želite rezervirati demosa za snimanje, molim vas da ispunite ovu anketu.
+        <br><br>
         <?php if(isset($poruka)) echo $poruka . '<br>' . '<br>';?>
         <form action="index.php?rt=login/rezervacijaTermina" method="post">
             Ime:<br>

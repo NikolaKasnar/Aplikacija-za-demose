@@ -6,7 +6,7 @@
 
         <h1>Zanima te posao demonstratora? Ovdje možeš pročitati čime se bavimo! :)</h1>
 
-        <p>Posao se sastoji od dvije dužnosti: dežuranja praktikuma i snimanja predavanja. Ukratko slijedi opis obje dužnosti.</p>
+        Posao se sastoji od dvije dužnosti: dežuranja praktikuma i snimanja predavanja. Ukratko slijedi opis obje dužnosti.
 
         <h2>Dežuranja</h2>
 
@@ -28,7 +28,7 @@
             </li>
         </ol>
 
-        <p>Primjer radnog mjesta:</p>
+        Primjer radnog mjesta:
 
         <div class="imgcontainer-opis-posla">
             <img src="./view/images/praktikum4.jpeg" alt="pr4" class="pr">
@@ -54,7 +54,7 @@
             </li>
         </ol>
 
-        <p>Primjer opreme sa kakvom ćete raditi:</p>
+        Primjer opreme sa kakvom ćete raditi:
 
         <div class="imgcontainer-opis-posla">
             <img src="./view/images/teams.jpeg" alt="obs" class="snimanja">
