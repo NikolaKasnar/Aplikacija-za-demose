@@ -1,0 +1,34 @@
+#mjesecnitrenutnipopissati {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: #f2f2f2;
+}
+
+#mjesecnitrenutnipopissati th,
+#mjesecnitrenutnipopissati td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+#mjesecnitrenutnipopissati th {
+    background-color: #04AA6D;
+}
+
+#mjesecniprošlipopissati {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: #f2f2f2;
+}
+
+#mjesecniprošlipopissati th,
+#mjesecniprošlipopissati td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+#mjesecniprošlipopissati th {
+    background-color: #04AA6D;
+}
+

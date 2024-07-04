@@ -24,9 +24,9 @@ class AdminPostavkeService
 		return $arrofinfo;
 	}
 
-  //mjesecni sati rada iz tablice demos
-  public function getsati($username)
-  {
+    //mjesecni sati rada iz tablice demos
+     public function getsati($username)
+    {
       try
       {
           $db=DB::getConnection();
@@ -37,33 +37,33 @@ class AdminPostavkeService
 
       $row = $st->fetch();
       return $row;
-}
-
-public function pribrojisate($username,$sat)
-{
-    try
-    {
-        $db=DB::getConnection();
-        $st=$db->prepare('UPDATE demosi SET mjesecni_sati=mjesecni_sati+:sat WHERE username=:username');
-        $st->execute(array('username'=>$username, 'sat'=>$sat));
     }
-    catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
 
-    return;
-}
-
-public function resetsate()
-{
-    try
+    public function pribrojisate($username,$sat)
     {
-        $db=DB::getConnection();
-        $st=$db->prepare('UPDATE demosi SET mjesecni_sati=0');
-        $st->execute();
-    }
-    catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
+        try
+        {
+            $db=DB::getConnection();
+            $st=$db->prepare('UPDATE demosi SET mjesecni_sati=mjesecni_sati+:sat WHERE username=:username');
+            $st->execute(array('username'=>$username, 'sat'=>$sat));
+        }
+        catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
 
-    return;
-}
+        return;
+    }
+
+    public function resetsate()
+    {
+        try
+        {
+            $db=DB::getConnection();
+            $st=$db->prepare('UPDATE demosi SET mjesecni_sati=0');
+            $st->execute();
+        }
+        catch(PDOException $e) {exit('PDO error ' . $e->getMessage());}
+
+        return;
+    }
 
     public function dohvatiTermin($mail_faks)
     {
@@ -116,6 +116,9 @@ public function resetsate()
         return;
     }
 
+    public function getAktuarskiSati(){
+        
+    }
 };
 
 ?>

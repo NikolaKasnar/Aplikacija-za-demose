@@ -30,7 +30,7 @@
             echo '<td>'. $user->__get('smjer') . '</td>';
             echo '<td>' . $ovlast .'</td>';?>
                 <form action="index.php?rt=users/brojsati" method="post">
-			        <td><button type="submit" name="sati" value="<?php echo $user->__get('id');?>">Broj sati</button></td>
+			        <td><button type="submit" name="username" value="<?php echo $user->__get('username');?>">Broj sati</button></td>
                 </form>
 			<?php
             echo '</tr>';
