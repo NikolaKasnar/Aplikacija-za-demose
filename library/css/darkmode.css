@@ -50,3 +50,9 @@ table {
   border-color: #1d1d1d;
   padding: 5px;
 }
+
+/* Boja editora */
+#edited_content {
+  background-color: grey;
+  color: white; 
+}

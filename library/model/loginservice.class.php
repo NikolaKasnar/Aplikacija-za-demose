@@ -28,8 +28,8 @@ class loginService
   }
       else
   {
-    require_once __DIR__ . '../../controller/usersController.class.php';
-    $od=new UsersController();
+    require_once __DIR__ . '../../controller/obavijestiController.class.php';
+    $od=new ObavijestiController();
         $od->index();
         return 1;
   }
@@ -84,8 +84,8 @@ class loginService
         // Ova linija je potrebna da se cookie zapamti pri prvom ulasku na stranicu
         header("Location: index.php");
 
-				require_once __DIR__ . '../../controller/usersController.class.php';
-				$od=new UsersController();
+				require_once __DIR__ . '../../controller/obavijestiController.class.php';
+				$od=new ObavijestiController();
 	        	$od->index();
 				return 1;
 			}

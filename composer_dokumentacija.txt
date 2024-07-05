@@ -1,0 +1,21 @@
+Za željeni prikaz podataka iz HTML-a u PDF obliku poslužit ćemo se softverom Composer.
+Više o samom softveru možete pročitati ovdje: https://en.wikipedia.org/wiki/Composer_(software).
+
+Instalacija: https://kinsta.com/blog/install-composer/
+Na linku iznad navedena je instalacija za razne operacijske sustave.
+U ovom slučaju bit će objašnjena za Windows.
+1. Možemo odmah otići na stranicu: https://getcomposer.org/download/ i tamo skinuti  Composer-Setup.exe.
+2. otvarajući  Composer-Setup.exe  biramo opcije "recommended" i odabiremo opcije "Next".
+    2.1. nakon završetka instalacije ponovno pokrenemo računalo
+3. otvaramo terminal u kojem pokrećemo php server (ujedno tamo gdje je i instaliran php). U mojem slučaju to je bio terminal od VS CODEa.
+Također, nije ni za odmet provjeriti imamo li instaliran php u terminalu, to radimo napredbom "php -v" -> dobivamo našu verziju php-a 
+4. Zatim redom pokrećemo sljedeće naredbe:
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    php composer-setup.php
+    php -r "unlink('composer-setup.php');"
+5. nakon gornjih naredbi izađemo iz VS CODEa i ponovno uđemo u njega.
+6. s naredbom "composer" možemo provjeriti je li se uistinu instalirao, ako jest prelazimo na korak 7. 
+7. u terminal unosimo "composer require dompdf/dompdf"
+8. u našem projektu trebale bi se kreirat određene datoteke: composer.json, composer. lock, composer.phar
+    8.1. ovisno gdje želimo izvršiti naš prikaz HTML-a u PDF-u tamo moramo premjestiti novonastali direktorij vendor (u ovom slučaju
+        on je u controlleru)

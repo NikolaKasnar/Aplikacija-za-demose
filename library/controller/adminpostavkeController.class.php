@@ -6,6 +6,10 @@ require_once __DIR__ . '/../model/userservice.class.php';
 require_once __DIR__ . '/../model/user.class.php';
 require_once __DIR__ . '/../model/adminpostavkeservice.class.php';
 require_once __DIR__ . '/../model/info.class.php';
+
+require 'vendor/autoload.php'; //obavezno se pozvat na autoload.php iz vendor za opciju prikaza sati u pdfu
+use Dompdf\Dompdf; //! mora biti izvan klase
+
   
 class AdminpostavkeController
 {
@@ -21,8 +25,6 @@ class AdminpostavkeController
     public function popissati(){
         $st=new UserService();
         $users=$st->getusers();
-        $tjedni=array();
-
         $as=new AdminPostavkeService();
 
         $mjes=array();
@@ -31,21 +33,44 @@ class AdminpostavkeController
           $mjes[]=$as->getsati($username);
         }
 
+        $tjedni=array();
+        for($i=0;$i<4;$i++)
+          $tjedni[$i]=array();
         $var=array();
+        for($i=0;$i<4;$i++)
+          $var[$i]=array();
+
         $dir=__DIR__ . '/../../server/aktuarski.json';
         if (file_exists($dir)) {
-            $var=file_get_contents($dir);
-            $var=json_decode($var);
+            $var[0]=file_get_contents($dir);
+            $var[0]=json_decode($var[0]);
+        }
+        $dir=__DIR__ . '/../../server/doktorski.json';
+        if (file_exists($dir)) {
+            $var[1]=file_get_contents($dir);
+            $var[1]=json_decode($var[1]);
+        }
+        $dir=__DIR__ . '/../../server/praktikumi.json';
+        if (file_exists($dir)) {
+            $var[2]=file_get_contents($dir);
+            $var[2]=json_decode($var[2]);
+        }
+        $dir=__DIR__ . '/../../server/snimanja.json';
+        if (file_exists($dir)) {
+            $var[3]=file_get_contents($dir);
+            $var[3]=json_decode($var[3]);
         }
 
-        foreach($var as $tab){
-          foreach($tab as $str){
-            if($str!=""){
-              if(isset($tjedni[$str])){
-                $tjedni[$str]++;
-              }
-              else{
-                $tjedni[$str]=1;
+        for($i=0;$i<4;$i++){
+          foreach($var[$i] as $tab){
+            foreach($tab as $str){
+              if($str!=""){
+                if(isset($tjedni[$i][$str])){
+                  $tjedni[$i][$str]++;
+                }
+                else{
+                  $tjedni[$i][$str]=1;
+                }
               }
             }
           }
@@ -58,43 +83,71 @@ class AdminpostavkeController
       $as=new AdminPostavkeService();
       $st=new UserService();
       $users=$st->getusers();
+
+      $names=array();
+      foreach ($users as $us){
+        $names[]=$us->__get('username');
+      }
+
       $tjedni=array();
+      for($i=0;$i<4;$i++)
+        $tjedni[$i]=array();
       $var=array();
+      for($i=0;$i<4;$i++)
+        $var[$i]=array();
 
       $dir=__DIR__ . '/../../server/aktuarski.json';
       if (file_exists($dir)) {
-          $var=file_get_contents($dir);
-          $var=json_decode($var);
+          $var[0]=file_get_contents($dir);
+          $var[0]=json_decode($var[0]);
+      }
+      $dir=__DIR__ . '/../../server/doktorski.json';
+      if (file_exists($dir)) {
+          $var[1]=file_get_contents($dir);
+          $var[1]=json_decode($var[1]);
+      }
+      $dir=__DIR__ . '/../../server/praktikumi.json';
+      if (file_exists($dir)) {
+          $var[2]=file_get_contents($dir);
+          $var[2]=json_decode($var[2]);
+      }
+      $dir=__DIR__ . '/../../server/snimanja.json';
+      if (file_exists($dir)) {
+          $var[3]=file_get_contents($dir);
+          $var[3]=json_decode($var[3]);
       }
 
-      foreach($var as $tab){
-        foreach($tab as $str){
-          if($str!=""){
-            if(isset($tjedni[$str])){
-              $tjedni[$str]++;
-            }
-            else{
-              $tjedni[$str]=1;
+      for($i=0;$i<4;$i++){
+        foreach($var[$i] as $tab){
+          foreach($tab as $str){
+            if($str!=""){
+              if(isset($tjedni[$i][$str])){
+                $tjedni[$i][$str]++;
+              }
+              else{
+                $tjedni[$i][$str]=1;
+              }
             }
           }
         }
       }
 
       $mjes=array();
-      foreach($users as $us){
-        $username=$us->__get('username');
-        $mjes[]=$as->getsati($username);
+      foreach($names as $us){
+        $mjes[]=$as->getsati($us);
       }
 
       //zbrajamo tjedne sate u mjesečne za svakog usera
-      foreach($tjedni as $key=>$val){
-        $as->pribrojisate($key,$val);
+      for($i=0;$i<4;$i++){
+        foreach($tjedni[$i] as $key=>$val){
+          if(in_array($key,$names))
+            $as->pribrojisate($key,$val);
+        }
       }
 
       $mjes=array();
-      foreach($users as $us){
-        $username=$us->__get('username');
-        $mjes[]=$as->getsati($username);
+      foreach($names as $us){
+        $mjes[]=$as->getsati($us);
       }
 
       $poruka="Sati uspješno pribrojeni!<br>";
@@ -134,7 +187,7 @@ class AdminpostavkeController
         $username=$us->__get('username');
         $mjes[]=$as->getsati($username);
       }
-      
+
       $poruka="Sati uspješno resetirani!<br>";
       require_once __DIR__ . '/../view/admin-postavke/popissati.php';
     }
@@ -155,8 +208,8 @@ class AdminpostavkeController
             require_once __DIR__ . '/../view/admin-postavke/registracija_html.php';
             return;
           }
-        } 
-        
+        }
+
         else {
           $poruka="Vec postoji korisnim sa takvim korisnickim usernameom!";
           require_once __DIR__ . '/../view/admin-postavke/registracija_html.php';
@@ -396,4 +449,100 @@ class AdminpostavkeController
         return;
     }
 
+    public function printsate(){
+      if(isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
+        $st = new UserService();
+        $users = $st->getusers();
+        $as = new AdminPostavkeService();
+
+        $mjes = array();
+        foreach($users as $us){
+          $username = $us->__get('username');
+          $mjes[] = $as->getsati($username);
+        }
+
+        // kreiramo objekt od Dompdf
+        $dompdf = new Dompdf();
+
+        //trebam prethodni mjesec od trenutnog
+        $prethodni_mjesec = date("m");
+
+        $mjeseci_u_godini = array('siječanj', 'veljača', 'ožujak', 'travanj', 'svibanj', 'lipanj', 'srpanj', 'kolovoz', 'rujan', 'listopad', 'studeni', 'prosinac');
+
+        //ako je npr. 7. mjesec oduzmemo -1 da bude 6. ...
+        $preth_mj = intval($prethodni_mjesec) - 1;
+
+        //... ali zbog indexiranja u arrayju moramo još jednom oduzeti -1 jer je po indexu lipanj na broju 5, to jest
+        //na indexu broj 5
+        $zeljeni_mjesec = $mjeseci_u_godini[$preth_mj-1];
+
+        // Radimo prikaz (HTML) za zeljeni PDF
+        $html = '
+        <h2 style="text-align:center">Izvještaj o radu demostratora za '. $zeljeni_mjesec .'</h2>
+        <table border="1" cellspacing="0" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>E-mail</th>
+                    <th>Godina</th>
+                    <th>Smjer</th>
+                    <th>Sati u mjesecu</th>
+                </tr>
+            </thead>
+            <tbody>';
+
+        $i = 0;
+        foreach($users as $user) {
+          //koristimo htmlspecialchars('ono što želimo ispisat', ENT_QUOTES, 'UTF-8')
+            $html .= '<tr style="text-align:center">
+              <td>' . htmlspecialchars($user->__get('ime'), ENT_QUOTES, 'UTF-8') . '</td>
+              <td>' . htmlspecialchars($user->__get('prezime'), ENT_QUOTES, 'UTF-8') . '</td>
+              <td>' . htmlspecialchars($user->__get('email'), ENT_QUOTES, 'UTF-8') . '</td>
+              <td>' . $user->__get('godina') . '</td>
+              <td>' . htmlspecialchars($user->__get('smjer'), ENT_QUOTES, 'UTF-8') . '</td>
+              <td>' . $mjes[$i][0] . '</td>
+            </tr>';
+            $i++;
+        }
+
+        $html .= '</tbody></table>';
+
+        $danasnji = date("Y-m-d");
+        $datum = date("j.n.Y", strtotime($danasnji));
+        $html .= '<br><br>
+        <table style="width: 50%; margin-top: 20px; text-align: left">
+          <tr>  
+            <td style="width: 50%; text-align: left; border-top: 1px solid #000;">Admin Demos, '. $datum . '</td>
+          </tr>
+        </table>';
+
+        $html .= '<br><br>';
+        $html .= 'Suglasnost:';        
+        $html .= '<br><br>
+
+        <table style="width: 50%; margin-top: 20px; text-align: left">
+          <tr>
+            <td style="width: 50%; text-align: left; border-top: 1px solid #000;"> prof. Robert Manger </td>
+          </tr>
+        </table>';
+
+
+        // Slijedi učitavanje našeg kreiranog HTML "dokumenta", to jest izgleda u pdf
+        $dompdf->loadHtml($html);
+
+        // Funkcija ispod omogućuje da postavimo željeni format papira (a4,a3...)
+        //također drugi argument funkcije govori kako će biti zaokrenut prikaz u smislu papira, horizontalno / vertikalno
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+
+        // Prikaz pdf-a
+        $dompdf->stream("mjesecni_sati.pdf", array("Attachment" => 0));
+        } else {
+              echo "Nemate odgovarajuću ovlast za pristup ovoj stranici.";
+        }
+
+    }
+  
 };
