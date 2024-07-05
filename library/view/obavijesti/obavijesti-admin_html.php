@@ -10,7 +10,9 @@
 
 <!-- sav CSS za ovo je u galerija_html.css (razlog je tamo)-->
 
-<h1 style="margin-left: 10px">Obavijesti</h1>
+<h1 style="margin-left: 10px">Dobrodošao <?php
+                            if (isset($_POST['uname'])) echo $_POST['uname'];
+                            else echo $_COOKIE['username']; ?>!</h1>
 
 <!-- Slijedi prikaz forme u kojoj se moze unjeti nova obavijest-->
 
