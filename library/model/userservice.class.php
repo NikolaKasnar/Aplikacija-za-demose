@@ -120,10 +120,4 @@ class UserService
 
     return 1;
   }
-
-  public function getHoursCountForUser($userId)
-  {
-    
-  }
-
 }

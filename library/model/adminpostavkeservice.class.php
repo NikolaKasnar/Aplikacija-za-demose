@@ -116,8 +116,26 @@ class AdminPostavkeService
         return;
     }
 
-    public function getAktuarskiSati(){
+    // Dohvaća tjedne sate u pojedinom json fileu za svakog korisnika
+    public function getJsonSati($dir){
+        $tjedan = array();
         
+        if (file_exists($dir)) {
+            $var = file_get_contents($dir);
+            $var = json_decode($var);
+            foreach ($var as $tab) {
+                foreach ($tab as $str) {
+                    if ($str != "") {
+                        if (isset($tjedan[$str])) {
+                            $tjedan[$str]++;
+                        } else {
+                            $tjedan[$str] = 1;
+                        }
+                    }
+                }
+            }
+        }
+        return $tjedan;
     }
 };
 
