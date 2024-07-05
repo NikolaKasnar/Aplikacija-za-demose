@@ -8,8 +8,9 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
 
 <?php require_once __DIR__ . '/../_header.php'; ?>
 
-<?php echo $username ?> - sati tekući tjedan
-<br>
+<h2>Evidencija broja sati</h2>
+
+<h3><?php echo $username ?> - sati tekući tjedan</h3>
 <div id="tablice">
     <table id="mjesecnitrenutnipopissati">
         <tr>
@@ -22,20 +23,49 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
         <tr>
             <td>
                 <?php
-                foreach ($tekuci_tjedan as $key => $b)
-                    if ($key === $username)
+                $suma_tekuci = 0;
+                foreach ($tekuci_tjedan_aktuarski as $key => $b)
+                    if ($key === $username){
                         echo $b;
+                        $suma_tekuci += $b;
+                    }
                 ?>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                <?php
+                foreach ($tekuci_tjedan_doktorski as $key => $b)
+                    if ($key === $username){
+                        echo $b;
+                        $suma_tekuci += $b;
+                    }
+                ?>
+            </td>
+            <td>
+                <?php
+                foreach ($tekuci_tjedan_praktikumi as $key => $b)
+                    if ($key === $username) {
+                        echo $b;
+                        $suma_tekuci += $b;
+                    }
+                ?>
+            </td>
+            <td>
+                <?php
+                foreach ($tekuci_tjedan_snimanja as $key => $b)
+                    if ($key === $username) {
+                        echo $b;
+                        $suma_tekuci += $b;
+                    }
+                ?>
+            </td>
+            <td>
+                <?php echo $suma_tekuci; ?>
+            </td>
         </tr>
     </table>
 
     <br>
-    <?php echo $username ?> - sati idući tjedan
+    <h3><?php echo $username ?> - sati idući tjedan</h3>
     <table id="mjesecniprošlipopissati">
         <tr>
             <th>Aktuarska</th>
@@ -47,15 +77,45 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
         <tr>
             <td>
                 <?php
-                foreach ($iduci_tjedan as $key => $b)
+                $suma_iduci = 0;
+                foreach ($iduci_tjedan_aktuarski as $key => $b)
                     if ($key === $username)
+                    {
                         echo $b;
+                        $suma_iduci += $b;
+                    }
                 ?>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                <?php
+                foreach ($iduci_tjedan_doktorski as $key => $b)
+                    if ($key === $username) {
+                        echo $b;
+                        $suma_iduci += $b;
+                    }
+                ?>
+            </td>
+            <td>
+                <?php
+                foreach ($iduci_tjedan_praktikumi as $key => $b)
+                    if ($key === $username) {
+                        echo $b;
+                        $suma_iduci += $b;
+                    }
+                ?>
+            </td>
+            <td>
+                <?php
+                foreach ($iduci_tjedan_snimanja as $key => $b)
+                    if ($key === $username) {
+                        echo $b;
+                        $suma_iduci += $b;
+                    }
+                ?>
+            </td>
+            <td>
+                <?php echo $suma_iduci; ?>
+            </td>
         </tr>
     </table>
 </div>
