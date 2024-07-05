@@ -69,8 +69,8 @@
 
      <!-- ovo jos treba napravit -->
      <form id="satiforma" method="post" action="index.php?rt=adminpostavke/printsate">
-       <button name="print" value="">PDF ispis mjesečnih sati</button>
-     </form>
+    <button name="print" value="">PDF ispis mjesečnih sati</button>
+    </form>
     </div>
   </div>
 </div>
