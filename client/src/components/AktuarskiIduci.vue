@@ -25,11 +25,11 @@
 </template>
 
 <script>
-import h from './../../../server/aktuarski_iduci.json?raw';
+import t from './../../../server/aktuarski_iduci.vue';
 export default {
   data() {
     return {
-      tableData: h,
+      tableData: [],
       // Prvi stupac je vrijeme termina
       timeSlots: ['10:00-11:00', '11:00-12:00', '12:00-13:00', '13:00-14:00', '14:00-15:00', '15:00-16:00', '16:00-17:00', '17:00-18:00'],
       ws: null,
@@ -42,8 +42,8 @@ export default {
     // Inicijalizacija tablice sa 6 stupaca i 9 redova
     //this.tableData = Array.from({ length: 8 }, () => Array(6).fill(''));
 
-    //Inicijalizacija tablice iz json file-a
-    this.tableData = h;
+    //Inicijalizacija tablice iz vue file-a
+    this.tableData = t['t'];
 
     var poruka;
     this.ws.onerror = function(){

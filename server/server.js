@@ -1,4 +1,5 @@
 // server/server.js
+const fs = require('fs');
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 8080 });
 const wss2 = new WebSocket.Server({ port: 50000 });
@@ -9,14 +10,13 @@ const wss6 = new WebSocket.Server({ port: 50400 });
 const wss7 = new WebSocket.Server({ port: 50500 });
 const wss8 = new WebSocket.Server({ port: 50600 });
 
-const fs = require('fs');
-
 //ako nemamo vec nesto spremljeno, content je prazan
-//ako imamo, cita iz json file-a
+//ako imamo, cita iz vue file-a
+
 let documentContent = '';
-fs.stat("aktuarski.json", (err, stat) => {
+fs.stat("aktuarski.vue", (err, stat) => {
   if (!err) {
-    documentContent = fs.readFileSync('aktuarski.json', 'utf8');
+    documentContent = fs.readFileSync('aktuarski.vue', 'utf8');
   }
 });
 
@@ -28,10 +28,11 @@ wss.on('connection', ws => {
   ws.on('message', message => {
     documentContent = message.toString(); // Primljena poruka se sprema kao string, [object Blob] problem inače može nastati
     console.log('Received:', documentContent);
-    //spremanje u json file
+    //spremanje u vue file
     if(documentContent.length!==0){
-      let json=JSON.stringify(JSON.parse(documentContent), null, 2);
-      fs.writeFile('aktuarski.json', json, err => {
+      let vue=JSON.stringify(JSON.parse(documentContent), null, 2);
+      vue = "<script> export default { t: " + vue + "}</script>";
+      fs.writeFile('aktuarski.vue', vue, err => {
         if (err) {
           console.error(err);
         }
@@ -48,11 +49,11 @@ wss.on('connection', ws => {
 });
 
 //ako nemamo vec nesto spremljeno, content je prazan
-//ako imamo, cita iz json file-a
+//ako imamo, cita iz vue file-a
 let documentContent2 = '';
-fs.stat("doktorski.json", (err, stat) => {
+fs.stat("doktorski.vue", (err, stat) => {
   if (!err) {
-    documentContent2 = fs.readFileSync('doktorski.json', 'utf8');
+    documentContent2 = fs.readFileSync('doktorski.vue', 'utf8');
   }
 });
 
@@ -64,10 +65,11 @@ wss2.on('connection', ws => {
   ws.on('message', message => {
     documentContent2 = message.toString(); // Primljena poruka se sprema kao string, [object Blob] problem inače može nastati
     console.log('Received:', documentContent2);
-    //spremanje u json file
+    //spremanje u vue file
     if(documentContent2.length!==0){
-      let json=JSON.stringify(JSON.parse(documentContent2), null, 2);
-      fs.writeFile('doktorski.json', json, err => {
+      let vue=JSON.stringify(JSON.parse(documentContent2), null, 2);
+      vue = "<script> export default { t: " + vue + "}</script>";
+      fs.writeFile('doktorski.vue', vue, err => {
         if (err) {
           console.error(err);
         }
@@ -85,11 +87,11 @@ wss2.on('connection', ws => {
 
 
 //ako nemamo vec nesto spremljeno, content je prazan
-//ako imamo, cita iz json file-a
+//ako imamo, cita iz vue file-a
 let documentContent3 = '';
-fs.stat("praktikumi.json", (err, stat) => {
+fs.stat("praktikumi.vue", (err, stat) => {
   if (!err) {
-    documentContent3 = fs.readFileSync('praktikumi.json', 'utf8');
+    documentContent3 = fs.readFileSync('praktikumi.vue', 'utf8');
   }
 });
 
@@ -102,10 +104,11 @@ wss3.on('connection', ws => {
   ws.on('message', message => {
     documentContent3 = message.toString(); // Primljena poruka se sprema kao string, [object Blob] problem inače može nastati
     console.log('Received:', documentContent3);
-    //spremanje u json file
+    //spremanje u vue file
     if(documentContent3.length!==0){
-      let json=JSON.stringify(JSON.parse(documentContent3), null, 2);
-      fs.writeFile('praktikumi.json', json, err => {
+      let vue=JSON.stringify(JSON.parse(documentContent3), null, 2);
+      vue = "<script> export default { t: " + vue + "}</script>";
+      fs.writeFile('praktikumi.vue', vue, err => {
         if (err) {
           console.error(err);
         }
@@ -123,11 +126,11 @@ wss3.on('connection', ws => {
 });
 
 //ako nemamo vec nesto spremljeno, content je prazan
-//ako imamo, cita iz json file-a
+//ako imamo, cita iz vue file-a
 let documentContent4 = '';
-fs.stat("snimanja.json", (err, stat) => {
+fs.stat("snimanja.vue", (err, stat) => {
   if (!err) {
-    documentContent4 = fs.readFileSync('snimanja.json', 'utf8');
+    documentContent4 = fs.readFileSync('snimanja.vue', 'utf8');
   }
 });
 
@@ -140,10 +143,11 @@ wss4.on('connection', ws => {
   ws.on('message', message => {
     documentContent4 = message.toString(); // Primljena poruka se sprema kao string, [object Blob] problem inače može nastati
     console.log('Received:', documentContent4);
-    //spremanje u json file
+    //spremanje u vue file
     if(documentContent4.length!==0){
-      let json=JSON.stringify(JSON.parse(documentContent4), null, 2);
-      fs.writeFile('snimanja.json', json, err => {
+      let vue=JSON.stringify(JSON.parse(documentContent4), null, 2);
+      vue = "<script> export default { t: " + vue + "}</script>";
+      fs.writeFile('snimanja.vue', vue, err => {
         if (err) {
           console.error(err);
         }
@@ -163,11 +167,11 @@ wss4.on('connection', ws => {
 //tablice za iduci tjedan
 
 //ako nemamo vec nesto spremljeno, content je prazan
-//ako imamo, cita iz json file-a
+//ako imamo, cita iz vue file-a
 let documentContent5 = '';
-fs.stat("aktuarski_iduci.json", (err, stat) => {
+fs.stat("aktuarski_iduci.vue", (err, stat) => {
   if (!err) {
-    documentContent5 = fs.readFileSync('aktuarski_iduci.json', 'utf8');
+    documentContent5 = fs.readFileSync('aktuarski_iduci.vue', 'utf8');
   }
 });
 
@@ -180,10 +184,11 @@ wss5.on('connection', ws => {
   ws.on('message', message => {
     documentContent5 = message.toString(); // Primljena poruka se sprema kao string, [object Blob] problem inače može nastati
     console.log('Received:', documentContent5);
-    //spremanje u json file
+    //spremanje u vue file
     if(documentContent5.length!==0){
-      let json=JSON.stringify(JSON.parse(documentContent5), null, 2);
-      fs.writeFile('aktuarski_iduci.json', json, err => {
+      let vue=JSON.stringify(JSON.parse(documentContent5), null, 2);
+      vue = "<script> export default { t: " + vue + "}</script>";
+      fs.writeFile('aktuarski_iduci.vue', vue, err => {
         if (err) {
           console.error(err);
         }
@@ -202,11 +207,11 @@ wss5.on('connection', ws => {
 
 
 //ako nemamo vec nesto spremljeno, content je prazan
-//ako imamo, cita iz json file-a
+//ako imamo, cita iz vue file-a
 let documentContent6 = '';
-fs.stat("doktorski_iduci.json", (err, stat) => {
+fs.stat("doktorski_iduci.vue", (err, stat) => {
   if (!err) {
-    documentContent6 = fs.readFileSync('doktorski_iduci.json', 'utf8');
+    documentContent6 = fs.readFileSync('doktorski_iduci.vue', 'utf8');
   }
 });
 
@@ -219,10 +224,11 @@ wss6.on('connection', ws => {
   ws.on('message', message => {
     documentContent6 = message.toString(); // Primljena poruka se sprema kao string, [object Blob] problem inače može nastati
     console.log('Received:', documentContent6);
-    //spremanje u json file
+    //spremanje u vue file
     if(documentContent6.length!==0){
-      let json=JSON.stringify(JSON.parse(documentContent6), null, 2);
-      fs.writeFile('doktorski_iduci.json', json, err => {
+      let vue=JSON.stringify(JSON.parse(documentContent6), null, 2);
+      vue = "<script> export default { t: " + vue + "}</script>";
+      fs.writeFile('doktorski_iduci.vue', vue, err => {
         if (err) {
           console.error(err);
         }
@@ -240,11 +246,11 @@ wss6.on('connection', ws => {
 });
 
 //ako nemamo vec nesto spremljeno, content je prazan
-//ako imamo, cita iz json file-a
+//ako imamo, cita iz vue file-a
 let documentContent7 = '';
-fs.stat("praktikumi_iduci.json", (err, stat) => {
+fs.stat("praktikumi_iduci.vue", (err, stat) => {
   if (!err) {
-    documentContent7 = fs.readFileSync('praktikumi_iduci.json', 'utf8');
+    documentContent7 = fs.readFileSync('praktikumi_iduci.vue', 'utf8');
   }
 });
 
@@ -257,10 +263,11 @@ wss7.on('connection', ws => {
   ws.on('message', message => {
     documentContent7 = message.toString(); // Primljena poruka se sprema kao string, [object Blob] problem inače može nastati
     console.log('Received:', documentContent7);
-    //spremanje u json file
+    //spremanje u vue file
     if(documentContent7.length!==0){
-      let json=JSON.stringify(JSON.parse(documentContent7), null, 2);
-      fs.writeFile('praktikumi_iduci.json', json, err => {
+      let vue=JSON.stringify(JSON.parse(documentContent7), null, 2);
+      vue = "<script> export default { t: " + vue + "}</script>";
+      fs.writeFile('praktikumi_iduci.vue', vue, err => {
         if (err) {
           console.error(err);
         }
@@ -278,11 +285,11 @@ wss7.on('connection', ws => {
 });
 
 //ako nemamo vec nesto spremljeno, content je prazan
-//ako imamo, cita iz json file-a
+//ako imamo, cita iz vue file-a
 let documentContent8 = '';
-fs.stat("snimanja_iduci.json", (err, stat) => {
+fs.stat("snimanja_iduci.vue", (err, stat) => {
   if (!err) {
-    documentContent8 = fs.readFileSync('snimanja_iduci.json', 'utf8');
+    documentContent8 = fs.readFileSync('snimanja_iduci.vue', 'utf8');
   }
 });
 
@@ -295,10 +302,11 @@ wss8.on('connection', ws => {
   ws.on('message', message => {
     documentContent8 = message.toString(); // Primljena poruka se sprema kao string, [object Blob] problem inače može nastati
     console.log('Received:', documentContent8);
-    //spremanje u json file
+    //spremanje u vue file
     if(documentContent8.length!==0){
-      let json=JSON.stringify(JSON.parse(documentContent8), null, 2);
-      fs.writeFile('snimanja_iduci.json', json, err => {
+      let vue=JSON.stringify(JSON.parse(documentContent8), null, 2);
+      vue = "<script> export default { t: " + vue + "}</script>";
+      fs.writeFile('snimanja_iduci.vue', vue, err => {
         if (err) {
           console.error(err);
         }
