@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="./css/rezervacije-prof_html.css" />
   <link rel="stylesheet" href="./css/novidemos_html.css" />
   <link rel="stylesheet" href="./css/opis-posla-public.css" />
+  <link rel="stylesheet" href="./css/demos-broj-sati.css" />
 
   <?php
   if (isset($darkmode) && $darkmode === 0);

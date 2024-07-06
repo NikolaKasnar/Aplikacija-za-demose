@@ -25,11 +25,11 @@
 </template>
 
 <script>
-import h from './../../../server/snimanja.json?raw';
+import t from './../../../server/snimanja.vue';
 export default {
   data() {
     return {
-      tableData: h,
+      tableData: [],
       // Prvi stupac je vrijeme termina
       timeSlots: ['10:00-11:00', '11:00-12:00', '12:00-13:00', '13:00-14:00', '14:00-15:00', '15:00-16:00', '16:00-17:00', '17:00-18:00'],
       ws: null,
@@ -43,7 +43,7 @@ export default {
     this.ws = new WebSocket('ws://localhost:50200');
 
     //Inicijalizacija tablice iz json file-a
-    this.tableData = h;
+    this.tableData = t['t'];
 
     var poruka;
     this.ws.onerror = function(){

@@ -25,11 +25,11 @@
 </template>
 
 <script>
-import h from './../../../server/snimanja_iduci.json?raw';
+import t from './../../../server/snimanja_iduci.vue';
 export default {
   data() {
     return {
-      tableData: h,
+      tableData: [],
       // Prvi stupac je vrijeme termina
       timeSlots: ['10:00-11:00', '11:00-12:00', '12:00-13:00', '13:00-14:00', '14:00-15:00', '15:00-16:00', '16:00-17:00', '17:00-18:00'],
       ws: null,
@@ -40,7 +40,7 @@ export default {
     //this.tableData = Array.from({ length: 8 }, () => Array(6).fill(''));
 
     //Inicijalizacija tablice iz json file-a
-    this.tableData = h;
+    this.tableData = t['t'];
 
     // WebSocket povezivanje
     this.ws = new WebSocket('ws://localhost:50600');

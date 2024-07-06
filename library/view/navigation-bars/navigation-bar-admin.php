@@ -1,6 +1,7 @@
 <?php require_once __DIR__ . '/../_header.php'; ?>
 
 <div class="navbar">
+    <a href="index.php?rt=obavijesti/index">Obavijesti</a>
     <div class="dropdown">
         <a href="index.php?rt=upute/aktuarski">Upute</a>
     </div>
@@ -18,8 +19,7 @@
     <a href="index.php?rt=galerija/index">Galerija</a>
     <a href="index.php?rt=users/index">Demosi</a>
     <a href="#izvjestaji">Izvještaji</a>
-    <a href="index.php?rt=postavke/index">Postavke</a>
-    <a href="index.php?rt=obavijesti/index">Obavijesti</a> 
+    <a href="index.php?rt=postavke/index">Postavke</a> 
     <a href="index.php?rt=adminpostavke/index">Za Admina</a>
     <div class="right-tab">
         <a class="username"><?php
