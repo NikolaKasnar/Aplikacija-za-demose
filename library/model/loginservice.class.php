@@ -12,7 +12,7 @@ class loginService
 
       try
   {
-    $st = $db->prepare( 'SELECT password_hash FROM demosi WHERE username=:username' );
+    $st = $db->prepare( 'SELECT password_hash FROM demosi WHERE BINARY username=:username' );
     $st->execute( array( 'username' => $username ) );
   }
   catch( PDOException $e ) { require_once __DIR__ . '/../view/login/login_html.php'; echo 'Greska u bazi.';return; }
@@ -43,7 +43,7 @@ class loginService
 
         try
 		{
-			$st = $db->prepare( 'SELECT password_hash, ovlasti FROM demosi WHERE username=:username' );
+			$st = $db->prepare( 'SELECT password_hash, ovlasti FROM demosi WHERE BINARY username=:username' );
 			$st->execute( array( 'username' => $username ) );
 		}
 		catch( PDOException $e ) { $poruka= 'Greska u bazi.'; require_once __DIR__ . '/../view/login/login_html.php'; return; }

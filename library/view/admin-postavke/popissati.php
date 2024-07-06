@@ -67,7 +67,6 @@
        <button name="reset" value="">Resetiraj mjesečne sate</button>
      </form>
 
-     <!-- ovo jos treba napravit -->
      <form id="satiforma" method="post" action="index.php?rt=adminpostavke/printsate">
     <button name="print" value="">PDF ispis mjesečnih sati</button>
     </form>
