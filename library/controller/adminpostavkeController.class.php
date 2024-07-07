@@ -9,6 +9,7 @@ require_once __DIR__ . '/../model/info.class.php';
 
 require 'vendor/autoload.php'; //obavezno se pozvat na autoload.php iz vendor za opciju prikaza sati u pdfu
 use Dompdf\Dompdf; //! mora biti izvan klase
+use Dompdf\Options;
 
   
 class AdminpostavkeController
@@ -462,7 +463,10 @@ class AdminpostavkeController
         }
 
         // kreiramo objekt od Dompdf
-        $dompdf = new Dompdf();
+        $options = new Options();
+        $options->set('defaultFont', 'DejaVu Sans');
+        $dompdf = new Dompdf($options);
+
 
         //trebam prethodni mjesec od trenutnog
         $prethodni_mjesec = date("m");
@@ -478,6 +482,10 @@ class AdminpostavkeController
 
         // Radimo prikaz (HTML) za zeljeni PDF
         $html = '
+        <style>
+        body { font-family: "DejaVu Sans", sans-serif;
+              font-size: 12px; }
+        </style>
         <h2 style="text-align:center">Izvještaj o radu demostratora za '. $zeljeni_mjesec .'</h2>
         <table border="1" cellspacing="0" cellpadding="5">
             <thead>
