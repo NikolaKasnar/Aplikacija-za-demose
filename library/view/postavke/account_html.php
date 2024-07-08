@@ -16,9 +16,11 @@
         <h2>Postavke računa</h2>
         <?php if(isset($poruka)) echo $poruka . '<br>' . '<br>';?>
         <form action="index.php?rt=postavke/updateaccount" method="post">
+            <!-- Ne smijemo dopustiti korisniku da mijenja svoj username
             Username:<br>
-            <input type="text" name="username" placeholder="<?php echo $user->__get('username'); ?>"/>
+            <input type="text" name="username" placeholder="<?//php echo $user->__get('username'); ?>"/>
             <br>
+            -->
             Ime:<br>
             <input type="text" name="ime" placeholder="<?php echo $user->__get('ime'); ?>"/>
             <br>
