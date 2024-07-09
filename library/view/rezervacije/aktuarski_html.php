@@ -98,7 +98,7 @@ if (isset($_COOKIE['ovlasti']) && $_COOKIE['ovlasti'] === '0') {
             setInterval(function() {
                 loadTable();
             }, 3000);
-            */
+            
         });*/
     </script>
 </head>
