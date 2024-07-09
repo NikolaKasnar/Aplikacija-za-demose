@@ -1,6 +1,6 @@
 <?php
 
-// Manualno inicijaliziramo bazu ako veÄ‡ nije.
+// Manualno inicijaliziramo bazu ako vec nije.
 require_once 'db.class.php';
 
 $db = DB::getConnection();

@@ -18,7 +18,6 @@
     </div>
     <a href="index.php?rt=galerija/index">Galerija</a>
     <a href="index.php?rt=users/index">Demosi</a>
-    <a href="#izvjestaji">Izvještaji</a>
     <a href="index.php?rt=postavke/index">Postavke</a> 
     <a href="index.php?rt=adminpostavke/index">Za Admina</a>
     <div class="right-tab">
