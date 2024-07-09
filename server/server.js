@@ -17,6 +17,8 @@ let documentContent = '';
 fs.stat("aktuarski.vue", (err, stat) => {
   if (!err) {
     documentContent = fs.readFileSync('aktuarski.vue', 'utf8');
+    documentContent=documentContent.slice(29,-11);
+    console.log('Received:', documentContent);
   }
 });
 
@@ -30,11 +32,16 @@ wss.on('connection', ws => {
     console.log('Received:', documentContent);
     //spremanje u vue file
     if(documentContent.length!==0){
+      //let vue=JSON.stringify("<script> export default { t: " + JSON.parse(documentContent) + "}</script> ", null, 2);
+      //let vue1=JSON.stringify("<script> export default { t: ");
+      //let vue2=JSON.stringify("}</script> ");
+      //vue = "<script> export default { t: " + vue + "}</script> ";
+      //vue=vue1+vue+vue2;
       let vue=JSON.stringify(JSON.parse(documentContent), null, 2);
-      vue = "<script> export default { t: " + vue + "}</script>";
+      vue = "<script> export default { t: " + vue + "}</script> ";
       fs.writeFile('aktuarski.vue', vue, err => {
         if (err) {
-          console.error(err);
+          //console.error(err);
         }
       });
     }
@@ -54,6 +61,8 @@ let documentContent2 = '';
 fs.stat("doktorski.vue", (err, stat) => {
   if (!err) {
     documentContent2 = fs.readFileSync('doktorski.vue', 'utf8');
+    documentContent2=documentContent2.slice(29,-11);
+    console.log('Received:', documentContent2);
   }
 });
 
@@ -68,10 +77,10 @@ wss2.on('connection', ws => {
     //spremanje u vue file
     if(documentContent2.length!==0){
       let vue=JSON.stringify(JSON.parse(documentContent2), null, 2);
-      vue = "<script> export default { t: " + vue + "}</script>";
+      vue = "<script> export default { t: " + vue + "}</script> ";
       fs.writeFile('doktorski.vue', vue, err => {
         if (err) {
-          console.error(err);
+          //console.error(err);
         }
       });
     }
@@ -92,6 +101,8 @@ let documentContent3 = '';
 fs.stat("praktikumi.vue", (err, stat) => {
   if (!err) {
     documentContent3 = fs.readFileSync('praktikumi.vue', 'utf8');
+    documentContent3=documentContent3.slice(29,-11);
+    console.log('Received:', documentContent3);
   }
 });
 
@@ -107,10 +118,10 @@ wss3.on('connection', ws => {
     //spremanje u vue file
     if(documentContent3.length!==0){
       let vue=JSON.stringify(JSON.parse(documentContent3), null, 2);
-      vue = "<script> export default { t: " + vue + "}</script>";
+      vue = "<script> export default { t: " + vue + "}</script> ";
       fs.writeFile('praktikumi.vue', vue, err => {
         if (err) {
-          console.error(err);
+          //console.error(err);
         }
       });
     }
@@ -131,6 +142,8 @@ let documentContent4 = '';
 fs.stat("snimanja.vue", (err, stat) => {
   if (!err) {
     documentContent4 = fs.readFileSync('snimanja.vue', 'utf8');
+    documentContent4=documentContent4.slice(29,-11);
+    console.log('Received:', documentContent4);
   }
 });
 
@@ -146,10 +159,10 @@ wss4.on('connection', ws => {
     //spremanje u vue file
     if(documentContent4.length!==0){
       let vue=JSON.stringify(JSON.parse(documentContent4), null, 2);
-      vue = "<script> export default { t: " + vue + "}</script>";
+      vue = "<script> export default { t: " + vue + "}</script> ";
       fs.writeFile('snimanja.vue', vue, err => {
         if (err) {
-          console.error(err);
+          //console.error(err);
         }
       });
     }
@@ -172,6 +185,8 @@ let documentContent5 = '';
 fs.stat("aktuarski_iduci.vue", (err, stat) => {
   if (!err) {
     documentContent5 = fs.readFileSync('aktuarski_iduci.vue', 'utf8');
+    documentContent5=documentContent5.slice(29,-11);
+    console.log('Received:', documentContent5);
   }
 });
 
@@ -187,10 +202,10 @@ wss5.on('connection', ws => {
     //spremanje u vue file
     if(documentContent5.length!==0){
       let vue=JSON.stringify(JSON.parse(documentContent5), null, 2);
-      vue = "<script> export default { t: " + vue + "}</script>";
+      vue = "<script> export default { t: " + vue + "}</script> ";
       fs.writeFile('aktuarski_iduci.vue', vue, err => {
         if (err) {
-          console.error(err);
+          //console.error(err);
         }
       });
     }
@@ -212,6 +227,8 @@ let documentContent6 = '';
 fs.stat("doktorski_iduci.vue", (err, stat) => {
   if (!err) {
     documentContent6 = fs.readFileSync('doktorski_iduci.vue', 'utf8');
+    documentContent6=documentContent6.slice(29,-11);
+    console.log('Received:', documentContent6);
   }
 });
 
@@ -227,10 +244,10 @@ wss6.on('connection', ws => {
     //spremanje u vue file
     if(documentContent6.length!==0){
       let vue=JSON.stringify(JSON.parse(documentContent6), null, 2);
-      vue = "<script> export default { t: " + vue + "}</script>";
+      vue = "<script> export default { t: " + vue + "}</script> ";
       fs.writeFile('doktorski_iduci.vue', vue, err => {
         if (err) {
-          console.error(err);
+          //console.error(err);
         }
       });
     }
@@ -251,6 +268,8 @@ let documentContent7 = '';
 fs.stat("praktikumi_iduci.vue", (err, stat) => {
   if (!err) {
     documentContent7 = fs.readFileSync('praktikumi_iduci.vue', 'utf8');
+    documentContent7=documentContent7.slice(29,-11);
+    console.log('Received:', documentContent7);
   }
 });
 
@@ -266,10 +285,10 @@ wss7.on('connection', ws => {
     //spremanje u vue file
     if(documentContent7.length!==0){
       let vue=JSON.stringify(JSON.parse(documentContent7), null, 2);
-      vue = "<script> export default { t: " + vue + "}</script>";
+      vue = "<script> export default { t: " + vue + "}</script> ";
       fs.writeFile('praktikumi_iduci.vue', vue, err => {
         if (err) {
-          console.error(err);
+          //console.error(err);
         }
       });
     }
@@ -290,9 +309,10 @@ let documentContent8 = '';
 fs.stat("snimanja_iduci.vue", (err, stat) => {
   if (!err) {
     documentContent8 = fs.readFileSync('snimanja_iduci.vue', 'utf8');
+    documentContent8=documentContent8.slice(29,-11);
+    console.log('Received:', documentContent8);
   }
 });
-
 
 wss8.on('connection', ws => {
   // Pošalji trenutni dokument klijentu koji se tek povezao
@@ -305,10 +325,10 @@ wss8.on('connection', ws => {
     //spremanje u vue file
     if(documentContent8.length!==0){
       let vue=JSON.stringify(JSON.parse(documentContent8), null, 2);
-      vue = "<script> export default { t: " + vue + "}</script>";
+      vue = "<script> export default { t: " + vue + "}</script> ";
       fs.writeFile('snimanja_iduci.vue', vue, err => {
         if (err) {
-          console.error(err);
+          //console.error(err);
         }
       });
     }

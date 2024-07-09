@@ -11,7 +11,6 @@ require 'vendor/autoload.php'; //obavezno se pozvat na autoload.php iz vendor za
 use Dompdf\Dompdf; //! mora biti izvan klase
 use Dompdf\Options;
 
-  
 class AdminpostavkeController
 {
     public function index()
@@ -41,24 +40,28 @@ class AdminpostavkeController
         for($i=0;$i<4;$i++)
           $var[$i]=array();
 
-        $dir=__DIR__ . '/../../server/aktuarski.json';
+        $dir=__DIR__ . '/../../server/aktuarski.vue';
         if (file_exists($dir)) {
             $var[0]=file_get_contents($dir);
+            $var[0]=substr($var[0],29,-11);
             $var[0]=json_decode($var[0]);
         }
-        $dir=__DIR__ . '/../../server/doktorski.json';
+        $dir=__DIR__ . '/../../server/doktorski.vue';
         if (file_exists($dir)) {
-            $var[1]=file_get_contents($dir);
-            $var[1]=json_decode($var[1]);
+          $var[1]=file_get_contents($dir);
+          $var[1]=substr($var[1],29,-11);
+          $var[1]=json_decode($var[1]);
         }
-        $dir=__DIR__ . '/../../server/praktikumi.json';
+        $dir=__DIR__ . '/../../server/praktikumi.vue';
         if (file_exists($dir)) {
             $var[2]=file_get_contents($dir);
+            $var[2]=substr($var[2],29,-11);
             $var[2]=json_decode($var[2]);
         }
-        $dir=__DIR__ . '/../../server/snimanja.json';
+        $dir=__DIR__ . '/../../server/snimanja.vue';
         if (file_exists($dir)) {
             $var[3]=file_get_contents($dir);
+            $var[3]=substr($var[3],29,-11);
             $var[3]=json_decode($var[3]);
         }
 
@@ -97,26 +100,30 @@ class AdminpostavkeController
       for($i=0;$i<4;$i++)
         $var[$i]=array();
 
-      $dir=__DIR__ . '/../../server/aktuarski.json';
-      if (file_exists($dir)) {
-          $var[0]=file_get_contents($dir);
-          $var[0]=json_decode($var[0]);
-      }
-      $dir=__DIR__ . '/../../server/doktorski.json';
-      if (file_exists($dir)) {
+        $dir=__DIR__ . '/../../server/aktuarski.vue';
+        if (file_exists($dir)) {
+            $var[0]=file_get_contents($dir);
+            $var[0]=substr($var[0],29,-11);
+            $var[0]=json_decode($var[0]);
+        }
+        $dir=__DIR__ . '/../../server/doktorski.vue';
+        if (file_exists($dir)) {
           $var[1]=file_get_contents($dir);
+          $var[1]=substr($var[1],29,-11);
           $var[1]=json_decode($var[1]);
-      }
-      $dir=__DIR__ . '/../../server/praktikumi.json';
-      if (file_exists($dir)) {
-          $var[2]=file_get_contents($dir);
-          $var[2]=json_decode($var[2]);
-      }
-      $dir=__DIR__ . '/../../server/snimanja.json';
-      if (file_exists($dir)) {
-          $var[3]=file_get_contents($dir);
-          $var[3]=json_decode($var[3]);
-      }
+        }
+        $dir=__DIR__ . '/../../server/praktikumi.vue';
+        if (file_exists($dir)) {
+            $var[2]=file_get_contents($dir);
+            $var[2]=substr($var[2],29,-11);
+            $var[2]=json_decode($var[2]);
+        }
+        $dir=__DIR__ . '/../../server/snimanja.vue';
+        if (file_exists($dir)) {
+            $var[3]=file_get_contents($dir);
+            $var[3]=substr($var[3],29,-11);
+            $var[3]=json_decode($var[3]);
+        }
 
       for($i=0;$i<4;$i++){
         foreach($var[$i] as $tab){
@@ -161,32 +168,63 @@ class AdminpostavkeController
       $users=$st->getusers();
       $tjedni=array();
 
-      $var=array();
-      $dir=__DIR__ . '/../../server/aktuarski.json';
-      if (file_exists($dir)) {
-          $var=file_get_contents($dir);
-          $var=json_decode($var);
+      $names=array();
+      foreach ($users as $us){
+        $names[]=$us->__get('username');
       }
 
-      foreach($var as $tab){
-        foreach($tab as $str){
-          if($str!=""){
-            if(isset($tjedni[$str])){
-              $tjedni[$str]++;
-            }
-            else{
-              $tjedni[$str]=1;
+      $tjedni=array();
+      for($i=0;$i<4;$i++)
+        $tjedni[$i]=array();
+      $var=array();
+      for($i=0;$i<4;$i++)
+        $var[$i]=array();
+
+        $dir=__DIR__ . '/../../server/aktuarski.vue';
+        if (file_exists($dir)) {
+            $var[0]=file_get_contents($dir);
+            $var[0]=substr($var[0],29,-11);
+            $var[0]=json_decode($var[0]);
+        }
+        $dir=__DIR__ . '/../../server/doktorski.vue';
+        if (file_exists($dir)) {
+          $var[1]=file_get_contents($dir);
+          $var[1]=substr($var[1],29,-11);
+          $var[1]=json_decode($var[1]);
+        }
+        $dir=__DIR__ . '/../../server/praktikumi.vue';
+        if (file_exists($dir)) {
+            $var[2]=file_get_contents($dir);
+            $var[2]=substr($var[2],29,-11);
+            $var[2]=json_decode($var[2]);
+        }
+        $dir=__DIR__ . '/../../server/snimanja.vue';
+        if (file_exists($dir)) {
+            $var[3]=file_get_contents($dir);
+            $var[3]=substr($var[3],29,-11);
+            $var[3]=json_decode($var[3]);
+        }
+
+        for($i=0;$i<4;$i++){
+          foreach($var[$i] as $tab){
+            foreach($tab as $str){
+              if($str!=""){
+                if(isset($tjedni[$i][$str])){
+                  $tjedni[$i][$str]++;
+                }
+                else{
+                  $tjedni[$i][$str]=1;
+                }
+              }
             }
           }
         }
-      }
 
       $as->resetsate();
 
       $mjes=array();
-      foreach($users as $us){
-        $username=$us->__get('username');
-        $mjes[]=$as->getsati($username);
+      foreach($names as $us){
+        $mjes[]=$as->getsati($us);
       }
 
       $poruka="Sati uspješno resetirani!<br>";
@@ -520,13 +558,13 @@ class AdminpostavkeController
         $datum = date("j.n.Y", strtotime($danasnji));
         $html .= '<br><br>
         <table style="width: 50%; margin-top: 20px; text-align: left">
-          <tr>  
+          <tr>
             <td style="width: 50%; text-align: left; border-top: 1px solid #000;">Admin Demos, '. $datum . '</td>
           </tr>
         </table>';
 
         $html .= '<br><br>';
-        $html .= 'Suglasnost:';        
+        $html .= 'Suglasnost:';
         $html .= '<br><br>
 
         <table style="width: 50%; margin-top: 20px; text-align: left">
@@ -552,5 +590,5 @@ class AdminpostavkeController
         }
 
     }
-  
+
 };

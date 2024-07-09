@@ -1,49 +1,25 @@
 <script> export default { t: [
   [
     "",
-    "noraaaa",
-    "dssdsdssdfsafd",
+    "Dominik",
+    "dobar dan",
     "",
     "",
     ""
   ],
   [
     "",
-    "a",
-    "d",
-    "d",
     "",
-    "s"
+    "",
+    "dsdfadasf",
+    "",
+    "nora"
   ],
   [
     "",
-    "",
-    "dssss",
-    "d",
-    "a",
-    ""
-  ],
-  [
-    "",
-    "",
-    "g",
-    "f",
-    "d",
-    "s"
-  ],
-  [
-    "",
-    "",
-    "dss",
-    "",
-    "",
-    "dd"
-  ],
-  [
-    "",
-    "",
-    "",
-    "",
+    "dddd",
+    "ana",
+    "ftzftzftzf",
     "",
     ""
   ],
@@ -59,8 +35,32 @@
     "",
     "",
     "",
+    "asfasfsdfasd",
+    "ana",
+    ""
+  ],
+  [
+    "",
+    "nora",
+    "",
+    "",
+    "",
+    "sfdsaf"
+  ],
+  [
+    "",
+    "",
+    "asdfsafdsa",
+    "",
+    "sirius",
+    ""
+  ],
+  [
+    "",
+    "",
+    "sgfdgfdsg",
     "",
     "",
     ""
   ]
-]}</script>
+]}</script> 

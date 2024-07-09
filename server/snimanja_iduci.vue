@@ -1,8 +1,7 @@
-<script> export default { t:
-[
+<script> export default { t: [
   [
     "",
-    "",
+    "ddd",
     "",
     "",
     "",
@@ -18,7 +17,7 @@
   ],
   [
     "",
-    "",
+    "adsafsfds",
     "",
     "",
     "nora",
@@ -27,7 +26,7 @@
   [
     "",
     "",
-    "",
+    "safsdsfssf",
     "",
     "nora",
     ""
@@ -64,4 +63,4 @@
     "",
     ""
   ]
-]}</script>
+]}</script> 

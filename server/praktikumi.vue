@@ -1,9 +1,8 @@
-<script> export default { t:
-[
+<script> export default { t: [
   [
     "",
     "praktikumi",
-    "",
+    "gdddddds",
     "nora",
     "",
     ""
@@ -22,13 +21,13 @@
     "",
     "",
     "",
-    ""
+    "hfgghg"
   ],
   [
     "",
     "",
     "",
-    "",
+    "hjghjgjhg",
     "",
     ""
   ],
@@ -64,4 +63,4 @@
     "",
     ""
   ]
-]}</script>
+]}</script> 
