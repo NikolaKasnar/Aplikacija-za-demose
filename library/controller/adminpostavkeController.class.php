@@ -11,7 +11,6 @@ require 'vendor/autoload.php'; //obavezno se pozvat na autoload.php iz vendor za
 use Dompdf\Dompdf; //! mora biti izvan klase
 use Dompdf\Options;
 
-
 class AdminpostavkeController
 {
     public function index()
