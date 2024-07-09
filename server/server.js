@@ -314,7 +314,6 @@ fs.stat("snimanja_iduci.vue", (err, stat) => {
   }
 });
 
-
 wss8.on('connection', ws => {
   // Pošalji trenutni dokument klijentu koji se tek povezao
   ws.send(documentContent8);
