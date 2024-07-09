@@ -326,7 +326,7 @@ wss8.on('connection', ws => {
     //spremanje u vue file
     if(documentContent8.length!==0){
       let vue=JSON.stringify(JSON.parse(documentContent8), null, 2);
-      vue = "<script> export default { t: " + vue + "}</script>  ";
+      vue = "<script> export default { t: " + vue + "}</script> ";
       fs.writeFile('snimanja_iduci.vue', vue, err => {
         if (err) {
           //console.error(err);
