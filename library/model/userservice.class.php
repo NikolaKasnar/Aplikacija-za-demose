@@ -89,15 +89,16 @@ class UserService
       $godina=$noviuser->__get('godina');
       $smjer=$noviuser->__get('smjer');
       $ovlasti=$noviuser->__get('ovlasti');
+      $mjesecni_sati=0;
 
-      $st = $db->prepare( 'INSERT INTO demosi(username, password_hash, ime, prezime, email, godina, smjer, ovlasti, registracijski_kod)
-        VALUES (:username, :password, :ime, :prezime, :email, :godina, :smjer, :ovlasti, :kod)' );
+      $st = $db->prepare( 'INSERT INTO demosi(username, password_hash, ime, prezime, email, godina, smjer, ovlasti, registracijski_kod, mjesecni_sati)
+        VALUES (:username, :password, :ime, :prezime, :email, :godina, :smjer, :ovlasti, :kod, :mjesecni_sati)' );
       $st->execute( array('username' => $username, 'password' => $password, 'ime' => $ime, 'prezime' => $prezime,
-        'email' => $email, 'godina' => $godina, 'smjer' => $smjer, 'ovlasti' => $ovlasti, 'kod' => $kod));
+        'email' => $email, 'godina' => $godina, 'smjer' => $smjer, 'ovlasti' => $ovlasti, 'kod' => $kod, 'mjesecni_sati' => $mjesecni_sati));
     }
     catch( PDOException $e ) {
       $poruka='Greška u bazi, pokušajte ponovno';
-      require_once __DIR__ . '/../view/postavke/registracija_html.php';
+      require_once __DIR__ . '/../view/admin-postavke/registracija_html.php';
       return;
     }
 
